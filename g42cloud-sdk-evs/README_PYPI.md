@@ -1,1 +1,1 @@
-See detailed information in [g42cloud-sdk-python](https://github.com/g42cloud/g42cloud-sdk-python).
+See detailed information in [g42cloud-sdk-python](https://github.com/g42cloud-sdk/g42cloud-sdk-python).

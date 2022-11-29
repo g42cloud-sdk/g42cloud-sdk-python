@@ -1,3 +1,50 @@
+# 0.0.2-beta 2022-11-29
+
+### G42Cloud SDK CBR
+
+- _Features_
+  - New Support CBR
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK CES
+
+- _Features_
+  - New Support CES
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK CSE
+
+- _Features_
+  - New Support CSE
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK CTS
+
+- _Features_
+  - New Support CTS
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK ELB
+
+- _Features_
+  - New Support ELB
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
 # 0.0.1-beta 2022-11-23
 
 ### G42Cloud SDK CCE
