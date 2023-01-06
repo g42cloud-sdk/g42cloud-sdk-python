@@ -4,7 +4,7 @@ from os import path
 from setuptools import setup, find_packages
 
 NAME = "g42cloudsdkelb"
-VERSION = "0.0.2-beta"
+VERSION = "0.0.3-beta"
 AUTHOR = "G42Cloud SDK"
 AUTHOR_EMAIL = "unionsdk@outlook.com"
 URL = "https://github.com/g42cloud-sdk/g42cloud-sdk-python"
@@ -14,7 +14,7 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README_PYPI.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
-REQUIRES = ["huaweicloudsdkcore>=3.1.12"]
+REQUIRES = ["g42cloudsdkcore>=0.0.3-beta"]
 
 OPTIONS = {
     'bdist_wheel': {

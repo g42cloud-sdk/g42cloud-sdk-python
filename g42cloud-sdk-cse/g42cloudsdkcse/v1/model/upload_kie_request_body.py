@@ -5,7 +5,7 @@ import six
 
 
 
-from huaweicloudsdkcore.utils.http_utils import sanitize_for_serialization
+from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
 class UploadKieRequestBody:
@@ -33,7 +33,7 @@ class UploadKieRequestBody:
         The model defined in g42cloud sdk
 
         :param upload_file: The param of the UploadKieRequestBody
-        :type upload_file: :class:`huaweicloudsdkcore.http.formdata.FormFile`
+        :type upload_file: :class:`g42cloudsdkcore.http.formdata.FormFile`
         """
         
         
@@ -48,7 +48,7 @@ class UploadKieRequestBody:
         """Gets the upload_file of this UploadKieRequestBody.
 
         :return: The upload_file of this UploadKieRequestBody.
-        :rtype: :class:`huaweicloudsdkcore.http.formdata.FormFile`
+        :rtype: :class:`g42cloudsdkcore.http.formdata.FormFile`
         """
         return self._upload_file
 
@@ -57,7 +57,7 @@ class UploadKieRequestBody:
         """Sets the upload_file of this UploadKieRequestBody.
 
         :param upload_file: The upload_file of this UploadKieRequestBody.
-        :type upload_file: :class:`huaweicloudsdkcore.http.formdata.FormFile`
+        :type upload_file: :class:`g42cloudsdkcore.http.formdata.FormFile`
         """
         self._upload_file = upload_file
 

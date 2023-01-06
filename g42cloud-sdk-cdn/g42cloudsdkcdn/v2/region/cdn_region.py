@@ -3,16 +3,16 @@
 import types
 import six
 
-from huaweicloudsdkcore.region.region import Region
-from huaweicloudsdkcore.region.provider import RegionProviderChain
+from g42cloudsdkcore.region.region import Region
+from g42cloudsdkcore.region.provider import RegionProviderChain
 
 class CdnRegion:
     _PROVIDER = RegionProviderChain.get_default_region_provider_chain("CDN")
 
 
-    CN_NORTH_1 = Region(id="cn-north-1", endpoint="https://cdn.myhuaweicloud.com")
+    CN_NORTH_1 = Region(id="cn-north-1", endpoint="https://cdn.myg42cloud.com")
 
-    AP_SOUTHEAST_1 = Region(id="ap-southeast-1", endpoint="https://cdn.myhuaweicloud.com")
+    AP_SOUTHEAST_1 = Region(id="ap-southeast-1", endpoint="https://cdn.myg42cloud.com")
 
     static_fields = {
         "cn-north-1": CN_NORTH_1,

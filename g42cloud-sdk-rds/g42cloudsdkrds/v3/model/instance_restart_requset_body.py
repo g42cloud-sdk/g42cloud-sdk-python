@@ -5,7 +5,7 @@ import six
 
 
 
-from huaweicloudsdkcore.utils.http_utils import sanitize_for_serialization
+from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
 class InstanceRestartRequsetBody:
@@ -41,8 +41,7 @@ class InstanceRestartRequsetBody:
         self._restart = None
         self.discriminator = None
 
-        if restart is not None:
-            self.restart = restart
+        self.restart = restart
 
     @property
     def restart(self):

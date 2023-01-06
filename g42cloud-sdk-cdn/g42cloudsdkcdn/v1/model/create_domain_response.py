@@ -4,8 +4,8 @@ import re
 import six
 
 
-from huaweicloudsdkcore.sdk_response import SdkResponse
-from huaweicloudsdkcore.utils.http_utils import sanitize_for_serialization
+from g42cloudsdkcore.sdk_response import SdkResponse
+from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
 class CreateDomainResponse(SdkResponse):

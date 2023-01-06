@@ -5,7 +5,7 @@ import six
 
 
 
-from huaweicloudsdkcore.utils.http_utils import sanitize_for_serialization
+from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
 class DeleteSecurityGroupRuleRequest:

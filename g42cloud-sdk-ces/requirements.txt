@@ -1,1 +1,1 @@
-huaweicloudsdkcore >= 3.1.12
+g42cloudsdkcore

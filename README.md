@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://www.g42cloud.com/"><img style="background-color:black;" width="450px" height="102px" src="https://auth.g42cloud.com//authui/20220614193554/public/custom/images/logo.svg"></a>
+<a href="https://www.g42cloud.com/"><img src="https://upload.wikimedia.org/wikipedia/en/4/43/Group_42_Logo.jpg"></a>
 </p>
 
 <h1 align="center">G42 Cloud Python Software Development Kit (Python SDK)</h1>
@@ -44,11 +44,11 @@ pip install g42cloudsdkvpc
 # coding: utf-8
 
 
-from huaweicloudsdkcore.auth.credentials import BasicCredentials
-from huaweicloudsdkcore.exceptions import exceptions
-from huaweicloudsdkcore.http.http_config import HttpConfig
+from g42cloudsdkcore.auth.credentials import BasicCredentials
+from g42cloudsdkcore.exceptions import exceptions
+from g42cloudsdkcore.http.http_config import HttpConfig
 
-# import specified service library huaweicloudsdk{service}, take vpc for example
+# import specified service library g42cloudsdk{service}, take vpc for example
 from g42cloudsdkvpc.v2 import *
 
 
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 Detailed changes for each released version are documented in
 the [CHANGELOG.md](https://github.com/g42cloud-sdk/g42cloud-sdk-python/blob/master/CHANGELOG.md).
 
-## User Manual [:top:](#huawei-cloud-python-software-development-kit-python-sdk)
+## User Manual [:top:](#g42-cloud-python-software-development-kit-python-sdk)
 
 * [1. Client Configuration](#1-client-configuration-top)
     * [1.1 Default Configuration](#11-default-configuration-top)
@@ -114,7 +114,7 @@ the [CHANGELOG.md](https://github.com/g42cloud-sdk/g42cloud-sdk-python/blob/mast
 #### 1.1 Default Configuration [:top:](#user-manual-top)
 
 ```python
-from huaweicloudsdkcore.http.http_config import HttpConfig
+from g42cloudsdkcore.http.http_config import HttpConfig
 
 #  Use default configuration
 config = HttpConfig.get_default_config()
@@ -182,22 +182,10 @@ basic_credentials = BasicCredentials(ak, sk, project_id)
 global_credentials = GlobalCredentials(ak, sk, domain_id)
 ```
 
-**Notice**:
-
-- project_id/domain_id supports **automatic acquisition**, if you want to use this
-  feature, you need to provide the ak and sk of your account and the id of the region, then build the client
-  instance with method `with_region()`, detailed example could refer
-  to [3.2 Initialize the client with specified Region](#32-initialize-the-serviceclient-with-specified-region-recommended-top)
-  .
-
 #### 2.2 Use Temporary AK&SK [:top:](#user-manual-top)
 
 It's required to obtain temporary AK&SK and security token first, which could be obtained through
 permanent AK&SK or through an agency.
-
-- Obtaining a temporary access key and security token through token, you could refer to
-document: https://support.huaweicloud.com/en-us/api-iam/iam_04_0002.html . The API mentioned in the document above
-corresponds to the method of `CreateTemporaryAccessKeyByToken` in IAM SDK.
 
 **Parameter description**:
 
@@ -223,7 +211,7 @@ global_credentials = GlobalCredentials(ak, sk, domain_id).with_security_token(se
 
 ```python
 # Specify the endpoint, take the endpoint of VPC service in region of cn-north-4 for example
-endpoint = "https://vpc.cn-north-4.myhuaweicloud.com"
+endpoint = "https://vpc.cn-north-4.g42cloud.com"
 
 # Initialize the credentials, you should provide project_id or domain_id in this way, take initializing BasicCredentials for example
 basic_credentials = BasicCredentials(ak, sk, project_id)
@@ -235,13 +223,6 @@ client = VpcClient.new_builder() \
     .with_endpoint(endpoint) \
     .build()
 ```
-
-**where:**
-
-- `endpoint` varies by services and regions,
-  see [Regions and Endpoints](https://docs.g42cloud.com/en-us/endpoint/index.html) to obtain correct endpoint.
-
-- When you meet some trouble in getting projectId using the specified region way, you could use this way instead.
 
 ### 4. Send Requests and Handle Responses [:top:](#user-manual-top)
 
@@ -347,7 +328,7 @@ client = VpcClient.new_builder() \
 After enabled log, the SDK will print the access log by default, every request will be recorded to the console like:
 
 ```text
-2020-06-16 10:44:02,019 4568 HuaweiCloud-SDK http_handler.py 28 INFO "GET https://vpc.cn-north-1.myhuaweicloud.com/v1/0904f9e1f100d2932f94c01f9aa1cfd7/vpcs" 200 11 0:00:00.543430 b5c927ffdab8401e772e70aa49972037
+2020-06-16 10:44:02,019 4568 G42Cloud-SDK http_handler.py 28 INFO "GET https://vpc.cn-north-1.myg42cloud.com/v1/0904f9e1f100d2932f94c01f9aa1cfd7/vpcs" 200 11 0:00:00.543430 b5c927ffdab8401e772e70aa49972037
 ```
 
 The format of access log is:
@@ -365,7 +346,7 @@ needed. The SDK provides a listener function to obtain the original encrypted ht
 
 ```python
 import logging
-from huaweicloudsdkcore.http.http_handler import HttpHandler
+from g42cloudsdkcore.http.http_handler import HttpHandler
 
 
 def response_handler(**kwargs):
@@ -409,11 +390,11 @@ Take the interface `CreateImageWatermark` of the service `Data Security Center` 
 
 ```python
 # coding: utf-8
-from huaweicloudsdkcore.auth.credentials import BasicCredentials
-from huaweicloudsdkcore.exceptions import exceptions
-from huaweicloudsdkcore.http.http_config import HttpConfig
-from huaweicloudsdkcore.http.formdata import FormFile
-from huaweicloudsdkservice.v1 import *
+from g42cloudsdkcore.auth.credentials import BasicCredentials
+from g42cloudsdkcore.exceptions import exceptions
+from g42cloudsdkcore.http.http_config import HttpConfig
+from g42cloudsdkcore.http.formdata import FormFile
+from g42cloudsdkservice.v1 import *
 
 
 def upload_and_download_file(client):

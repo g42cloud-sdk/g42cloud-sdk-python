@@ -3,8 +3,8 @@
 import types
 import six
 
-from huaweicloudsdkcore.region.region import Region
-from huaweicloudsdkcore.region.provider import RegionProviderChain
+from g42cloudsdkcore.region.region import Region
+from g42cloudsdkcore.region.provider import RegionProviderChain
 
 class VpcRegion:
     _PROVIDER = RegionProviderChain.get_default_region_provider_chain("VPC")

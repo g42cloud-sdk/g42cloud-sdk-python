@@ -8,10 +8,10 @@ import importlib
 
 import six
 
-from huaweicloudsdkcore.client import Client, ClientBuilder
-from huaweicloudsdkcore.exceptions import exceptions
-from huaweicloudsdkcore.utils import http_utils
-from huaweicloudsdkcore.sdk_stream_request import SdkStreamRequest
+from g42cloudsdkcore.client import Client, ClientBuilder
+from g42cloudsdkcore.exceptions import exceptions
+from g42cloudsdkcore.utils import http_utils
+from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class ElbClient(Client):
@@ -30,7 +30,7 @@ class ElbClient(Client):
     def __init__(self):
         super(ElbClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkelb.v3.model")
-        self.preset_headers = {'User-Agent': 'HuaweiCloud-SDK-Python'}
+        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
