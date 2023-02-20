@@ -26,11 +26,11 @@ from requests import HTTPError, Timeout, TooManyRedirects
 from requests.adapters import HTTPAdapter
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util import Retry
-from requests_futures.sessions import FuturesSession
 from urllib3.exceptions import SSLError, NewConnectionError
 from concurrent.futures import ThreadPoolExecutor
 
 from g42cloudsdkcore.exceptions import exceptions
+from g42cloudsdkcore.http.future_session import FutureSession
 from g42cloudsdkcore.utils.xml_utils import XmlTransfer
 
 
@@ -102,7 +102,7 @@ class HttpClient(object):
         return response
 
     def do_request_async(self, request, hooks):
-        fun = getattr(FuturesSession(session=self._session), request.method.lower())
+        fun = getattr(FutureSession(self._session, self._executor), request.method.lower())
         hooks.append(self.response_error_hook_factory())
 
         future = fun(

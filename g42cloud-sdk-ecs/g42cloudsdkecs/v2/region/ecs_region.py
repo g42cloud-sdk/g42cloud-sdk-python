@@ -9,8 +9,8 @@ from g42cloudsdkcore.region.provider import RegionProviderChain
 class EcsRegion:
     _PROVIDER = RegionProviderChain.get_default_region_provider_chain("ECS")
 
-
-    AE_AD_1 = Region(id="ae-ad-1", endpoint="https://ecs.ae-ad-1.g42cloud.com")
+    AE_AD_1 = Region("ae-ad-1",
+                        "https://ecs.ae-ad-1.g42cloud.com")
 
     static_fields = {
         "ae-ad-1": AE_AD_1,

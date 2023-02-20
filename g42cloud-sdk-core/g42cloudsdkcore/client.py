@@ -25,16 +25,16 @@ import logging
 import re
 import sys
 from collections import OrderedDict
-from concurrent.futures import ThreadPoolExecutor
 from logging.handlers import RotatingFileHandler
 
-import six
 import simplejson as json
-from six.moves.urllib.parse import quote, urlparse
+import six
 from requests_toolbelt import MultipartEncoder
+from six.moves.urllib.parse import quote, urlparse
 
 from g42cloudsdkcore.auth.credentials import BasicCredentials, DerivedCredentials
 from g42cloudsdkcore.auth.provider import CredentialProviderChain
+from g42cloudsdkcore.http.formdata import FormFile
 from g42cloudsdkcore.http.http_client import HttpClient
 from g42cloudsdkcore.http.http_config import HttpConfig
 from g42cloudsdkcore.http.http_handler import HttpHandler
@@ -44,7 +44,6 @@ from g42cloudsdkcore.sdk_request import SdkRequest
 from g42cloudsdkcore.sdk_response import FutureSdkResponse
 from g42cloudsdkcore.sdk_stream_response import SdkStreamResponse
 from g42cloudsdkcore.utils import http_utils, core_utils
-from g42cloudsdkcore.http.formdata import FormFile
 from g42cloudsdkcore.utils.xml_utils import XmlTransfer
 
 

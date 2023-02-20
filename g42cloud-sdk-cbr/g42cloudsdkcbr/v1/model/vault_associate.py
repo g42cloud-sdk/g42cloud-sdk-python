@@ -53,8 +53,7 @@ class VaultAssociate:
 
         if destination_vault_id is not None:
             self.destination_vault_id = destination_vault_id
-        if policy_id is not None:
-            self.policy_id = policy_id
+        self.policy_id = policy_id
         if add_policy_ids is not None:
             self.add_policy_ids = add_policy_ids
 
