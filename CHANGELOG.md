@@ -1,4 +1,15 @@
-# 0.0.4-beta # 0.0.4-beta 2023-02-20
+# 0.0.5-beta 2023-04-14
+
+### G42Cloud SDK Core
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - Optimize the code structure.
+
+# 0.0.4-beta 2023-02-20
 
 ### G42Cloud SDK CBR
 

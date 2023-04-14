@@ -20,10 +20,11 @@
 
 import datetime
 import decimal
-import importlib
 import logging
 import re
 import sys
+import threading
+import warnings
 from collections import OrderedDict
 from logging.handlers import RotatingFileHandler
 
@@ -34,6 +35,8 @@ from six.moves.urllib.parse import quote, urlparse
 
 from g42cloudsdkcore.auth.credentials import BasicCredentials, DerivedCredentials
 from g42cloudsdkcore.auth.provider import CredentialProviderChain
+from g42cloudsdkcore.exceptions.exceptions import HostUnreachableException
+from g42cloudsdkcore.exceptions import exception_handler
 from g42cloudsdkcore.http.formdata import FormFile
 from g42cloudsdkcore.http.http_client import HttpClient
 from g42cloudsdkcore.http.http_config import HttpConfig
@@ -48,6 +51,8 @@ from g42cloudsdkcore.utils.xml_utils import XmlTransfer
 
 
 class ClientBuilder(object):
+    _HTTP_SCHEME = "http"
+    _HTTPS_SCHEME = "https"
 
     def __init__(self, client_type, credential_type=BasicCredentials.__name__):
         self._client_type = client_type
@@ -56,14 +61,11 @@ class ClientBuilder(object):
         self._config = None
         self._credentials = None
         self._region = None
-        self._endpoint = None
+        self._endpoints = []
 
         self._http_handler = None
         self._file_logger_handler = None
         self._stream_logger_handler = None
-
-        self._http_scheme = "http"
-        self._https_scheme = "https"
 
     def with_http_config(self, config):
         """
@@ -94,7 +96,12 @@ class ClientBuilder(object):
         :param endpoint: Endpoint for ClientBuilder
         :type endpoint: str
         """
-        self._endpoint = endpoint
+        warnings.warn("As of 3.1.27, because of the support of the multi-endpoint feature, use with_endpoints instead",
+                      DeprecationWarning)
+        return self.with_endpoints([endpoint])
+
+    def with_endpoints(self, endpoints):
+        self._endpoints = endpoints
         return self
 
     def with_http_handler(self, http_handler):
@@ -149,17 +156,18 @@ class ClientBuilder(object):
             raise TypeError("credential type error, supported credential type is %s" % ",".join(self._credential_type))
 
         if self._region is not None:
-            self._endpoint = self._region.endpoint
+            self._endpoints += self._region.endpoints
             self._credentials = self._credentials.process_auth_params(client.get_http_client(), self._region.id)
 
             if isinstance(self._credentials, DerivedCredentials):
                 self._credentials._process_derived_auth_params(self._derived_auth_service_name, self._region.id)
 
-        if not self._endpoint.startswith(self._http_scheme):
-            self._endpoint = self._https_scheme + "://" + self._endpoint
+        if not self._endpoints:
+            raise ValueError("Could not find any endpoints, at least one endpoint is required")
+        self._endpoints = [endpoint if endpoint.startswith(self._HTTP_SCHEME) else self._HTTPS_SCHEME + "://" + endpoint
+                           for endpoint in self._endpoints]
 
-        client.with_endpoint(self._endpoint) \
-            .with_credentials(self._credentials)
+        client.with_endpoints(self._endpoints).with_credentials(self._credentials)
 
         if self._file_logger_handler is not None:
             client.add_file_logger(**self._file_logger_handler)
@@ -173,7 +181,8 @@ class Client(object):
     _CONTENT_TYPE = "Content-Type"
     _APPLICATION_JSON = "application/json"
     _APPLICATION_XML = "application/xml"
-    _MULTIPART_FORMDATA = "multipart/form-data"
+    _APPLICATION_OCTET_STREAM = "application/octet-stream"
+    _MULTIPART_FORM_DATA = "multipart/form-data"
     _XML_NAME = "xml_name"
     _AUTHORIZATION = "Authorization"
     _HEADERS = "headers"
@@ -186,17 +195,15 @@ class Client(object):
 
         self._credentials = None
         self._config = None
-        self._endpoint = None
+        self._endpoint_index = 0
+        self._endpoints = []
+        self._mutex = threading.Lock()
 
         self._http_client = None
         self._http_handler = None
 
         self.model_package = None
-        try:
-            exception_handler_model_name = "%s.exception_handler" % self.__module__[:self.__module__.rindex('.')]
-            self.exception_handler_model = importlib.import_module(exception_handler_model_name)
-        except ImportError:
-            self.exception_handler_model = None
+        self.exception_handler = None
 
     @classmethod
     def _init_logger(cls):
@@ -221,12 +228,12 @@ class Client(object):
         self._credentials = credentials
         return self
 
-    def with_endpoint(self, endpoint):
+    def with_endpoints(self, endpoints):
         """
-        :param endpoint: Endpoint for Client
-        :type endpoint: str
+        :param endpoints: Endpoint for Client
+        :type endpoints: str
         """
-        self._endpoint = endpoint
+        self._endpoints += endpoints
         return self
 
     def with_http_handler(self, http_handler):
@@ -238,9 +245,9 @@ class Client(object):
         return self
 
     def init_http_client(self):
-        exception_handler = None \
-            if self.exception_handler_model is None else getattr(self.exception_handler_model, "handle_exception")
-        self._http_client = HttpClient(self._config, self._http_handler, exception_handler, self._logger)
+        if not self.exception_handler or not isinstance(self.exception_handler, exception_handler.ExceptionHandler):
+            self.exception_handler = exception_handler.DefaultExceptionHandler()
+        self._http_client = HttpClient(self._config, self._http_handler, self.exception_handler, self._logger)
 
     def add_stream_logger(self, stream, log_level, format_string):
         self._logger.setLevel(log_level)
@@ -372,7 +379,7 @@ class Client(object):
         return None
 
     def _url_parse(self, cname):
-        parse_result = urlparse(self._endpoint)
+        parse_result = urlparse(self._endpoints[self._endpoint_index])
         if cname:
             endpoint = "%s://%s.%s" % (parse_result.scheme, cname, parse_result.netloc)
             parse_result = urlparse(endpoint)
@@ -381,6 +388,33 @@ class Client(object):
     def do_http_request(self, method, resource_path, path_params=None, query_params=None, header_params=None,
                         body=None, post_params=None, cname=None, response_type=None, response_headers=None,
                         collection_formats=None, request_type=None, async_request=False):
+
+        if async_request:
+            future_request = self.build_future_request(method, resource_path, path_params, query_params, header_params,
+                                                       body, post_params, cname, response_type, collection_formats)
+            future_response = self._http_client.executor.submit(self._do_http_request_async, future_request,
+                                                                response_type, response_headers)
+            return FutureSdkResponse(future_response, self._logger)
+
+        while True:
+            try:
+                request = self.build_future_request(method, resource_path, path_params, query_params, header_params,
+                                                    body, post_params, cname, response_type,
+                                                    collection_formats).result()
+                response = self._do_http_request_sync(request)
+                break
+            except HostUnreachableException as e:
+                with self._mutex:
+                    if self._endpoint_index < len(self._endpoints) - 1:
+                        self._endpoint_index += 1
+                    else:
+                        self._endpoint_index = 0
+                        raise e
+
+        return self.sync_response_handler(response, response_type, response_headers)
+
+    def build_future_request(self, method, resource_path, path_params, query_params, header_params,
+                             request_body, post_params, cname, response_type, collection_formats):
         url_parse_result = self._url_parse(cname)
         schema = url_parse_result.scheme
         host = url_parse_result.netloc
@@ -392,30 +426,23 @@ class Client(object):
         post_params = self._parse_post_params(collection_formats, post_params)
 
         content_type = header_params.setdefault(self._CONTENT_TYPE, self._APPLICATION_JSON)
-        if content_type == self._MULTIPART_FORMDATA:
-            body = self._parse_formdata_body(body)
+        if content_type == self._MULTIPART_FORM_DATA:
+            body = self._parse_formdata_body(request_body)
             header_params[self._CONTENT_TYPE] = body.content_type
         elif content_type == self._APPLICATION_XML:
-            body = self._parse_xml_body(body)
+            body = self._parse_xml_body(request_body)
+        elif content_type == self._APPLICATION_OCTET_STREAM:
+            body = request_body
         else:
-            body = self._parse_body(body, post_params)
+            body = self._parse_body(request_body, post_params)
 
         stream = self._is_stream(response_type)
         sdk_request = SdkRequest(method=method, schema=schema, host=host, resource_path=resource_path,
                                  query_params=query_params, header_params=header_params, body=body, stream=stream)
         if self._AUTHORIZATION not in header_params:
-            future_request = self._credentials.process_auth_request(sdk_request, self._http_client)
+            return self._credentials.process_auth_request(sdk_request, self._http_client)
         else:
-            future_request = self._http_client.executor.submit(lambda: sdk_request)
-
-        if async_request:
-            future_response = self._http_client.executor.submit(self._do_http_request_async, future_request,
-                                                                response_type, response_headers)
-            return FutureSdkResponse(future_response, self._logger)
-        else:
-            request = future_request.result()
-            response = self._do_http_request_sync(request)
-            return self.sync_response_handler(response, response_type, response_headers)
+            return self._http_client.executor.submit(lambda: sdk_request)
 
     def _do_http_request_sync(self, request):
         response = self._http_client.do_request_sync(request)
