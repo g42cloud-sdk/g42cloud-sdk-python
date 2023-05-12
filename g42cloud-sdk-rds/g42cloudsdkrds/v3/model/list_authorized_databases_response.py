@@ -1,8 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
 
 from g42cloudsdkcore.sdk_response import SdkResponse
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization

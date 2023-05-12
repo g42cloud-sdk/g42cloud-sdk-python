@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class RdsAsyncClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(RdsAsyncClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkrds.v3.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -49,14 +31,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ApplyConfigurationAsyncRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ApplyConfigurationAsyncResponse`
         """
-        return self.apply_configuration_async_with_http_info(request)
+        return self._apply_configuration_async_with_http_info(request)
 
-    def apply_configuration_async_with_http_info(self, request):
-        all_params = ['config_id', 'apply_configuration_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _apply_configuration_async_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -109,14 +87,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.AttachEipRequest`
         :rtype: :class:`g42cloudsdkrds.v3.AttachEipResponse`
         """
-        return self.attach_eip_with_http_info(request)
+        return self._attach_eip_with_http_info(request)
 
-    def attach_eip_with_http_info(self, request):
-        all_params = ['instance_id', 'bind_eip_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _attach_eip_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -169,14 +143,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.BatchTagAddActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.BatchTagAddActionResponse`
         """
-        return self.batch_tag_add_action_with_http_info(request)
+        return self._batch_tag_add_action_with_http_info(request)
 
-    def batch_tag_add_action_with_http_info(self, request):
-        all_params = ['instance_id', 'batch_tag_action_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_tag_add_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -229,14 +199,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.BatchTagDelActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.BatchTagDelActionResponse`
         """
-        return self.batch_tag_del_action_with_http_info(request)
+        return self._batch_tag_del_action_with_http_info(request)
 
-    def batch_tag_del_action_with_http_info(self, request):
-        all_params = ['instance_id', 'batch_tag_action_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_tag_del_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -289,14 +255,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ChangeFailoverModeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ChangeFailoverModeResponse`
         """
-        return self.change_failover_mode_with_http_info(request)
+        return self._change_failover_mode_with_http_info(request)
 
-    def change_failover_mode_with_http_info(self, request):
-        all_params = ['instance_id', 'failover_mode_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_failover_mode_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -349,14 +311,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ChangeFailoverStrategyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ChangeFailoverStrategyResponse`
         """
-        return self.change_failover_strategy_with_http_info(request)
+        return self._change_failover_strategy_with_http_info(request)
 
-    def change_failover_strategy_with_http_info(self, request):
-        all_params = ['instance_id', 'failover_strategy_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_failover_strategy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -409,14 +367,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ChangeOpsWindowRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ChangeOpsWindowResponse`
         """
-        return self.change_ops_window_with_http_info(request)
+        return self._change_ops_window_with_http_info(request)
 
-    def change_ops_window_with_http_info(self, request):
-        all_params = ['instance_id', 'ops_window_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_ops_window_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -469,14 +423,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateConfigurationResponse`
         """
-        return self.create_configuration_with_http_info(request)
+        return self._create_configuration_with_http_info(request)
 
-    def create_configuration_with_http_info(self, request):
-        all_params = ['create_configuration_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -527,14 +477,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateDnsNameRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateDnsNameResponse`
         """
-        return self.create_dns_name_with_http_info(request)
+        return self._create_dns_name_with_http_info(request)
 
-    def create_dns_name_with_http_info(self, request):
-        all_params = ['instance_id', 'create_dns_name_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_dns_name_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -587,14 +533,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateInstanceResponse`
         """
-        return self.create_instance_with_http_info(request)
+        return self._create_instance_with_http_info(request)
 
-    def create_instance_with_http_info(self, request):
-        all_params = ['create_instance_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -645,14 +587,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateManualBackupRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateManualBackupResponse`
         """
-        return self.create_manual_backup_with_http_info(request)
+        return self._create_manual_backup_with_http_info(request)
 
-    def create_manual_backup_with_http_info(self, request):
-        all_params = ['create_manual_backup_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_manual_backup_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -703,14 +641,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateRestoreInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateRestoreInstanceResponse`
         """
-        return self.create_restore_instance_with_http_info(request)
+        return self._create_restore_instance_with_http_info(request)
 
-    def create_restore_instance_with_http_info(self, request):
-        all_params = ['create_instance_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_restore_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -761,14 +695,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteConfigurationResponse`
         """
-        return self.delete_configuration_with_http_info(request)
+        return self._delete_configuration_with_http_info(request)
 
-    def delete_configuration_with_http_info(self, request):
-        all_params = ['config_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -819,14 +749,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteInstanceResponse`
         """
-        return self.delete_instance_with_http_info(request)
+        return self._delete_instance_with_http_info(request)
 
-    def delete_instance_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -877,14 +803,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteManualBackupRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteManualBackupResponse`
         """
-        return self.delete_manual_backup_with_http_info(request)
+        return self._delete_manual_backup_with_http_info(request)
 
-    def delete_manual_backup_with_http_info(self, request):
-        all_params = ['backup_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_manual_backup_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -935,14 +857,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DownloadSlowlogRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DownloadSlowlogResponse`
         """
-        return self.download_slowlog_with_http_info(request)
+        return self._download_slowlog_with_http_info(request)
 
-    def download_slowlog_with_http_info(self, request):
-        all_params = ['instance_id', 'slowlog_download_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _download_slowlog_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -995,14 +913,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.EnableConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.EnableConfigurationResponse`
         """
-        return self.enable_configuration_with_http_info(request)
+        return self._enable_configuration_with_http_info(request)
 
-    def enable_configuration_with_http_info(self, request):
-        all_params = ['config_id', 'apply_configuration_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _enable_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1055,14 +969,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListAuditlogsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListAuditlogsResponse`
         """
-        return self.list_auditlogs_with_http_info(request)
+        return self._list_auditlogs_with_http_info(request)
 
-    def list_auditlogs_with_http_info(self, request):
-        all_params = ['instance_id', 'start_time', 'end_time', 'offset', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_auditlogs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1121,14 +1031,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListBackupsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListBackupsResponse`
         """
-        return self.list_backups_with_http_info(request)
+        return self._list_backups_with_http_info(request)
 
-    def list_backups_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'backup_id', 'backup_type', 'offset', 'limit', 'begin_time', 'end_time']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_backups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1191,14 +1097,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListCollationsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListCollationsResponse`
         """
-        return self.list_collations_with_http_info(request)
+        return self._list_collations_with_http_info(request)
 
-    def list_collations_with_http_info(self, request):
-        all_params = ['x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_collations_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1247,14 +1149,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListConfigurationsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListConfigurationsResponse`
         """
-        return self.list_configurations_with_http_info(request)
+        return self._list_configurations_with_http_info(request)
 
-    def list_configurations_with_http_info(self, request):
-        all_params = ['x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_configurations_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1303,14 +1201,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListDatastoresRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListDatastoresResponse`
         """
-        return self.list_datastores_with_http_info(request)
+        return self._list_datastores_with_http_info(request)
 
-    def list_datastores_with_http_info(self, request):
-        all_params = ['database_name', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_datastores_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1361,14 +1255,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListErrorLogsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListErrorLogsResponse`
         """
-        return self.list_error_logs_with_http_info(request)
+        return self._list_error_logs_with_http_info(request)
 
-    def list_error_logs_with_http_info(self, request):
-        all_params = ['instance_id', 'start_date', 'end_date', 'x_language', 'offset', 'limit', 'level']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_error_logs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1429,14 +1319,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListErrorLogsNewRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListErrorLogsNewResponse`
         """
-        return self.list_error_logs_new_with_http_info(request)
+        return self._list_error_logs_new_with_http_info(request)
 
-    def list_error_logs_new_with_http_info(self, request):
-        all_params = ['instance_id', 'start_date', 'end_date', 'x_language', 'offset', 'limit', 'level']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_error_logs_new_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1497,14 +1383,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListFlavorsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListFlavorsResponse`
         """
-        return self.list_flavors_with_http_info(request)
+        return self._list_flavors_with_http_info(request)
 
-    def list_flavors_with_http_info(self, request):
-        all_params = ['database_name', 'x_language', 'version_name', 'spec_code']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1559,14 +1441,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListInstancesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListInstancesResponse`
         """
-        return self.list_instances_with_http_info(request)
+        return self._list_instances_with_http_info(request)
 
-    def list_instances_with_http_info(self, request):
-        all_params = ['x_language', 'id', 'name', 'type', 'datastore_type', 'vpc_id', 'subnet_id', 'offset', 'limit', 'tags']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_instances_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1633,14 +1511,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListJobInfoRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListJobInfoResponse`
         """
-        return self.list_job_info_with_http_info(request)
+        return self._list_job_info_with_http_info(request)
 
-    def list_job_info_with_http_info(self, request):
-        all_params = ['id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_job_info_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1691,14 +1565,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListJobInfoDetailRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListJobInfoDetailResponse`
         """
-        return self.list_job_info_detail_with_http_info(request)
+        return self._list_job_info_detail_with_http_info(request)
 
-    def list_job_info_detail_with_http_info(self, request):
-        all_params = ['instance_id', 'start_time', 'x_language', 'end_time']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_job_info_detail_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1753,14 +1623,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListOffSiteBackupsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListOffSiteBackupsResponse`
         """
-        return self.list_off_site_backups_with_http_info(request)
+        return self._list_off_site_backups_with_http_info(request)
 
-    def list_off_site_backups_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'backup_id', 'backup_type', 'offset', 'limit', 'begin_time', 'end_time']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_off_site_backups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1823,14 +1689,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListOffSiteInstancesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListOffSiteInstancesResponse`
         """
-        return self.list_off_site_instances_with_http_info(request)
+        return self._list_off_site_instances_with_http_info(request)
 
-    def list_off_site_instances_with_http_info(self, request):
-        all_params = ['x_language', 'offset', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_off_site_instances_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1883,14 +1745,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListOffSiteRestoreTimesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListOffSiteRestoreTimesResponse`
         """
-        return self.list_off_site_restore_times_with_http_info(request)
+        return self._list_off_site_restore_times_with_http_info(request)
 
-    def list_off_site_restore_times_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'date']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_off_site_restore_times_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1943,14 +1801,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListProjectTagsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListProjectTagsResponse`
         """
-        return self.list_project_tags_with_http_info(request)
+        return self._list_project_tags_with_http_info(request)
 
-    def list_project_tags_with_http_info(self, request):
-        all_params = ['x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_project_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1999,14 +1853,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListRestoreTimesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListRestoreTimesResponse`
         """
-        return self.list_restore_times_with_http_info(request)
+        return self._list_restore_times_with_http_info(request)
 
-    def list_restore_times_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'date']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_restore_times_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2059,14 +1909,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSlowLogFileRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSlowLogFileResponse`
         """
-        return self.list_slow_log_file_with_http_info(request)
+        return self._list_slow_log_file_with_http_info(request)
 
-    def list_slow_log_file_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'offset', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_slow_log_file_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2121,14 +1967,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSlowLogsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSlowLogsResponse`
         """
-        return self.list_slow_logs_with_http_info(request)
+        return self._list_slow_logs_with_http_info(request)
 
-    def list_slow_logs_with_http_info(self, request):
-        all_params = ['instance_id', 'start_date', 'end_date', 'x_language', 'offset', 'limit', 'type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_slow_logs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2189,14 +2031,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSlowLogsNewRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSlowLogsNewResponse`
         """
-        return self.list_slow_logs_new_with_http_info(request)
+        return self._list_slow_logs_new_with_http_info(request)
 
-    def list_slow_logs_new_with_http_info(self, request):
-        all_params = ['instance_id', 'start_date', 'end_date', 'x_language', 'offset', 'limit', 'type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_slow_logs_new_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2257,14 +2095,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSlowlogStatisticsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSlowlogStatisticsResponse`
         """
-        return self.list_slowlog_statistics_with_http_info(request)
+        return self._list_slowlog_statistics_with_http_info(request)
 
-    def list_slowlog_statistics_with_http_info(self, request):
-        all_params = ['instance_id', 'cur_page', 'per_page', 'start_date', 'end_date', 'type', 'x_language', 'sort']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_slowlog_statistics_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2327,14 +2161,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListStorageTypesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListStorageTypesResponse`
         """
-        return self.list_storage_types_with_http_info(request)
+        return self._list_storage_types_with_http_info(request)
 
-    def list_storage_types_with_http_info(self, request):
-        all_params = ['database_name', 'version_name', 'x_language', 'ha_mode']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_storage_types_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2389,14 +2219,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.MigrateFollowerRequest`
         :rtype: :class:`g42cloudsdkrds.v3.MigrateFollowerResponse`
         """
-        return self.migrate_follower_with_http_info(request)
+        return self._migrate_follower_with_http_info(request)
 
-    def migrate_follower_with_http_info(self, request):
-        all_params = ['instance_id', 'migrate_follower_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _migrate_follower_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2449,14 +2275,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.RestoreExistInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.RestoreExistInstanceResponse`
         """
-        return self.restore_exist_instance_with_http_info(request)
+        return self._restore_exist_instance_with_http_info(request)
 
-    def restore_exist_instance_with_http_info(self, request):
-        all_params = ['restore_existing_instance_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _restore_exist_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2507,14 +2329,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.RestoreTablesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.RestoreTablesResponse`
         """
-        return self.restore_tables_with_http_info(request)
+        return self._restore_tables_with_http_info(request)
 
-    def restore_tables_with_http_info(self, request):
-        all_params = ['instance_id', 'restore_tables_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _restore_tables_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2567,14 +2385,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.RestoreToExistingInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.RestoreToExistingInstanceResponse`
         """
-        return self.restore_to_existing_instance_with_http_info(request)
+        return self._restore_to_existing_instance_with_http_info(request)
 
-    def restore_to_existing_instance_with_http_info(self, request):
-        all_params = ['restore_to_existing_instance_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _restore_to_existing_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2625,14 +2439,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetAuditlogPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetAuditlogPolicyResponse`
         """
-        return self.set_auditlog_policy_with_http_info(request)
+        return self._set_auditlog_policy_with_http_info(request)
 
-    def set_auditlog_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'set_auditlog_policy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_auditlog_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2685,14 +2495,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetBackupPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetBackupPolicyResponse`
         """
-        return self.set_backup_policy_with_http_info(request)
+        return self._set_backup_policy_with_http_info(request)
 
-    def set_backup_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'set_backup_policy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_backup_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2745,14 +2551,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetBinlogClearPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetBinlogClearPolicyResponse`
         """
-        return self.set_binlog_clear_policy_with_http_info(request)
+        return self._set_binlog_clear_policy_with_http_info(request)
 
-    def set_binlog_clear_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'binlog_clear_policy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_binlog_clear_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2805,14 +2607,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetOffSiteBackupPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetOffSiteBackupPolicyResponse`
         """
-        return self.set_off_site_backup_policy_with_http_info(request)
+        return self._set_off_site_backup_policy_with_http_info(request)
 
-    def set_off_site_backup_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'set_off_site_backup_policy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_off_site_backup_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2865,14 +2663,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetSecurityGroupRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetSecurityGroupResponse`
         """
-        return self.set_security_group_with_http_info(request)
+        return self._set_security_group_with_http_info(request)
 
-    def set_security_group_with_http_info(self, request):
-        all_params = ['instance_id', 'security_group_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_security_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2925,14 +2719,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowAuditlogDownloadLinkRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowAuditlogDownloadLinkResponse`
         """
-        return self.show_auditlog_download_link_with_http_info(request)
+        return self._show_auditlog_download_link_with_http_info(request)
 
-    def show_auditlog_download_link_with_http_info(self, request):
-        all_params = ['instance_id', 'generate_auditlog_download_link_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_auditlog_download_link_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2985,14 +2775,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowAuditlogPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowAuditlogPolicyResponse`
         """
-        return self.show_auditlog_policy_with_http_info(request)
+        return self._show_auditlog_policy_with_http_info(request)
 
-    def show_auditlog_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_auditlog_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3043,14 +2829,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowBackupDownloadLinkRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowBackupDownloadLinkResponse`
         """
-        return self.show_backup_download_link_with_http_info(request)
+        return self._show_backup_download_link_with_http_info(request)
 
-    def show_backup_download_link_with_http_info(self, request):
-        all_params = ['backup_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_backup_download_link_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3101,14 +2883,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowBackupPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowBackupPolicyResponse`
         """
-        return self.show_backup_policy_with_http_info(request)
+        return self._show_backup_policy_with_http_info(request)
 
-    def show_backup_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_backup_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3159,14 +2937,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowBinlogClearPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowBinlogClearPolicyResponse`
         """
-        return self.show_binlog_clear_policy_with_http_info(request)
+        return self._show_binlog_clear_policy_with_http_info(request)
 
-    def show_binlog_clear_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_binlog_clear_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3217,14 +2991,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowConfigurationResponse`
         """
-        return self.show_configuration_with_http_info(request)
+        return self._show_configuration_with_http_info(request)
 
-    def show_configuration_with_http_info(self, request):
-        all_params = ['config_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3275,14 +3045,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowDrReplicaStatusRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowDrReplicaStatusResponse`
         """
-        return self.show_dr_replica_status_with_http_info(request)
+        return self._show_dr_replica_status_with_http_info(request)
 
-    def show_dr_replica_status_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_dr_replica_status_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3333,14 +3099,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowInstanceConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowInstanceConfigurationResponse`
         """
-        return self.show_instance_configuration_with_http_info(request)
+        return self._show_instance_configuration_with_http_info(request)
 
-    def show_instance_configuration_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_instance_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3391,14 +3153,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowOffSiteBackupPolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowOffSiteBackupPolicyResponse`
         """
-        return self.show_off_site_backup_policy_with_http_info(request)
+        return self._show_off_site_backup_policy_with_http_info(request)
 
-    def show_off_site_backup_policy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_off_site_backup_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3449,14 +3207,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowQuotasRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowQuotasResponse`
         """
-        return self.show_quotas_with_http_info(request)
+        return self._show_quotas_with_http_info(request)
 
-    def show_quotas_with_http_info(self, request):
-        all_params = ['x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_quotas_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3505,14 +3259,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartFailoverRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartFailoverResponse`
         """
-        return self.start_failover_with_http_info(request)
+        return self._start_failover_with_http_info(request)
 
-    def start_failover_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_failover_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3563,14 +3313,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartInstanceEnlargeVolumeActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartInstanceEnlargeVolumeActionResponse`
         """
-        return self.start_instance_enlarge_volume_action_with_http_info(request)
+        return self._start_instance_enlarge_volume_action_with_http_info(request)
 
-    def start_instance_enlarge_volume_action_with_http_info(self, request):
-        all_params = ['instance_id', 'enlarge_volume_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_instance_enlarge_volume_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3623,14 +3369,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartInstanceRestartActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartInstanceRestartActionResponse`
         """
-        return self.start_instance_restart_action_with_http_info(request)
+        return self._start_instance_restart_action_with_http_info(request)
 
-    def start_instance_restart_action_with_http_info(self, request):
-        all_params = ['instance_id', 'instance_restart_requset_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_instance_restart_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3683,14 +3425,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartInstanceSingleToHaActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartInstanceSingleToHaActionResponse`
         """
-        return self.start_instance_single_to_ha_action_with_http_info(request)
+        return self._start_instance_single_to_ha_action_with_http_info(request)
 
-    def start_instance_single_to_ha_action_with_http_info(self, request):
-        all_params = ['instance_id', 'instance_single_to_ha_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_instance_single_to_ha_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3743,14 +3481,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartRecyclePolicyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartRecyclePolicyResponse`
         """
-        return self.start_recycle_policy_with_http_info(request)
+        return self._start_recycle_policy_with_http_info(request)
 
-    def start_recycle_policy_with_http_info(self, request):
-        all_params = ['recycle_policy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_recycle_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3801,14 +3535,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartResizeFlavorActionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartResizeFlavorActionResponse`
         """
-        return self.start_resize_flavor_action_with_http_info(request)
+        return self._start_resize_flavor_action_with_http_info(request)
 
-    def start_resize_flavor_action_with_http_info(self, request):
-        all_params = ['instance_id', 'resize_flavor_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_resize_flavor_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3861,14 +3591,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartupInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartupInstanceResponse`
         """
-        return self.startup_instance_with_http_info(request)
+        return self._startup_instance_with_http_info(request)
 
-    def startup_instance_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _startup_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3919,14 +3645,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StopInstanceRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StopInstanceResponse`
         """
-        return self.stop_instance_with_http_info(request)
+        return self._stop_instance_with_http_info(request)
 
-    def stop_instance_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _stop_instance_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3977,14 +3699,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SwitchSslRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SwitchSslResponse`
         """
-        return self.switch_ssl_with_http_info(request)
+        return self._switch_ssl_with_http_info(request)
 
-    def switch_ssl_with_http_info(self, request):
-        all_params = ['instance_id', 'ssl_option_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _switch_ssl_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4037,14 +3755,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateConfigurationResponse`
         """
-        return self.update_configuration_with_http_info(request)
+        return self._update_configuration_with_http_info(request)
 
-    def update_configuration_with_http_info(self, request):
-        all_params = ['config_id', 'update_configuration_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4097,14 +3811,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateDataIpRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateDataIpResponse`
         """
-        return self.update_data_ip_with_http_info(request)
+        return self._update_data_ip_with_http_info(request)
 
-    def update_data_ip_with_http_info(self, request):
-        all_params = ['instance_id', 'data_ip_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_data_ip_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4157,14 +3867,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateDnsNameRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateDnsNameResponse`
         """
-        return self.update_dns_name_with_http_info(request)
+        return self._update_dns_name_with_http_info(request)
 
-    def update_dns_name_with_http_info(self, request):
-        all_params = ['instance_id', 'modify_dns_name_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_dns_name_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4217,14 +3923,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateInstanceConfigurationRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateInstanceConfigurationResponse`
         """
-        return self.update_instance_configuration_with_http_info(request)
+        return self._update_instance_configuration_with_http_info(request)
 
-    def update_instance_configuration_with_http_info(self, request):
-        all_params = ['instance_id', 'update_instance_configuration_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_instance_configuration_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4277,14 +3979,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateInstanceConfigurationAsyncRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateInstanceConfigurationAsyncResponse`
         """
-        return self.update_instance_configuration_async_with_http_info(request)
+        return self._update_instance_configuration_async_with_http_info(request)
 
-    def update_instance_configuration_async_with_http_info(self, request):
-        all_params = ['instance_id', 'update_instance_configuration_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_instance_configuration_async_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4337,14 +4035,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateInstanceNameRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateInstanceNameResponse`
         """
-        return self.update_instance_name_with_http_info(request)
+        return self._update_instance_name_with_http_info(request)
 
-    def update_instance_name_with_http_info(self, request):
-        all_params = ['instance_id', 'modify_instance_name_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_instance_name_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4397,14 +4091,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdatePortRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdatePortResponse`
         """
-        return self.update_port_with_http_info(request)
+        return self._update_port_with_http_info(request)
 
-    def update_port_with_http_info(self, request):
-        all_params = ['instance_id', 'update_db_port_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_port_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4457,14 +4147,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdatePostgresqlInstanceAliasRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdatePostgresqlInstanceAliasResponse`
         """
-        return self.update_postgresql_instance_alias_with_http_info(request)
+        return self._update_postgresql_instance_alias_with_http_info(request)
 
-    def update_postgresql_instance_alias_with_http_info(self, request):
-        all_params = ['instance_id', 'update_rds_instance_alias_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_postgresql_instance_alias_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4517,14 +4203,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpgradeDbVersionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpgradeDbVersionResponse`
         """
-        return self.upgrade_db_version_with_http_info(request)
+        return self._upgrade_db_version_with_http_info(request)
 
-    def upgrade_db_version_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'customer_upgrade_database_version_req_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _upgrade_db_version_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4577,14 +4259,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListApiVersionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListApiVersionResponse`
         """
-        return self.list_api_version_with_http_info(request)
+        return self._list_api_version_with_http_info(request)
 
-    def list_api_version_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_api_version_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4631,14 +4309,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListApiVersionNewRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListApiVersionNewResponse`
         """
-        return self.list_api_version_new_with_http_info(request)
+        return self._list_api_version_new_with_http_info(request)
 
-    def list_api_version_new_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_api_version_new_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4685,14 +4359,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowApiVersionRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowApiVersionResponse`
         """
-        return self.show_api_version_with_http_info(request)
+        return self._show_api_version_with_http_info(request)
 
-    def show_api_version_with_http_info(self, request):
-        all_params = ['version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_api_version_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4741,14 +4411,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.AllowDbUserPrivilegeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.AllowDbUserPrivilegeResponse`
         """
-        return self.allow_db_user_privilege_with_http_info(request)
+        return self._allow_db_user_privilege_with_http_info(request)
 
-    def allow_db_user_privilege_with_http_info(self, request):
-        all_params = ['instance_id', 'grant_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _allow_db_user_privilege_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4801,14 +4467,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateDatabaseResponse`
         """
-        return self.create_database_with_http_info(request)
+        return self._create_database_with_http_info(request)
 
-    def create_database_with_http_info(self, request):
-        all_params = ['instance_id', 'create_database_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4861,14 +4523,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateDbUserRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateDbUserResponse`
         """
-        return self.create_db_user_with_http_info(request)
+        return self._create_db_user_with_http_info(request)
 
-    def create_db_user_with_http_info(self, request):
-        all_params = ['instance_id', 'create_db_user_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_db_user_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4921,14 +4579,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteDatabaseResponse`
         """
-        return self.delete_database_with_http_info(request)
+        return self._delete_database_with_http_info(request)
 
-    def delete_database_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4981,14 +4635,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteDbUserRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteDbUserResponse`
         """
-        return self.delete_db_user_with_http_info(request)
+        return self._delete_db_user_with_http_info(request)
 
-    def delete_db_user_with_http_info(self, request):
-        all_params = ['instance_id', 'user_name', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_db_user_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5041,14 +4691,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListAuthorizedDatabasesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListAuthorizedDatabasesResponse`
         """
-        return self.list_authorized_databases_with_http_info(request)
+        return self._list_authorized_databases_with_http_info(request)
 
-    def list_authorized_databases_with_http_info(self, request):
-        all_params = ['instance_id', 'user_name', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_authorized_databases_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5105,14 +4751,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListAuthorizedDbUsersRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListAuthorizedDbUsersResponse`
         """
-        return self.list_authorized_db_users_with_http_info(request)
+        return self._list_authorized_db_users_with_http_info(request)
 
-    def list_authorized_db_users_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_authorized_db_users_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5169,14 +4811,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListDatabasesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListDatabasesResponse`
         """
-        return self.list_databases_with_http_info(request)
+        return self._list_databases_with_http_info(request)
 
-    def list_databases_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_databases_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5231,14 +4869,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListDbUsersRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListDbUsersResponse`
         """
-        return self.list_db_users_with_http_info(request)
+        return self._list_db_users_with_http_info(request)
 
-    def list_db_users_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_db_users_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5293,14 +4927,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ResetPwdRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ResetPwdResponse`
         """
-        return self.reset_pwd_with_http_info(request)
+        return self._reset_pwd_with_http_info(request)
 
-    def reset_pwd_with_http_info(self, request):
-        all_params = ['instance_id', 'pwd_reset_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _reset_pwd_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5353,14 +4983,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.RevokeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.RevokeResponse`
         """
-        return self.revoke_with_http_info(request)
+        return self._revoke_with_http_info(request)
 
-    def revoke_with_http_info(self, request):
-        all_params = ['instance_id', 'revoke_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _revoke_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5413,14 +5039,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetDbUserPwdRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetDbUserPwdResponse`
         """
-        return self.set_db_user_pwd_with_http_info(request)
+        return self._set_db_user_pwd_with_http_info(request)
 
-    def set_db_user_pwd_with_http_info(self, request):
-        all_params = ['instance_id', 'db_user_pwd_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_db_user_pwd_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5473,14 +5095,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateDatabaseResponse`
         """
-        return self.update_database_with_http_info(request)
+        return self._update_database_with_http_info(request)
 
-    def update_database_with_http_info(self, request):
-        all_params = ['instance_id', 'update_database_req', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5533,14 +5151,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.AllowDbPrivilegeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.AllowDbPrivilegeResponse`
         """
-        return self.allow_db_privilege_with_http_info(request)
+        return self._allow_db_privilege_with_http_info(request)
 
-    def allow_db_privilege_with_http_info(self, request):
-        all_params = ['instance_id', 'grant_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _allow_db_privilege_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5593,14 +5207,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ChangeProxyScaleRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ChangeProxyScaleResponse`
         """
-        return self.change_proxy_scale_with_http_info(request)
+        return self._change_proxy_scale_with_http_info(request)
 
-    def change_proxy_scale_with_http_info(self, request):
-        all_params = ['instance_id', 'scale_proxy_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_proxy_scale_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5653,14 +5263,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ChangeTheDelayThresholdRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ChangeTheDelayThresholdResponse`
         """
-        return self.change_the_delay_threshold_with_http_info(request)
+        return self._change_the_delay_threshold_with_http_info(request)
 
-    def change_the_delay_threshold_with_http_info(self, request):
-        all_params = ['instance_id', 'changing_the_delay_threshold_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_the_delay_threshold_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5713,14 +5319,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreatePostgresqlDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreatePostgresqlDatabaseResponse`
         """
-        return self.create_postgresql_database_with_http_info(request)
+        return self._create_postgresql_database_with_http_info(request)
 
-    def create_postgresql_database_with_http_info(self, request):
-        all_params = ['instance_id', 'create_database_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_postgresql_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5773,14 +5375,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreatePostgresqlDatabaseSchemaRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreatePostgresqlDatabaseSchemaResponse`
         """
-        return self.create_postgresql_database_schema_with_http_info(request)
+        return self._create_postgresql_database_schema_with_http_info(request)
 
-    def create_postgresql_database_schema_with_http_info(self, request):
-        all_params = ['instance_id', 'db_schema_req', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_postgresql_database_schema_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5833,14 +5431,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreatePostgresqlDbUserRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreatePostgresqlDbUserResponse`
         """
-        return self.create_postgresql_db_user_with_http_info(request)
+        return self._create_postgresql_db_user_with_http_info(request)
 
-    def create_postgresql_db_user_with_http_info(self, request):
-        all_params = ['instance_id', 'create_db_user_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_postgresql_db_user_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5893,14 +5487,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListPostgresqlDatabaseSchemasRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListPostgresqlDatabaseSchemasResponse`
         """
-        return self.list_postgresql_database_schemas_with_http_info(request)
+        return self._list_postgresql_database_schemas_with_http_info(request)
 
-    def list_postgresql_database_schemas_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_postgresql_database_schemas_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -5957,14 +5547,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListPostgresqlDatabasesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListPostgresqlDatabasesResponse`
         """
-        return self.list_postgresql_databases_with_http_info(request)
+        return self._list_postgresql_databases_with_http_info(request)
 
-    def list_postgresql_databases_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_postgresql_databases_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6019,14 +5605,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListPostgresqlDbUserPaginatedRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListPostgresqlDbUserPaginatedResponse`
         """
-        return self.list_postgresql_db_user_paginated_with_http_info(request)
+        return self._list_postgresql_db_user_paginated_with_http_info(request)
 
-    def list_postgresql_db_user_paginated_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_postgresql_db_user_paginated_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6081,14 +5663,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SearchQueryScaleComputeFlavorsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SearchQueryScaleComputeFlavorsResponse`
         """
-        return self.search_query_scale_compute_flavors_with_http_info(request)
+        return self._search_query_scale_compute_flavors_with_http_info(request)
 
-    def search_query_scale_compute_flavors_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language', 'offset', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _search_query_scale_compute_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6143,14 +5721,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SearchQueryScaleFlavorsRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SearchQueryScaleFlavorsResponse`
         """
-        return self.search_query_scale_flavors_with_http_info(request)
+        return self._search_query_scale_flavors_with_http_info(request)
 
-    def search_query_scale_flavors_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _search_query_scale_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6201,14 +5775,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.SetPostgresqlDbUserPwdRequest`
         :rtype: :class:`g42cloudsdkrds.v3.SetPostgresqlDbUserPwdResponse`
         """
-        return self.set_postgresql_db_user_pwd_with_http_info(request)
+        return self._set_postgresql_db_user_pwd_with_http_info(request)
 
-    def set_postgresql_db_user_pwd_with_http_info(self, request):
-        all_params = ['instance_id', 'db_user_pwd_request_body', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _set_postgresql_db_user_pwd_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6261,14 +5831,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ShowInformationAboutDatabaseProxyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ShowInformationAboutDatabaseProxyResponse`
         """
-        return self.show_information_about_database_proxy_with_http_info(request)
+        return self._show_information_about_database_proxy_with_http_info(request)
 
-    def show_information_about_database_proxy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_information_about_database_proxy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6319,14 +5885,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StartDatabaseProxyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StartDatabaseProxyResponse`
         """
-        return self.start_database_proxy_with_http_info(request)
+        return self._start_database_proxy_with_http_info(request)
 
-    def start_database_proxy_with_http_info(self, request):
-        all_params = ['instance_id', 'open_proxy_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _start_database_proxy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6379,14 +5941,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.StopDatabaseProxyRequest`
         :rtype: :class:`g42cloudsdkrds.v3.StopDatabaseProxyResponse`
         """
-        return self.stop_database_proxy_with_http_info(request)
+        return self._stop_database_proxy_with_http_info(request)
 
-    def stop_database_proxy_with_http_info(self, request):
-        all_params = ['instance_id', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _stop_database_proxy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6437,14 +5995,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.UpdateReadWeightRequest`
         :rtype: :class:`g42cloudsdkrds.v3.UpdateReadWeightResponse`
         """
-        return self.update_read_weight_with_http_info(request)
+        return self._update_read_weight_with_http_info(request)
 
-    def update_read_weight_with_http_info(self, request):
-        all_params = ['instance_id', 'modify_proxy_weight_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_read_weight_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6497,14 +6051,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.AllowSqlserverDbUserPrivilegeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.AllowSqlserverDbUserPrivilegeResponse`
         """
-        return self.allow_sqlserver_db_user_privilege_with_http_info(request)
+        return self._allow_sqlserver_db_user_privilege_with_http_info(request)
 
-    def allow_sqlserver_db_user_privilege_with_http_info(self, request):
-        all_params = ['instance_id', 'grant_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _allow_sqlserver_db_user_privilege_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6557,14 +6107,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateSqlserverDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateSqlserverDatabaseResponse`
         """
-        return self.create_sqlserver_database_with_http_info(request)
+        return self._create_sqlserver_database_with_http_info(request)
 
-    def create_sqlserver_database_with_http_info(self, request):
-        all_params = ['instance_id', 'create_database_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_sqlserver_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6617,14 +6163,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.CreateSqlserverDbUserRequest`
         :rtype: :class:`g42cloudsdkrds.v3.CreateSqlserverDbUserResponse`
         """
-        return self.create_sqlserver_db_user_with_http_info(request)
+        return self._create_sqlserver_db_user_with_http_info(request)
 
-    def create_sqlserver_db_user_with_http_info(self, request):
-        all_params = ['instance_id', 'create_db_user_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_sqlserver_db_user_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6677,14 +6219,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteSqlserverDatabaseRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteSqlserverDatabaseResponse`
         """
-        return self.delete_sqlserver_database_with_http_info(request)
+        return self._delete_sqlserver_database_with_http_info(request)
 
-    def delete_sqlserver_database_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'x_language', 'drop_database_v3_req']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_sqlserver_database_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6739,14 +6277,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteSqlserverDatabaseExRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteSqlserverDatabaseExResponse`
         """
-        return self.delete_sqlserver_database_ex_with_http_info(request)
+        return self._delete_sqlserver_database_ex_with_http_info(request)
 
-    def delete_sqlserver_database_ex_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'x_language', 'drop_database_v3_req']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_sqlserver_database_ex_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6801,14 +6335,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.DeleteSqlserverDbUserRequest`
         :rtype: :class:`g42cloudsdkrds.v3.DeleteSqlserverDbUserResponse`
         """
-        return self.delete_sqlserver_db_user_with_http_info(request)
+        return self._delete_sqlserver_db_user_with_http_info(request)
 
-    def delete_sqlserver_db_user_with_http_info(self, request):
-        all_params = ['instance_id', 'user_name', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_sqlserver_db_user_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6861,14 +6391,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListAuthorizedSqlserverDbUsersRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListAuthorizedSqlserverDbUsersResponse`
         """
-        return self.list_authorized_sqlserver_db_users_with_http_info(request)
+        return self._list_authorized_sqlserver_db_users_with_http_info(request)
 
-    def list_authorized_sqlserver_db_users_with_http_info(self, request):
-        all_params = ['instance_id', 'db_name', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_authorized_sqlserver_db_users_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6925,14 +6451,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSqlserverDatabasesRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSqlserverDatabasesResponse`
         """
-        return self.list_sqlserver_databases_with_http_info(request)
+        return self._list_sqlserver_databases_with_http_info(request)
 
-    def list_sqlserver_databases_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language', 'db_name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_sqlserver_databases_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -6989,14 +6511,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.ListSqlserverDbUsersRequest`
         :rtype: :class:`g42cloudsdkrds.v3.ListSqlserverDbUsersResponse`
         """
-        return self.list_sqlserver_db_users_with_http_info(request)
+        return self._list_sqlserver_db_users_with_http_info(request)
 
-    def list_sqlserver_db_users_with_http_info(self, request):
-        all_params = ['instance_id', 'page', 'limit', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_sqlserver_db_users_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -7051,14 +6569,10 @@ class RdsAsyncClient(Client):
         :type request: :class:`g42cloudsdkrds.v3.RevokeSqlserverDbUserPrivilegeRequest`
         :rtype: :class:`g42cloudsdkrds.v3.RevokeSqlserverDbUserPrivilegeResponse`
         """
-        return self.revoke_sqlserver_db_user_privilege_with_http_info(request)
+        return self._revoke_sqlserver_db_user_privilege_with_http_info(request)
 
-    def revoke_sqlserver_db_user_privilege_with_http_info(self, request):
-        all_params = ['instance_id', 'sqlserver_revoke_request', 'x_language']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _revoke_sqlserver_db_user_privilege_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class EcsAsyncClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(EcsAsyncClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkecs.v2.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -49,14 +31,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.AddServerGroupMemberRequest`
         :rtype: :class:`g42cloudsdkecs.v2.AddServerGroupMemberResponse`
         """
-        return self.add_server_group_member_with_http_info(request)
+        return self._add_server_group_member_with_http_info(request)
 
-    def add_server_group_member_with_http_info(self, request):
-        all_params = ['server_group_id', 'add_server_group_member_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _add_server_group_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -107,14 +85,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.AssociateServerVirtualIpRequest`
         :rtype: :class:`g42cloudsdkecs.v2.AssociateServerVirtualIpResponse`
         """
-        return self.associate_server_virtual_ip_with_http_info(request)
+        return self._associate_server_virtual_ip_with_http_info(request)
 
-    def associate_server_virtual_ip_with_http_info(self, request):
-        all_params = ['nic_id', 'associate_server_virtual_ip_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _associate_server_virtual_ip_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -165,14 +139,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.AttachServerVolumeRequest`
         :rtype: :class:`g42cloudsdkecs.v2.AttachServerVolumeResponse`
         """
-        return self.attach_server_volume_with_http_info(request)
+        return self._attach_server_volume_with_http_info(request)
 
-    def attach_server_volume_with_http_info(self, request):
-        all_params = ['server_id', 'attach_server_volume_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _attach_server_volume_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -223,14 +193,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchAddServerNicsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchAddServerNicsResponse`
         """
-        return self.batch_add_server_nics_with_http_info(request)
+        return self._batch_add_server_nics_with_http_info(request)
 
-    def batch_add_server_nics_with_http_info(self, request):
-        all_params = ['server_id', 'batch_add_server_nics_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_add_server_nics_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -281,14 +247,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchAttachSharableVolumesRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchAttachSharableVolumesResponse`
         """
-        return self.batch_attach_sharable_volumes_with_http_info(request)
+        return self._batch_attach_sharable_volumes_with_http_info(request)
 
-    def batch_attach_sharable_volumes_with_http_info(self, request):
-        all_params = ['volume_id', 'batch_attach_sharable_volumes_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_attach_sharable_volumes_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -339,14 +301,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchCreateServerTagsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchCreateServerTagsResponse`
         """
-        return self.batch_create_server_tags_with_http_info(request)
+        return self._batch_create_server_tags_with_http_info(request)
 
-    def batch_create_server_tags_with_http_info(self, request):
-        all_params = ['server_id', 'batch_create_server_tags_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_create_server_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -397,14 +355,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchDeleteServerNicsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchDeleteServerNicsResponse`
         """
-        return self.batch_delete_server_nics_with_http_info(request)
+        return self._batch_delete_server_nics_with_http_info(request)
 
-    def batch_delete_server_nics_with_http_info(self, request):
-        all_params = ['server_id', 'batch_delete_server_nics_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_delete_server_nics_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -455,14 +409,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchDeleteServerTagsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchDeleteServerTagsResponse`
         """
-        return self.batch_delete_server_tags_with_http_info(request)
+        return self._batch_delete_server_tags_with_http_info(request)
 
-    def batch_delete_server_tags_with_http_info(self, request):
-        all_params = ['server_id', 'batch_delete_server_tags_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_delete_server_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -513,14 +463,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchRebootServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchRebootServersResponse`
         """
-        return self.batch_reboot_servers_with_http_info(request)
+        return self._batch_reboot_servers_with_http_info(request)
 
-    def batch_reboot_servers_with_http_info(self, request):
-        all_params = ['batch_reboot_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_reboot_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -569,14 +515,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchResetServersPasswordRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchResetServersPasswordResponse`
         """
-        return self.batch_reset_servers_password_with_http_info(request)
+        return self._batch_reset_servers_password_with_http_info(request)
 
-    def batch_reset_servers_password_with_http_info(self, request):
-        all_params = ['batch_reset_servers_password_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_reset_servers_password_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -625,14 +567,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchStartServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchStartServersResponse`
         """
-        return self.batch_start_servers_with_http_info(request)
+        return self._batch_start_servers_with_http_info(request)
 
-    def batch_start_servers_with_http_info(self, request):
-        all_params = ['batch_start_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_start_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -681,14 +619,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchStopServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchStopServersResponse`
         """
-        return self.batch_stop_servers_with_http_info(request)
+        return self._batch_stop_servers_with_http_info(request)
 
-    def batch_stop_servers_with_http_info(self, request):
-        all_params = ['batch_stop_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_stop_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -737,14 +671,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.BatchUpdateServersNameRequest`
         :rtype: :class:`g42cloudsdkecs.v2.BatchUpdateServersNameResponse`
         """
-        return self.batch_update_servers_name_with_http_info(request)
+        return self._batch_update_servers_name_with_http_info(request)
 
-    def batch_update_servers_name_with_http_info(self, request):
-        all_params = ['batch_update_servers_name_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_update_servers_name_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -793,14 +723,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ChangeServerOsWithCloudInitRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ChangeServerOsWithCloudInitResponse`
         """
-        return self.change_server_os_with_cloud_init_with_http_info(request)
+        return self._change_server_os_with_cloud_init_with_http_info(request)
 
-    def change_server_os_with_cloud_init_with_http_info(self, request):
-        all_params = ['server_id', 'change_server_os_with_cloud_init_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_server_os_with_cloud_init_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -851,14 +777,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ChangeServerOsWithoutCloudInitRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ChangeServerOsWithoutCloudInitResponse`
         """
-        return self.change_server_os_without_cloud_init_with_http_info(request)
+        return self._change_server_os_without_cloud_init_with_http_info(request)
 
-    def change_server_os_without_cloud_init_with_http_info(self, request):
-        all_params = ['server_id', 'change_server_os_without_cloud_init_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_server_os_without_cloud_init_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -909,14 +831,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.CreatePostPaidServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.CreatePostPaidServersResponse`
         """
-        return self.create_post_paid_servers_with_http_info(request)
+        return self._create_post_paid_servers_with_http_info(request)
 
-    def create_post_paid_servers_with_http_info(self, request):
-        all_params = ['create_post_paid_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_post_paid_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -965,14 +883,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.CreateServerGroupRequest`
         :rtype: :class:`g42cloudsdkecs.v2.CreateServerGroupResponse`
         """
-        return self.create_server_group_with_http_info(request)
+        return self._create_server_group_with_http_info(request)
 
-    def create_server_group_with_http_info(self, request):
-        all_params = ['create_server_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_server_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1021,14 +935,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.CreateServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.CreateServersResponse`
         """
-        return self.create_servers_with_http_info(request)
+        return self._create_servers_with_http_info(request)
 
-    def create_servers_with_http_info(self, request):
-        all_params = ['create_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1077,14 +987,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DeleteServerGroupRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DeleteServerGroupResponse`
         """
-        return self.delete_server_group_with_http_info(request)
+        return self._delete_server_group_with_http_info(request)
 
-    def delete_server_group_with_http_info(self, request):
-        all_params = ['server_group_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_server_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1133,14 +1039,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DeleteServerGroupMemberRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DeleteServerGroupMemberResponse`
         """
-        return self.delete_server_group_member_with_http_info(request)
+        return self._delete_server_group_member_with_http_info(request)
 
-    def delete_server_group_member_with_http_info(self, request):
-        all_params = ['server_group_id', 'delete_server_group_member_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_server_group_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1191,14 +1093,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DeleteServerMetadataRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DeleteServerMetadataResponse`
         """
-        return self.delete_server_metadata_with_http_info(request)
+        return self._delete_server_metadata_with_http_info(request)
 
-    def delete_server_metadata_with_http_info(self, request):
-        all_params = ['key', 'server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_server_metadata_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1249,14 +1147,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DeleteServerPasswordRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DeleteServerPasswordResponse`
         """
-        return self.delete_server_password_with_http_info(request)
+        return self._delete_server_password_with_http_info(request)
 
-    def delete_server_password_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_server_password_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1305,14 +1199,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DeleteServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DeleteServersResponse`
         """
-        return self.delete_servers_with_http_info(request)
+        return self._delete_servers_with_http_info(request)
 
-    def delete_servers_with_http_info(self, request):
-        all_params = ['delete_servers_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1361,14 +1251,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DetachServerVolumeRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DetachServerVolumeResponse`
         """
-        return self.detach_server_volume_with_http_info(request)
+        return self._detach_server_volume_with_http_info(request)
 
-    def detach_server_volume_with_http_info(self, request):
-        all_params = ['server_id', 'volume_id', 'delete_flag']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _detach_server_volume_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1421,14 +1307,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.DisassociateServerVirtualIpRequest`
         :rtype: :class:`g42cloudsdkecs.v2.DisassociateServerVirtualIpResponse`
         """
-        return self.disassociate_server_virtual_ip_with_http_info(request)
+        return self._disassociate_server_virtual_ip_with_http_info(request)
 
-    def disassociate_server_virtual_ip_with_http_info(self, request):
-        all_params = ['nic_id', 'disassociate_server_virtual_ip_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _disassociate_server_virtual_ip_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1479,14 +1361,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListFlavorsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListFlavorsResponse`
         """
-        return self.list_flavors_with_http_info(request)
+        return self._list_flavors_with_http_info(request)
 
-    def list_flavors_with_http_info(self, request):
-        all_params = ['availability_zone']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1535,14 +1413,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListResizeFlavorsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListResizeFlavorsResponse`
         """
-        return self.list_resize_flavors_with_http_info(request)
+        return self._list_resize_flavors_with_http_info(request)
 
-    def list_resize_flavors_with_http_info(self, request):
-        all_params = ['instance_uuid', 'limit', 'marker', 'sort_dir', 'sort_key', 'source_flavor_id', 'source_flavor_name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_resize_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1603,14 +1477,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListServerBlockDevicesRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListServerBlockDevicesResponse`
         """
-        return self.list_server_block_devices_with_http_info(request)
+        return self._list_server_block_devices_with_http_info(request)
 
-    def list_server_block_devices_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_server_block_devices_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1659,14 +1529,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListServerGroupsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListServerGroupsResponse`
         """
-        return self.list_server_groups_with_http_info(request)
+        return self._list_server_groups_with_http_info(request)
 
-    def list_server_groups_with_http_info(self, request):
-        all_params = ['limit', 'marker']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_server_groups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1717,14 +1583,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListServerInterfacesRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListServerInterfacesResponse`
         """
-        return self.list_server_interfaces_with_http_info(request)
+        return self._list_server_interfaces_with_http_info(request)
 
-    def list_server_interfaces_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_server_interfaces_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1773,14 +1635,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListServerTagsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListServerTagsResponse`
         """
-        return self.list_server_tags_with_http_info(request)
+        return self._list_server_tags_with_http_info(request)
 
-    def list_server_tags_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_server_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1827,14 +1685,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ListServersDetailsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ListServersDetailsResponse`
         """
-        return self.list_servers_details_with_http_info(request)
+        return self._list_servers_details_with_http_info(request)
 
-    def list_servers_details_with_http_info(self, request):
-        all_params = ['enterprise_project_id', 'flavor', 'ip', 'limit', 'name', 'not_tags', 'offset', 'reservation_id', 'status', 'tags', 'ip_eq']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_servers_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1903,14 +1757,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.MigrateServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.MigrateServerResponse`
         """
-        return self.migrate_server_with_http_info(request)
+        return self._migrate_server_with_http_info(request)
 
-    def migrate_server_with_http_info(self, request):
-        all_params = ['server_id', 'migrate_server_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _migrate_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1961,14 +1811,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaAssociateSecurityGroupRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaAssociateSecurityGroupResponse`
         """
-        return self.nova_associate_security_group_with_http_info(request)
+        return self._nova_associate_security_group_with_http_info(request)
 
-    def nova_associate_security_group_with_http_info(self, request):
-        all_params = ['server_id', 'nova_associate_security_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_associate_security_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2012,6 +1858,60 @@ class EcsAsyncClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
+    def nova_attach_interface_async(self, request):
+        """
+
+        :param request: Request instance for NovaAttachInterface
+        :type request: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceRequest`
+        :rtype: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceResponse`
+        """
+        return self._nova_attach_interface_with_http_info(request)
+
+    def _nova_attach_interface_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'server_id' in local_var_params:
+            path_params['server_id'] = local_var_params['server_id']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json;charset=UTF-8'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2.1/{project_id}/servers/{server_id}/os-interface',
+            method='POST',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='NovaAttachInterfaceResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
     def nova_create_keypair_async(self, request):
         """
 
@@ -2019,14 +1919,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaCreateKeypairRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaCreateKeypairResponse`
         """
-        return self.nova_create_keypair_with_http_info(request)
+        return self._nova_create_keypair_with_http_info(request)
 
-    def nova_create_keypair_with_http_info(self, request):
-        all_params = ['nova_create_keypair_request_body', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_create_keypair_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2077,14 +1973,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaCreateServersRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaCreateServersResponse`
         """
-        return self.nova_create_servers_with_http_info(request)
+        return self._nova_create_servers_with_http_info(request)
 
-    def nova_create_servers_with_http_info(self, request):
-        all_params = ['nova_create_servers_request_body', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_create_servers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2135,14 +2027,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaDeleteKeypairRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaDeleteKeypairResponse`
         """
-        return self.nova_delete_keypair_with_http_info(request)
+        return self._nova_delete_keypair_with_http_info(request)
 
-    def nova_delete_keypair_with_http_info(self, request):
-        all_params = ['keypair_name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_delete_keypair_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2191,14 +2079,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaDeleteServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaDeleteServerResponse`
         """
-        return self.nova_delete_server_with_http_info(request)
+        return self._nova_delete_server_with_http_info(request)
 
-    def nova_delete_server_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_delete_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2247,14 +2131,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaDisassociateSecurityGroupRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaDisassociateSecurityGroupResponse`
         """
-        return self.nova_disassociate_security_group_with_http_info(request)
+        return self._nova_disassociate_security_group_with_http_info(request)
 
-    def nova_disassociate_security_group_with_http_info(self, request):
-        all_params = ['server_id', 'nova_disassociate_security_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_disassociate_security_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2305,14 +2185,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaListAvailabilityZonesRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaListAvailabilityZonesResponse`
         """
-        return self.nova_list_availability_zones_with_http_info(request)
+        return self._nova_list_availability_zones_with_http_info(request)
 
-    def nova_list_availability_zones_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_list_availability_zones_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2359,14 +2235,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaListKeypairsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaListKeypairsResponse`
         """
-        return self.nova_list_keypairs_with_http_info(request)
+        return self._nova_list_keypairs_with_http_info(request)
 
-    def nova_list_keypairs_with_http_info(self, request):
-        all_params = ['limit', 'marker', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_list_keypairs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2419,14 +2291,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaListServerSecurityGroupsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaListServerSecurityGroupsResponse`
         """
-        return self.nova_list_server_security_groups_with_http_info(request)
+        return self._nova_list_server_security_groups_with_http_info(request)
 
-    def nova_list_server_security_groups_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_list_server_security_groups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2475,14 +2343,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaListServersDetailsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaListServersDetailsResponse`
         """
-        return self.nova_list_servers_details_with_http_info(request)
+        return self._nova_list_servers_details_with_http_info(request)
 
-    def nova_list_servers_details_with_http_info(self, request):
-        all_params = ['changes_since', 'flavor', 'image', 'ip', 'limit', 'marker', 'name', 'not_tags', 'reservation_id', 'sort_key', 'status', 'tags', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_list_servers_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2555,14 +2419,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaShowKeypairRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaShowKeypairResponse`
         """
-        return self.nova_show_keypair_with_http_info(request)
+        return self._nova_show_keypair_with_http_info(request)
 
-    def nova_show_keypair_with_http_info(self, request):
-        all_params = ['keypair_name', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_show_keypair_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2613,14 +2473,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.NovaShowServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.NovaShowServerResponse`
         """
-        return self.nova_show_server_with_http_info(request)
+        return self._nova_show_server_with_http_info(request)
 
-    def nova_show_server_with_http_info(self, request):
-        all_params = ['server_id', 'open_stack_api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _nova_show_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2671,14 +2527,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.RegisterServerAutoRecoveryRequest`
         :rtype: :class:`g42cloudsdkecs.v2.RegisterServerAutoRecoveryResponse`
         """
-        return self.register_server_auto_recovery_with_http_info(request)
+        return self._register_server_auto_recovery_with_http_info(request)
 
-    def register_server_auto_recovery_with_http_info(self, request):
-        all_params = ['server_id', 'register_server_auto_recovery_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _register_server_auto_recovery_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2729,14 +2581,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.RegisterServerMonitorRequest`
         :rtype: :class:`g42cloudsdkecs.v2.RegisterServerMonitorResponse`
         """
-        return self.register_server_monitor_with_http_info(request)
+        return self._register_server_monitor_with_http_info(request)
 
-    def register_server_monitor_with_http_info(self, request):
-        all_params = ['server_id', 'register_server_monitor_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _register_server_monitor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2787,14 +2635,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ReinstallServerWithCloudInitRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ReinstallServerWithCloudInitResponse`
         """
-        return self.reinstall_server_with_cloud_init_with_http_info(request)
+        return self._reinstall_server_with_cloud_init_with_http_info(request)
 
-    def reinstall_server_with_cloud_init_with_http_info(self, request):
-        all_params = ['server_id', 'reinstall_server_with_cloud_init_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _reinstall_server_with_cloud_init_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2845,14 +2689,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ReinstallServerWithoutCloudInitRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ReinstallServerWithoutCloudInitResponse`
         """
-        return self.reinstall_server_without_cloud_init_with_http_info(request)
+        return self._reinstall_server_without_cloud_init_with_http_info(request)
 
-    def reinstall_server_without_cloud_init_with_http_info(self, request):
-        all_params = ['server_id', 'reinstall_server_without_cloud_init_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _reinstall_server_without_cloud_init_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2903,14 +2743,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ResetServerPasswordRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ResetServerPasswordResponse`
         """
-        return self.reset_server_password_with_http_info(request)
+        return self._reset_server_password_with_http_info(request)
 
-    def reset_server_password_with_http_info(self, request):
-        all_params = ['server_id', 'reset_server_password_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _reset_server_password_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2961,14 +2797,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ResizePostPaidServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ResizePostPaidServerResponse`
         """
-        return self.resize_post_paid_server_with_http_info(request)
+        return self._resize_post_paid_server_with_http_info(request)
 
-    def resize_post_paid_server_with_http_info(self, request):
-        all_params = ['server_id', 'resize_post_paid_server_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _resize_post_paid_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3019,14 +2851,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ResizeServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ResizeServerResponse`
         """
-        return self.resize_server_with_http_info(request)
+        return self._resize_server_with_http_info(request)
 
-    def resize_server_with_http_info(self, request):
-        all_params = ['server_id', 'resize_server_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _resize_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3077,14 +2905,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowResetPasswordFlagRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowResetPasswordFlagResponse`
         """
-        return self.show_reset_password_flag_with_http_info(request)
+        return self._show_reset_password_flag_with_http_info(request)
 
-    def show_reset_password_flag_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_reset_password_flag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3133,14 +2957,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerResponse`
         """
-        return self.show_server_with_http_info(request)
+        return self._show_server_with_http_info(request)
 
-    def show_server_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3189,14 +3009,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerAutoRecoveryRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerAutoRecoveryResponse`
         """
-        return self.show_server_auto_recovery_with_http_info(request)
+        return self._show_server_auto_recovery_with_http_info(request)
 
-    def show_server_auto_recovery_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_auto_recovery_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3245,14 +3061,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerBlockDeviceRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerBlockDeviceResponse`
         """
-        return self.show_server_block_device_with_http_info(request)
+        return self._show_server_block_device_with_http_info(request)
 
-    def show_server_block_device_with_http_info(self, request):
-        all_params = ['server_id', 'volume_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_block_device_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3303,14 +3115,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerGroupRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerGroupResponse`
         """
-        return self.show_server_group_with_http_info(request)
+        return self._show_server_group_with_http_info(request)
 
-    def show_server_group_with_http_info(self, request):
-        all_params = ['server_group_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3359,14 +3167,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerLimitsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerLimitsResponse`
         """
-        return self.show_server_limits_with_http_info(request)
+        return self._show_server_limits_with_http_info(request)
 
-    def show_server_limits_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_limits_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3413,14 +3217,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerPasswordRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerPasswordResponse`
         """
-        return self.show_server_password_with_http_info(request)
+        return self._show_server_password_with_http_info(request)
 
-    def show_server_password_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_password_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3469,14 +3269,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerRemoteConsoleRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerRemoteConsoleResponse`
         """
-        return self.show_server_remote_console_with_http_info(request)
+        return self._show_server_remote_console_with_http_info(request)
 
-    def show_server_remote_console_with_http_info(self, request):
-        all_params = ['server_id', 'show_server_remote_console_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_remote_console_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3527,14 +3323,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowServerTagsRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowServerTagsResponse`
         """
-        return self.show_server_tags_with_http_info(request)
+        return self._show_server_tags_with_http_info(request)
 
-    def show_server_tags_with_http_info(self, request):
-        all_params = ['server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_server_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3583,14 +3375,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.UpdateServerRequest`
         :rtype: :class:`g42cloudsdkecs.v2.UpdateServerResponse`
         """
-        return self.update_server_with_http_info(request)
+        return self._update_server_with_http_info(request)
 
-    def update_server_with_http_info(self, request):
-        all_params = ['server_id', 'update_server_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_server_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3641,14 +3429,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.UpdateServerAutoTerminateTimeRequest`
         :rtype: :class:`g42cloudsdkecs.v2.UpdateServerAutoTerminateTimeResponse`
         """
-        return self.update_server_auto_terminate_time_with_http_info(request)
+        return self._update_server_auto_terminate_time_with_http_info(request)
 
-    def update_server_auto_terminate_time_with_http_info(self, request):
-        all_params = ['server_id', 'update_server_auto_terminate_time_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_server_auto_terminate_time_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3699,14 +3483,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.UpdateServerMetadataRequest`
         :rtype: :class:`g42cloudsdkecs.v2.UpdateServerMetadataResponse`
         """
-        return self.update_server_metadata_with_http_info(request)
+        return self._update_server_metadata_with_http_info(request)
 
-    def update_server_metadata_with_http_info(self, request):
-        all_params = ['server_id', 'update_server_metadata_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_server_metadata_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3757,14 +3537,10 @@ class EcsAsyncClient(Client):
         :type request: :class:`g42cloudsdkecs.v2.ShowJobRequest`
         :rtype: :class:`g42cloudsdkecs.v2.ShowJobResponse`
         """
-        return self.show_job_with_http_info(request)
+        return self._show_job_with_http_info(request)
 
-    def show_job_with_http_info(self, request):
-        all_params = ['job_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_job_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
 
-
-from g42cloudsdkcore.sdk_response import SdkResponse
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class ShowReplicationCapabilitiesResponse(SdkResponse):
+class ResourceExtraInfoIncludeVolumes:
 
     """
     Attributes:
@@ -20,47 +17,71 @@ class ShowReplicationCapabilitiesResponse(SdkResponse):
     sensitive_list = []
 
     openapi_types = {
-        'regions': 'list[ProtectableReplicationCapabilitiesRespRegion]'
+        'id': 'str',
+        'os_version': 'str'
     }
 
     attribute_map = {
-        'regions': 'regions'
+        'id': 'id',
+        'os_version': 'os_version'
     }
 
-    def __init__(self, regions=None):
-        """ShowReplicationCapabilitiesResponse
+    def __init__(self, id=None, os_version=None):
+        """ResourceExtraInfoIncludeVolumes
 
         The model defined in g42cloud sdk
 
-        :param regions: The param of the ShowReplicationCapabilitiesResponse
-        :type regions: list[:class:`g42cloudsdkcbr.v1.ProtectableReplicationCapabilitiesRespRegion`]
+        :param id: The param of the ResourceExtraInfoIncludeVolumes
+        :type id: str
+        :param os_version: The param of the ResourceExtraInfoIncludeVolumes
+        :type os_version: str
         """
         
-        super(ShowReplicationCapabilitiesResponse, self).__init__()
+        
 
-        self._regions = None
+        self._id = None
+        self._os_version = None
         self.discriminator = None
 
-        if regions is not None:
-            self.regions = regions
+        self.id = id
+        if os_version is not None:
+            self.os_version = os_version
 
     @property
-    def regions(self):
-        """Gets the regions of this ShowReplicationCapabilitiesResponse.
+    def id(self):
+        """Gets the id of this ResourceExtraInfoIncludeVolumes.
 
-        :return: The regions of this ShowReplicationCapabilitiesResponse.
-        :rtype: list[:class:`g42cloudsdkcbr.v1.ProtectableReplicationCapabilitiesRespRegion`]
+        :return: The id of this ResourceExtraInfoIncludeVolumes.
+        :rtype: str
         """
-        return self._regions
+        return self._id
 
-    @regions.setter
-    def regions(self, regions):
-        """Sets the regions of this ShowReplicationCapabilitiesResponse.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ResourceExtraInfoIncludeVolumes.
 
-        :param regions: The regions of this ShowReplicationCapabilitiesResponse.
-        :type regions: list[:class:`g42cloudsdkcbr.v1.ProtectableReplicationCapabilitiesRespRegion`]
+        :param id: The id of this ResourceExtraInfoIncludeVolumes.
+        :type id: str
         """
-        self._regions = regions
+        self._id = id
+
+    @property
+    def os_version(self):
+        """Gets the os_version of this ResourceExtraInfoIncludeVolumes.
+
+        :return: The os_version of this ResourceExtraInfoIncludeVolumes.
+        :rtype: str
+        """
+        return self._os_version
+
+    @os_version.setter
+    def os_version(self, os_version):
+        """Sets the os_version of this ResourceExtraInfoIncludeVolumes.
+
+        :param os_version: The os_version of this ResourceExtraInfoIncludeVolumes.
+        :type os_version: str
+        """
+        self._os_version = os_version
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -104,7 +125,7 @@ class ShowReplicationCapabilitiesResponse(SdkResponse):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ShowReplicationCapabilitiesResponse):
+        if not isinstance(other, ResourceExtraInfoIncludeVolumes):
             return False
 
         return self.__dict__ == other.__dict__

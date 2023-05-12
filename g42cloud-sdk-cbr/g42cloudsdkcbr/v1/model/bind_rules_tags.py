@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class ImportBackupRequest:
+class BindRulesTags:
 
     """
     Attributes:
@@ -20,47 +17,70 @@ class ImportBackupRequest:
     sensitive_list = []
 
     openapi_types = {
-        'body': 'BackupSyncReq'
+        'key': 'str',
+        'value': 'str'
     }
 
     attribute_map = {
-        'body': 'body'
+        'key': 'key',
+        'value': 'value'
     }
 
-    def __init__(self, body=None):
-        """ImportBackupRequest
+    def __init__(self, key=None, value=None):
+        """BindRulesTags
 
         The model defined in g42cloud sdk
 
-        :param body: The param of the ImportBackupRequest
-        :type body: :class:`g42cloudsdkcbr.v1.BackupSyncReq`
+        :param key: The param of the BindRulesTags
+        :type key: str
+        :param value: The param of the BindRulesTags
+        :type value: str
         """
         
         
 
-        self._body = None
+        self._key = None
+        self._value = None
         self.discriminator = None
 
-        if body is not None:
-            self.body = body
+        self.key = key
+        self.value = value
 
     @property
-    def body(self):
-        """Gets the body of this ImportBackupRequest.
+    def key(self):
+        """Gets the key of this BindRulesTags.
 
-        :return: The body of this ImportBackupRequest.
-        :rtype: :class:`g42cloudsdkcbr.v1.BackupSyncReq`
+        :return: The key of this BindRulesTags.
+        :rtype: str
         """
-        return self._body
+        return self._key
 
-    @body.setter
-    def body(self, body):
-        """Sets the body of this ImportBackupRequest.
+    @key.setter
+    def key(self, key):
+        """Sets the key of this BindRulesTags.
 
-        :param body: The body of this ImportBackupRequest.
-        :type body: :class:`g42cloudsdkcbr.v1.BackupSyncReq`
+        :param key: The key of this BindRulesTags.
+        :type key: str
         """
-        self._body = body
+        self._key = key
+
+    @property
+    def value(self):
+        """Gets the value of this BindRulesTags.
+
+        :return: The value of this BindRulesTags.
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this BindRulesTags.
+
+        :param value: The value of this BindRulesTags.
+        :type value: str
+        """
+        self._value = value
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -104,7 +124,7 @@ class ImportBackupRequest:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ImportBackupRequest):
+        if not isinstance(other, BindRulesTags):
             return False
 
         return self.__dict__ == other.__dict__

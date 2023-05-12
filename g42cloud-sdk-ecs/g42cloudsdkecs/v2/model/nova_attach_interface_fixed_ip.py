@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class VaultMigrateResourceReq:
+class NovaAttachInterfaceFixedIp:
 
     """
     Attributes:
@@ -20,70 +17,47 @@ class VaultMigrateResourceReq:
     sensitive_list = []
 
     openapi_types = {
-        'destination_vault_id': 'str',
-        'resource_ids': 'list[str]'
+        'ip_address': 'str'
     }
 
     attribute_map = {
-        'destination_vault_id': 'destination_vault_id',
-        'resource_ids': 'resource_ids'
+        'ip_address': 'ip_address'
     }
 
-    def __init__(self, destination_vault_id=None, resource_ids=None):
-        """VaultMigrateResourceReq
+    def __init__(self, ip_address=None):
+        """NovaAttachInterfaceFixedIp
 
         The model defined in g42cloud sdk
 
-        :param destination_vault_id: The param of the VaultMigrateResourceReq
-        :type destination_vault_id: str
-        :param resource_ids: The param of the VaultMigrateResourceReq
-        :type resource_ids: list[str]
+        :param ip_address: The param of the NovaAttachInterfaceFixedIp
+        :type ip_address: str
         """
         
         
 
-        self._destination_vault_id = None
-        self._resource_ids = None
+        self._ip_address = None
         self.discriminator = None
 
-        self.destination_vault_id = destination_vault_id
-        self.resource_ids = resource_ids
+        if ip_address is not None:
+            self.ip_address = ip_address
 
     @property
-    def destination_vault_id(self):
-        """Gets the destination_vault_id of this VaultMigrateResourceReq.
+    def ip_address(self):
+        """Gets the ip_address of this NovaAttachInterfaceFixedIp.
 
-        :return: The destination_vault_id of this VaultMigrateResourceReq.
+        :return: The ip_address of this NovaAttachInterfaceFixedIp.
         :rtype: str
         """
-        return self._destination_vault_id
+        return self._ip_address
 
-    @destination_vault_id.setter
-    def destination_vault_id(self, destination_vault_id):
-        """Sets the destination_vault_id of this VaultMigrateResourceReq.
+    @ip_address.setter
+    def ip_address(self, ip_address):
+        """Sets the ip_address of this NovaAttachInterfaceFixedIp.
 
-        :param destination_vault_id: The destination_vault_id of this VaultMigrateResourceReq.
-        :type destination_vault_id: str
+        :param ip_address: The ip_address of this NovaAttachInterfaceFixedIp.
+        :type ip_address: str
         """
-        self._destination_vault_id = destination_vault_id
-
-    @property
-    def resource_ids(self):
-        """Gets the resource_ids of this VaultMigrateResourceReq.
-
-        :return: The resource_ids of this VaultMigrateResourceReq.
-        :rtype: list[str]
-        """
-        return self._resource_ids
-
-    @resource_ids.setter
-    def resource_ids(self, resource_ids):
-        """Sets the resource_ids of this VaultMigrateResourceReq.
-
-        :param resource_ids: The resource_ids of this VaultMigrateResourceReq.
-        :type resource_ids: list[str]
-        """
-        self._resource_ids = resource_ids
+        self._ip_address = ip_address
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -127,7 +101,7 @@ class VaultMigrateResourceReq:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, VaultMigrateResourceReq):
+        if not isinstance(other, NovaAttachInterfaceFixedIp):
             return False
 
         return self.__dict__ == other.__dict__

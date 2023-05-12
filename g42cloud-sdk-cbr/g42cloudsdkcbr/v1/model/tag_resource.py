@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -21,7 +18,7 @@ class TagResource:
 
     openapi_types = {
         'resource_id': 'str',
-        'resource_detail': 'list[Vault]',
+        'resource_detail': 'InstancesResourceDetail',
         'tags': 'list[Tag]',
         'resource_name': 'str',
         'sys_tags': 'list[SysTag]'
@@ -43,7 +40,7 @@ class TagResource:
         :param resource_id: The param of the TagResource
         :type resource_id: str
         :param resource_detail: The param of the TagResource
-        :type resource_detail: list[:class:`g42cloudsdkcbr.v1.Vault`]
+        :type resource_detail: :class:`g42cloudsdkcbr.v1.InstancesResourceDetail`
         :param tags: The param of the TagResource
         :type tags: list[:class:`g42cloudsdkcbr.v1.Tag`]
         :param resource_name: The param of the TagResource
@@ -90,7 +87,7 @@ class TagResource:
         """Gets the resource_detail of this TagResource.
 
         :return: The resource_detail of this TagResource.
-        :rtype: list[:class:`g42cloudsdkcbr.v1.Vault`]
+        :rtype: :class:`g42cloudsdkcbr.v1.InstancesResourceDetail`
         """
         return self._resource_detail
 
@@ -99,7 +96,7 @@ class TagResource:
         """Sets the resource_detail of this TagResource.
 
         :param resource_detail: The resource_detail of this TagResource.
-        :type resource_detail: list[:class:`g42cloudsdkcbr.v1.Vault`]
+        :type resource_detail: :class:`g42cloudsdkcbr.v1.InstancesResourceDetail`
         """
         self._resource_detail = resource_detail
 

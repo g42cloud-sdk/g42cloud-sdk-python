@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class CseClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(CseClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkcse.v1.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -48,14 +30,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.CreateEngineRequest`
         :rtype: :class:`g42cloudsdkcse.v1.CreateEngineResponse`
         """
-        return self.create_engine_with_http_info(request)
+        return self._create_engine_with_http_info(request)
 
-    def create_engine_with_http_info(self, request):
-        all_params = ['create_engine_request_body', 'x_enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_engine_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.DeleteEngineRequest`
         :rtype: :class:`g42cloudsdkcse.v1.DeleteEngineResponse`
         """
-        return self.delete_engine_with_http_info(request)
+        return self._delete_engine_with_http_info(request)
 
-    def delete_engine_with_http_info(self, request):
-        all_params = ['engine_id', 'x_enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_engine_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -162,14 +136,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.DownloadKieRequest`
         :rtype: :class:`g42cloudsdkcse.v1.DownloadKieResponse`
         """
-        return self.download_kie_with_http_info(request)
+        return self._download_kie_with_http_info(request)
 
-    def download_kie_with_http_info(self, request):
-        all_params = ['x_engine_id', 'download_kie_request_body', 'x_enterprise_project_id', 'label', 'match']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _download_kie_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -225,14 +195,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.ListEnginesRequest`
         :rtype: :class:`g42cloudsdkcse.v1.ListEnginesResponse`
         """
-        return self.list_engines_with_http_info(request)
+        return self._list_engines_with_http_info(request)
 
-    def list_engines_with_http_info(self, request):
-        all_params = ['offset', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_engines_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -282,14 +248,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.ListFlavorsRequest`
         :rtype: :class:`g42cloudsdkcse.v1.ListFlavorsResponse`
         """
-        return self.list_flavors_with_http_info(request)
+        return self._list_flavors_with_http_info(request)
 
-    def list_flavors_with_http_info(self, request):
-        all_params = ['spec_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -337,14 +299,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.ShowEngineRequest`
         :rtype: :class:`g42cloudsdkcse.v1.ShowEngineResponse`
         """
-        return self.show_engine_with_http_info(request)
+        return self._show_engine_with_http_info(request)
 
-    def show_engine_with_http_info(self, request):
-        all_params = ['engine_id', 'x_enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_engine_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -394,14 +352,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.ShowEngineJobRequest`
         :rtype: :class:`g42cloudsdkcse.v1.ShowEngineJobResponse`
         """
-        return self.show_engine_job_with_http_info(request)
+        return self._show_engine_job_with_http_info(request)
 
-    def show_engine_job_with_http_info(self, request):
-        all_params = ['engine_id', 'job_id', 'x_enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_engine_job_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -453,14 +407,10 @@ class CseClient(Client):
         :type request: :class:`g42cloudsdkcse.v1.UploadKieRequest`
         :rtype: :class:`g42cloudsdkcse.v1.UploadKieResponse`
         """
-        return self.upload_kie_with_http_info(request)
+        return self._upload_kie_with_http_info(request)
 
-    def upload_kie_with_http_info(self, request):
-        all_params = ['x_engine_id', 'override', 'upload_file', 'x_enterprise_project_id', 'label']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _upload_kie_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

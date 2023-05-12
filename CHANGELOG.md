@@ -1,3 +1,175 @@
+# 0.0.6-beta 2023-05-12
+
+### G42Cloud SDK CBR
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - Remove the following interfaces：
+    - `CopyCheckpoint`
+    - `MigrateVaultResource`
+    - `ImportBackup`
+    - `CopyBackup`
+    - `ShowReplicationCapabilities`
+  - **ShowVaultResourceInstances**
+    - changes of response param
+      - `* resources.resource_detail: list<Vault> -> object<InstancesResourceDetail>`
+  - **ShowBackup**
+    - changes of response param
+      - `- backup.image_type: enum value [backup,replication]`
+      - `- backup.resource_type: enum value [OS::Nova::Server,OS::Cinder::Volume]`
+  - **ListBackups**
+    - changes of request param
+      - `+ incremental`
+      - `+ image_type: enum value [backup,replication]`
+      - `+ resource_type: enum value [OS::Cinder::Volume,OS::Nova::Server]`
+    - changes of response param
+      - `- backups.image_type: enum value [backup,replication]`
+      - `- backups.resource_type: enum value [OS::Nova::Server,OS::Cinder::Volume]`
+  - **ListPolicies**
+    - changes of response param
+      - `- policies.operation_type: enum value [replication]`
+  - **CreatePolicy**
+    - changes of request param
+      - `- policy.operation_type: enum value [backup,replication]`
+    - changes of response param
+      - `- policy.operation_type: enum value [replication]`
+  - **ShowPolicy**
+    - changes of response param
+      - `- policy.operation_type: enum value [replication]`
+  - **UpdatePolicy**
+    - changes of response param
+      - `- policy.operation_type: enum value [replication]`
+  - **ListVault**
+    - changes of request param
+      - `+ cloud_type: enum value [public,hybrid]`
+      - `+ protect_type: enum value [backup,replication]`
+    - changes of response param
+      - `- vaults.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- vaults.billing.cloud_type: enum value [public,hybrid]`
+      - `- vaults.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- vaults.billing.object_type: enum value [server,disk]`
+      - `- vaults.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- vaults.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `* vaults.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+  - **CreateVault**
+    - changes of request param
+      - `* vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+      - `+ vault.billing.promotion_info`
+      - `+ vault.billing.purchase_mode`
+      - `+ vault.billing.order_id`
+      - `- vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- vault.billing.object_type: enum value [server,disk,turbo]`
+      - `- vault.billing.protect_type: enum value [backup,replication]`
+      - `- vault.billing.charging_mode: enum value [post_paid,pre_paid]`
+    - changes of response param
+      - `- vault.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- vault.billing.object_type: enum value [server,disk]`
+      - `- vault.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- vault.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `* vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+  - **ShowVault**
+    - changes of response param
+      - `- vault.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- vault.billing.object_type: enum value [server,disk]`
+      - `- vault.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- vault.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `* vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+  - **UpdateVault**
+    - changes of request param
+      - `* vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+    - changes of response param
+      - `- vault.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- vault.billing.object_type: enum value [server,disk]`
+      - `- vault.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- vault.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `* vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+  - **ListProtectable**
+    - changes of response param
+      - `- instances.protectable.vault.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- instances.protectable.vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- instances.protectable.vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- instances.protectable.vault.billing.object_type: enum value [server,disk]`
+      - `- instances.protectable.vault.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- instances.protectable.vault.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `+ instances.protectable.vault.tags.value`
+      - `- instances.protectable.vault.tags.values`
+      - `* instances.protectable.vault.tags: list<TagsResp> -> list<Tag>`
+      - `* instances.protectable.vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+  - **ShowProtectable**
+    - changes of response param
+      - `- instance.protectable.vault.billing.charging_mode: enum value [pre_paid,post_paid]`
+      - `- instance.protectable.vault.billing.cloud_type: enum value [public,hybrid]`
+      - `- instance.protectable.vault.billing.consistent_level: enum value [app_consistent,crash_consistent]`
+      - `- instance.protectable.vault.billing.object_type: enum value [server,disk]`
+      - `- instance.protectable.vault.billing.protect_type: enum value [backup,replication,hybrid]`
+      - `- instance.protectable.vault.billing.spec_code: enum value [vault.backup.server.normal,vault.backup.volume.normal]`
+      - `+ instance.protectable.vault.tags.value`
+      - `- instance.protectable.vault.tags.values`
+      - `* instance.protectable.vault.tags: list<TagsResp> -> list<Tag>`
+      - `* instance.protectable.vault.bind_rules.tags: list<Tag> -> list<BindRulesTags>`
+
+### G42Cloud SDK ECS
+
+- _Features_
+  - Support the interface `NovaAttachInterface`
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK IMS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListImages**
+    - changes of request param
+      - `+ __imagetype: enum value [market]`
+
+### G42Cloud SDK RDS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ListRestoreTimes**
+    - changes of response param
+      - `* restore_time.start_time: int32 -> int64`
+      - `* restore_time.end_time: int32 -> int64`
+  - **ListOffSiteRestoreTimes**
+    - changes of response param
+      - `* restore_time.start_time: int32 -> int64`
+      - `* restore_time.end_time: int32 -> int64`
+  - **RestoreToExistingInstance**
+    - changes of request param
+      - `* source.restore_time: int32 -> int64`
+  - **RestoreExistInstance**
+    - changes of request param
+      - `* source.restore_time: int32 -> int64`
+  - **CreateInstance**
+    - changes of request param
+      - `* restore_point.restore_time: int32 -> int64`
+    - changes of response param
+      - `* instance.restore_point.restore_time: int32 -> int64`
+  - **CreateRestoreInstance**
+    - changes of request param
+      - `* restore_point.restore_time: int32 -> int64`
+    - changes of response param
+      - `* instance.restore_point.restore_time: int32 -> int64`
+
 # 0.0.5-beta 2023-04-14
 
 ### G42Cloud SDK Core

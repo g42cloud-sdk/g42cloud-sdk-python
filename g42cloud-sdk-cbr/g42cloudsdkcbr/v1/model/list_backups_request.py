@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -41,7 +38,8 @@ class ListBackupsRequest:
         'member_status': 'str',
         'parent_id': 'str',
         'used_percent': 'str',
-        'show_replication': 'bool'
+        'show_replication': 'bool',
+        'incremental': 'bool'
     }
 
     attribute_map = {
@@ -66,10 +64,11 @@ class ListBackupsRequest:
         'member_status': 'member_status',
         'parent_id': 'parent_id',
         'used_percent': 'used_percent',
-        'show_replication': 'show_replication'
+        'show_replication': 'show_replication',
+        'incremental': 'incremental'
     }
 
-    def __init__(self, checkpoint_id=None, dec=None, end_time=None, image_type=None, limit=None, marker=None, name=None, offset=None, resource_az=None, resource_id=None, resource_name=None, resource_type=None, sort=None, start_time=None, status=None, vault_id=None, enterprise_project_id=None, own_type=None, member_status=None, parent_id=None, used_percent=None, show_replication=None):
+    def __init__(self, checkpoint_id=None, dec=None, end_time=None, image_type=None, limit=None, marker=None, name=None, offset=None, resource_az=None, resource_id=None, resource_name=None, resource_type=None, sort=None, start_time=None, status=None, vault_id=None, enterprise_project_id=None, own_type=None, member_status=None, parent_id=None, used_percent=None, show_replication=None, incremental=None):
         """ListBackupsRequest
 
         The model defined in g42cloud sdk
@@ -118,6 +117,8 @@ class ListBackupsRequest:
         :type used_percent: str
         :param show_replication: The param of the ListBackupsRequest
         :type show_replication: bool
+        :param incremental: The param of the ListBackupsRequest
+        :type incremental: bool
         """
         
         
@@ -144,6 +145,7 @@ class ListBackupsRequest:
         self._parent_id = None
         self._used_percent = None
         self._show_replication = None
+        self._incremental = None
         self.discriminator = None
 
         if checkpoint_id is not None:
@@ -190,6 +192,8 @@ class ListBackupsRequest:
             self.used_percent = used_percent
         if show_replication is not None:
             self.show_replication = show_replication
+        if incremental is not None:
+            self.incremental = incremental
 
     @property
     def checkpoint_id(self):
@@ -586,6 +590,24 @@ class ListBackupsRequest:
         :type show_replication: bool
         """
         self._show_replication = show_replication
+
+    @property
+    def incremental(self):
+        """Gets the incremental of this ListBackupsRequest.
+
+        :return: The incremental of this ListBackupsRequest.
+        :rtype: bool
+        """
+        return self._incremental
+
+    @incremental.setter
+    def incremental(self, incremental):
+        """Sets the incremental of this ListBackupsRequest.
+
+        :param incremental: The incremental of this ListBackupsRequest.
+        :type incremental: bool
+        """
+        self._incremental = incremental
 
     def to_dict(self):
         """Returns the model properties as a dict"""

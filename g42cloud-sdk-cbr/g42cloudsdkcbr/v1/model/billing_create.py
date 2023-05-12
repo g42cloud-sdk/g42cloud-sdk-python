@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -31,6 +28,10 @@ class BillingCreate:
         'is_auto_renew': 'bool',
         'is_auto_pay': 'bool',
         'console_url': 'str',
+        'is_multi_az': 'bool',
+        'promotion_info': 'str',
+        'purchase_mode': 'str',
+        'order_id': 'str',
         'extra_info': 'BillbingCreateExtraInfo'
     }
 
@@ -46,10 +47,14 @@ class BillingCreate:
         'is_auto_renew': 'is_auto_renew',
         'is_auto_pay': 'is_auto_pay',
         'console_url': 'console_url',
+        'is_multi_az': 'is_multi_az',
+        'promotion_info': 'promotion_info',
+        'purchase_mode': 'purchase_mode',
+        'order_id': 'order_id',
         'extra_info': 'extra_info'
     }
 
-    def __init__(self, cloud_type=None, consistent_level=None, object_type=None, protect_type=None, size=None, charging_mode=None, period_type=None, period_num=None, is_auto_renew=None, is_auto_pay=None, console_url=None, extra_info=None):
+    def __init__(self, cloud_type=None, consistent_level=None, object_type=None, protect_type=None, size=None, charging_mode=None, period_type=None, period_num=None, is_auto_renew=None, is_auto_pay=None, console_url=None, is_multi_az=None, promotion_info=None, purchase_mode=None, order_id=None, extra_info=None):
         """BillingCreate
 
         The model defined in g42cloud sdk
@@ -76,6 +81,14 @@ class BillingCreate:
         :type is_auto_pay: bool
         :param console_url: The param of the BillingCreate
         :type console_url: str
+        :param is_multi_az: The param of the BillingCreate
+        :type is_multi_az: bool
+        :param promotion_info: The param of the BillingCreate
+        :type promotion_info: str
+        :param purchase_mode: The param of the BillingCreate
+        :type purchase_mode: str
+        :param order_id: The param of the BillingCreate
+        :type order_id: str
         :param extra_info: The param of the BillingCreate
         :type extra_info: :class:`g42cloudsdkcbr.v1.BillbingCreateExtraInfo`
         """
@@ -93,6 +106,10 @@ class BillingCreate:
         self._is_auto_renew = None
         self._is_auto_pay = None
         self._console_url = None
+        self._is_multi_az = None
+        self._promotion_info = None
+        self._purchase_mode = None
+        self._order_id = None
         self._extra_info = None
         self.discriminator = None
 
@@ -114,6 +131,14 @@ class BillingCreate:
             self.is_auto_pay = is_auto_pay
         if console_url is not None:
             self.console_url = console_url
+        if is_multi_az is not None:
+            self.is_multi_az = is_multi_az
+        if promotion_info is not None:
+            self.promotion_info = promotion_info
+        if purchase_mode is not None:
+            self.purchase_mode = purchase_mode
+        if order_id is not None:
+            self.order_id = order_id
         if extra_info is not None:
             self.extra_info = extra_info
 
@@ -314,6 +339,78 @@ class BillingCreate:
         :type console_url: str
         """
         self._console_url = console_url
+
+    @property
+    def is_multi_az(self):
+        """Gets the is_multi_az of this BillingCreate.
+
+        :return: The is_multi_az of this BillingCreate.
+        :rtype: bool
+        """
+        return self._is_multi_az
+
+    @is_multi_az.setter
+    def is_multi_az(self, is_multi_az):
+        """Sets the is_multi_az of this BillingCreate.
+
+        :param is_multi_az: The is_multi_az of this BillingCreate.
+        :type is_multi_az: bool
+        """
+        self._is_multi_az = is_multi_az
+
+    @property
+    def promotion_info(self):
+        """Gets the promotion_info of this BillingCreate.
+
+        :return: The promotion_info of this BillingCreate.
+        :rtype: str
+        """
+        return self._promotion_info
+
+    @promotion_info.setter
+    def promotion_info(self, promotion_info):
+        """Sets the promotion_info of this BillingCreate.
+
+        :param promotion_info: The promotion_info of this BillingCreate.
+        :type promotion_info: str
+        """
+        self._promotion_info = promotion_info
+
+    @property
+    def purchase_mode(self):
+        """Gets the purchase_mode of this BillingCreate.
+
+        :return: The purchase_mode of this BillingCreate.
+        :rtype: str
+        """
+        return self._purchase_mode
+
+    @purchase_mode.setter
+    def purchase_mode(self, purchase_mode):
+        """Sets the purchase_mode of this BillingCreate.
+
+        :param purchase_mode: The purchase_mode of this BillingCreate.
+        :type purchase_mode: str
+        """
+        self._purchase_mode = purchase_mode
+
+    @property
+    def order_id(self):
+        """Gets the order_id of this BillingCreate.
+
+        :return: The order_id of this BillingCreate.
+        :rtype: str
+        """
+        return self._order_id
+
+    @order_id.setter
+    def order_id(self, order_id):
+        """Sets the order_id of this BillingCreate.
+
+        :param order_id: The order_id of this BillingCreate.
+        :type order_id: str
+        """
+        self._order_id = order_id
 
     @property
     def extra_info(self):

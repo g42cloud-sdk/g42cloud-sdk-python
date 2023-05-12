@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class BackupSyncRespBody:
+class NovaAttachInterfaceRequestBody:
 
     """
     Attributes:
@@ -20,70 +17,46 @@ class BackupSyncRespBody:
     sensitive_list = []
 
     openapi_types = {
-        'backup_id': 'str',
-        'operation_log_id': 'str'
+        'interface_attachment': 'NovaAttachInterfaceOption'
     }
 
     attribute_map = {
-        'backup_id': 'backup_id',
-        'operation_log_id': 'operation_log_id'
+        'interface_attachment': 'interfaceAttachment'
     }
 
-    def __init__(self, backup_id=None, operation_log_id=None):
-        """BackupSyncRespBody
+    def __init__(self, interface_attachment=None):
+        """NovaAttachInterfaceRequestBody
 
         The model defined in g42cloud sdk
 
-        :param backup_id: The param of the BackupSyncRespBody
-        :type backup_id: str
-        :param operation_log_id: The param of the BackupSyncRespBody
-        :type operation_log_id: str
+        :param interface_attachment: The param of the NovaAttachInterfaceRequestBody
+        :type interface_attachment: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceOption`
         """
         
         
 
-        self._backup_id = None
-        self._operation_log_id = None
+        self._interface_attachment = None
         self.discriminator = None
 
-        self.backup_id = backup_id
-        self.operation_log_id = operation_log_id
+        self.interface_attachment = interface_attachment
 
     @property
-    def backup_id(self):
-        """Gets the backup_id of this BackupSyncRespBody.
+    def interface_attachment(self):
+        """Gets the interface_attachment of this NovaAttachInterfaceRequestBody.
 
-        :return: The backup_id of this BackupSyncRespBody.
-        :rtype: str
+        :return: The interface_attachment of this NovaAttachInterfaceRequestBody.
+        :rtype: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceOption`
         """
-        return self._backup_id
+        return self._interface_attachment
 
-    @backup_id.setter
-    def backup_id(self, backup_id):
-        """Sets the backup_id of this BackupSyncRespBody.
+    @interface_attachment.setter
+    def interface_attachment(self, interface_attachment):
+        """Sets the interface_attachment of this NovaAttachInterfaceRequestBody.
 
-        :param backup_id: The backup_id of this BackupSyncRespBody.
-        :type backup_id: str
+        :param interface_attachment: The interface_attachment of this NovaAttachInterfaceRequestBody.
+        :type interface_attachment: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceOption`
         """
-        self._backup_id = backup_id
-
-    @property
-    def operation_log_id(self):
-        """Gets the operation_log_id of this BackupSyncRespBody.
-
-        :return: The operation_log_id of this BackupSyncRespBody.
-        :rtype: str
-        """
-        return self._operation_log_id
-
-    @operation_log_id.setter
-    def operation_log_id(self, operation_log_id):
-        """Sets the operation_log_id of this BackupSyncRespBody.
-
-        :param operation_log_id: The operation_log_id of this BackupSyncRespBody.
-        :type operation_log_id: str
-        """
-        self._operation_log_id = operation_log_id
+        self._interface_attachment = interface_attachment
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -127,7 +100,7 @@ class BackupSyncRespBody:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, BackupSyncRespBody):
+        if not isinstance(other, NovaAttachInterfaceRequestBody):
             return False
 
         return self.__dict__ == other.__dict__

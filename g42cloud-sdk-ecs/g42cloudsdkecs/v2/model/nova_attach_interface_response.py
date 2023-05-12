@@ -1,14 +1,12 @@
 # coding: utf-8
 
-import re
 import six
 
-
-
+from g42cloudsdkcore.sdk_response import SdkResponse
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class ProtectableReplicationCapabilitiesRespRegion:
+class NovaAttachInterfaceResponse(SdkResponse):
 
     """
     Attributes:
@@ -20,70 +18,47 @@ class ProtectableReplicationCapabilitiesRespRegion:
     sensitive_list = []
 
     openapi_types = {
-        'name': 'str',
-        'replication_destinations': 'list[str]'
+        'interface_attachment': 'NovaServerInterfaceDetail'
     }
 
     attribute_map = {
-        'name': 'name',
-        'replication_destinations': 'replication_destinations'
+        'interface_attachment': 'interfaceAttachment'
     }
 
-    def __init__(self, name=None, replication_destinations=None):
-        """ProtectableReplicationCapabilitiesRespRegion
+    def __init__(self, interface_attachment=None):
+        """NovaAttachInterfaceResponse
 
         The model defined in g42cloud sdk
 
-        :param name: The param of the ProtectableReplicationCapabilitiesRespRegion
-        :type name: str
-        :param replication_destinations: The param of the ProtectableReplicationCapabilitiesRespRegion
-        :type replication_destinations: list[str]
+        :param interface_attachment: The param of the NovaAttachInterfaceResponse
+        :type interface_attachment: :class:`g42cloudsdkecs.v2.NovaServerInterfaceDetail`
         """
         
-        
+        super(NovaAttachInterfaceResponse, self).__init__()
 
-        self._name = None
-        self._replication_destinations = None
+        self._interface_attachment = None
         self.discriminator = None
 
-        self.name = name
-        self.replication_destinations = replication_destinations
+        if interface_attachment is not None:
+            self.interface_attachment = interface_attachment
 
     @property
-    def name(self):
-        """Gets the name of this ProtectableReplicationCapabilitiesRespRegion.
+    def interface_attachment(self):
+        """Gets the interface_attachment of this NovaAttachInterfaceResponse.
 
-        :return: The name of this ProtectableReplicationCapabilitiesRespRegion.
-        :rtype: str
+        :return: The interface_attachment of this NovaAttachInterfaceResponse.
+        :rtype: :class:`g42cloudsdkecs.v2.NovaServerInterfaceDetail`
         """
-        return self._name
+        return self._interface_attachment
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ProtectableReplicationCapabilitiesRespRegion.
+    @interface_attachment.setter
+    def interface_attachment(self, interface_attachment):
+        """Sets the interface_attachment of this NovaAttachInterfaceResponse.
 
-        :param name: The name of this ProtectableReplicationCapabilitiesRespRegion.
-        :type name: str
+        :param interface_attachment: The interface_attachment of this NovaAttachInterfaceResponse.
+        :type interface_attachment: :class:`g42cloudsdkecs.v2.NovaServerInterfaceDetail`
         """
-        self._name = name
-
-    @property
-    def replication_destinations(self):
-        """Gets the replication_destinations of this ProtectableReplicationCapabilitiesRespRegion.
-
-        :return: The replication_destinations of this ProtectableReplicationCapabilitiesRespRegion.
-        :rtype: list[str]
-        """
-        return self._replication_destinations
-
-    @replication_destinations.setter
-    def replication_destinations(self, replication_destinations):
-        """Sets the replication_destinations of this ProtectableReplicationCapabilitiesRespRegion.
-
-        :param replication_destinations: The replication_destinations of this ProtectableReplicationCapabilitiesRespRegion.
-        :type replication_destinations: list[str]
-        """
-        self._replication_destinations = replication_destinations
+        self._interface_attachment = interface_attachment
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -127,7 +102,7 @@ class ProtectableReplicationCapabilitiesRespRegion:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ProtectableReplicationCapabilitiesRespRegion):
+        if not isinstance(other, NovaAttachInterfaceResponse):
             return False
 
         return self.__dict__ == other.__dict__

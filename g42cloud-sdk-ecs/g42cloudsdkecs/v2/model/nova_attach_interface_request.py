@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class CopyBackupRequest:
+class NovaAttachInterfaceRequest:
 
     """
     Attributes:
@@ -20,69 +17,69 @@ class CopyBackupRequest:
     sensitive_list = []
 
     openapi_types = {
-        'backup_id': 'str',
-        'body': 'BackupReplicateReq'
+        'server_id': 'str',
+        'body': 'NovaAttachInterfaceRequestBody'
     }
 
     attribute_map = {
-        'backup_id': 'backup_id',
+        'server_id': 'server_id',
         'body': 'body'
     }
 
-    def __init__(self, backup_id=None, body=None):
-        """CopyBackupRequest
+    def __init__(self, server_id=None, body=None):
+        """NovaAttachInterfaceRequest
 
         The model defined in g42cloud sdk
 
-        :param backup_id: The param of the CopyBackupRequest
-        :type backup_id: str
-        :param body: The param of the CopyBackupRequest
-        :type body: :class:`g42cloudsdkcbr.v1.BackupReplicateReq`
+        :param server_id: The param of the NovaAttachInterfaceRequest
+        :type server_id: str
+        :param body: The param of the NovaAttachInterfaceRequest
+        :type body: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceRequestBody`
         """
         
         
 
-        self._backup_id = None
+        self._server_id = None
         self._body = None
         self.discriminator = None
 
-        self.backup_id = backup_id
+        self.server_id = server_id
         if body is not None:
             self.body = body
 
     @property
-    def backup_id(self):
-        """Gets the backup_id of this CopyBackupRequest.
+    def server_id(self):
+        """Gets the server_id of this NovaAttachInterfaceRequest.
 
-        :return: The backup_id of this CopyBackupRequest.
+        :return: The server_id of this NovaAttachInterfaceRequest.
         :rtype: str
         """
-        return self._backup_id
+        return self._server_id
 
-    @backup_id.setter
-    def backup_id(self, backup_id):
-        """Sets the backup_id of this CopyBackupRequest.
+    @server_id.setter
+    def server_id(self, server_id):
+        """Sets the server_id of this NovaAttachInterfaceRequest.
 
-        :param backup_id: The backup_id of this CopyBackupRequest.
-        :type backup_id: str
+        :param server_id: The server_id of this NovaAttachInterfaceRequest.
+        :type server_id: str
         """
-        self._backup_id = backup_id
+        self._server_id = server_id
 
     @property
     def body(self):
-        """Gets the body of this CopyBackupRequest.
+        """Gets the body of this NovaAttachInterfaceRequest.
 
-        :return: The body of this CopyBackupRequest.
-        :rtype: :class:`g42cloudsdkcbr.v1.BackupReplicateReq`
+        :return: The body of this NovaAttachInterfaceRequest.
+        :rtype: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceRequestBody`
         """
         return self._body
 
     @body.setter
     def body(self, body):
-        """Sets the body of this CopyBackupRequest.
+        """Sets the body of this NovaAttachInterfaceRequest.
 
-        :param body: The body of this CopyBackupRequest.
-        :type body: :class:`g42cloudsdkcbr.v1.BackupReplicateReq`
+        :param body: The body of this NovaAttachInterfaceRequest.
+        :type body: :class:`g42cloudsdkecs.v2.NovaAttachInterfaceRequestBody`
         """
         self._body = body
 
@@ -128,7 +125,7 @@ class CopyBackupRequest:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, CopyBackupRequest):
+        if not isinstance(other, NovaAttachInterfaceRequest):
             return False
 
         return self.__dict__ == other.__dict__

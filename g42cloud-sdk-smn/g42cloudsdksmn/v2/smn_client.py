@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class SmnClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(SmnClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdksmn.v2.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -48,14 +30,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.AddSubscriptionRequest`
         :rtype: :class:`g42cloudsdksmn.v2.AddSubscriptionResponse`
         """
-        return self.add_subscription_with_http_info(request)
+        return self._add_subscription_with_http_info(request)
 
-    def add_subscription_with_http_info(self, request):
-        all_params = ['topic_urn', 'add_subscription_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _add_subscription_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.BatchCreateOrDeleteResourceTagsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.BatchCreateOrDeleteResourceTagsResponse`
         """
-        return self.batch_create_or_delete_resource_tags_with_http_info(request)
+        return self._batch_create_or_delete_resource_tags_with_http_info(request)
 
-    def batch_create_or_delete_resource_tags_with_http_info(self, request):
-        all_params = ['resource_type', 'resource_id', 'batch_create_or_delete_resource_tags_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_create_or_delete_resource_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -164,14 +138,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CancelSubscriptionRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CancelSubscriptionResponse`
         """
-        return self.cancel_subscription_with_http_info(request)
+        return self._cancel_subscription_with_http_info(request)
 
-    def cancel_subscription_with_http_info(self, request):
-        all_params = ['subscription_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _cancel_subscription_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -219,14 +189,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CreateMessageTemplateRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CreateMessageTemplateResponse`
         """
-        return self.create_message_template_with_http_info(request)
+        return self._create_message_template_with_http_info(request)
 
-    def create_message_template_with_http_info(self, request):
-        all_params = ['create_message_template_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_message_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -274,14 +240,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CreateResourceTagRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CreateResourceTagResponse`
         """
-        return self.create_resource_tag_with_http_info(request)
+        return self._create_resource_tag_with_http_info(request)
 
-    def create_resource_tag_with_http_info(self, request):
-        all_params = ['resource_type', 'resource_id', 'create_resource_tag_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_resource_tag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -333,14 +295,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CreateTopicRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CreateTopicResponse`
         """
-        return self.create_topic_with_http_info(request)
+        return self._create_topic_with_http_info(request)
 
-    def create_topic_with_http_info(self, request):
-        all_params = ['create_topic_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_topic_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -388,14 +346,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteMessageTemplateRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteMessageTemplateResponse`
         """
-        return self.delete_message_template_with_http_info(request)
+        return self._delete_message_template_with_http_info(request)
 
-    def delete_message_template_with_http_info(self, request):
-        all_params = ['message_template_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_message_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -443,14 +397,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteResourceTagRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteResourceTagResponse`
         """
-        return self.delete_resource_tag_with_http_info(request)
+        return self._delete_resource_tag_with_http_info(request)
 
-    def delete_resource_tag_with_http_info(self, request):
-        all_params = ['resource_type', 'resource_id', 'key']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_resource_tag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -502,14 +452,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteTopicRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteTopicResponse`
         """
-        return self.delete_topic_with_http_info(request)
+        return self._delete_topic_with_http_info(request)
 
-    def delete_topic_with_http_info(self, request):
-        all_params = ['topic_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_topic_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -557,14 +503,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteTopicAttributeByNameRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteTopicAttributeByNameResponse`
         """
-        return self.delete_topic_attribute_by_name_with_http_info(request)
+        return self._delete_topic_attribute_by_name_with_http_info(request)
 
-    def delete_topic_attribute_by_name_with_http_info(self, request):
-        all_params = ['topic_urn', 'name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_topic_attribute_by_name_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -614,14 +556,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteTopicAttributesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteTopicAttributesResponse`
         """
-        return self.delete_topic_attributes_with_http_info(request)
+        return self._delete_topic_attributes_with_http_info(request)
 
-    def delete_topic_attributes_with_http_info(self, request):
-        all_params = ['topic_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_topic_attributes_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -669,14 +607,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListMessageTemplateDetailsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListMessageTemplateDetailsResponse`
         """
-        return self.list_message_template_details_with_http_info(request)
+        return self._list_message_template_details_with_http_info(request)
 
-    def list_message_template_details_with_http_info(self, request):
-        all_params = ['message_template_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_message_template_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -724,14 +658,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListMessageTemplatesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListMessageTemplatesResponse`
         """
-        return self.list_message_templates_with_http_info(request)
+        return self._list_message_templates_with_http_info(request)
 
-    def list_message_templates_with_http_info(self, request):
-        all_params = ['offset', 'limit', 'message_template_name', 'protocol']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_message_templates_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -785,14 +715,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListProjectTagsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListProjectTagsResponse`
         """
-        return self.list_project_tags_with_http_info(request)
+        return self._list_project_tags_with_http_info(request)
 
-    def list_project_tags_with_http_info(self, request):
-        all_params = ['resource_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_project_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -840,14 +766,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListResourceInstancesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListResourceInstancesResponse`
         """
-        return self.list_resource_instances_with_http_info(request)
+        return self._list_resource_instances_with_http_info(request)
 
-    def list_resource_instances_with_http_info(self, request):
-        all_params = ['resource_type', 'list_instances_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_resource_instances_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -897,14 +819,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListResourceTagsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListResourceTagsResponse`
         """
-        return self.list_resource_tags_with_http_info(request)
+        return self._list_resource_tags_with_http_info(request)
 
-    def list_resource_tags_with_http_info(self, request):
-        all_params = ['resource_type', 'resource_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_resource_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -954,14 +872,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListSubscriptionsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListSubscriptionsResponse`
         """
-        return self.list_subscriptions_with_http_info(request)
+        return self._list_subscriptions_with_http_info(request)
 
-    def list_subscriptions_with_http_info(self, request):
-        all_params = ['offset', 'limit', 'protocol', 'status', 'endpoint']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_subscriptions_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1017,14 +931,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListSubscriptionsByTopicRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListSubscriptionsByTopicResponse`
         """
-        return self.list_subscriptions_by_topic_with_http_info(request)
+        return self._list_subscriptions_by_topic_with_http_info(request)
 
-    def list_subscriptions_by_topic_with_http_info(self, request):
-        all_params = ['topic_urn', 'offset', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_subscriptions_by_topic_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1076,14 +986,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListTopicAttributesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListTopicAttributesResponse`
         """
-        return self.list_topic_attributes_with_http_info(request)
+        return self._list_topic_attributes_with_http_info(request)
 
-    def list_topic_attributes_with_http_info(self, request):
-        all_params = ['topic_urn', 'name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_topic_attributes_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1133,14 +1039,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListTopicDetailsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListTopicDetailsResponse`
         """
-        return self.list_topic_details_with_http_info(request)
+        return self._list_topic_details_with_http_info(request)
 
-    def list_topic_details_with_http_info(self, request):
-        all_params = ['topic_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_topic_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1188,14 +1090,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListTopicsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListTopicsResponse`
         """
-        return self.list_topics_with_http_info(request)
+        return self._list_topics_with_http_info(request)
 
-    def list_topics_with_http_info(self, request):
-        all_params = ['offset', 'limit', 'enterprise_project_id', 'name', 'fuzzy_name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_topics_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1251,14 +1149,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListVersionRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListVersionResponse`
         """
-        return self.list_version_with_http_info(request)
+        return self._list_version_with_http_info(request)
 
-    def list_version_with_http_info(self, request):
-        all_params = ['api_version']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_version_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1306,14 +1200,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListVersionsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListVersionsResponse`
         """
-        return self.list_versions_with_http_info(request)
+        return self._list_versions_with_http_info(request)
 
-    def list_versions_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_versions_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1359,14 +1249,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.PublishMessageRequest`
         :rtype: :class:`g42cloudsdksmn.v2.PublishMessageResponse`
         """
-        return self.publish_message_with_http_info(request)
+        return self._publish_message_with_http_info(request)
 
-    def publish_message_with_http_info(self, request):
-        all_params = ['topic_urn', 'publish_message_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _publish_message_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1416,14 +1302,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.UpdateMessageTemplateRequest`
         :rtype: :class:`g42cloudsdksmn.v2.UpdateMessageTemplateResponse`
         """
-        return self.update_message_template_with_http_info(request)
+        return self._update_message_template_with_http_info(request)
 
-    def update_message_template_with_http_info(self, request):
-        all_params = ['message_template_id', 'update_message_template_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_message_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1473,14 +1355,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.UpdateTopicRequest`
         :rtype: :class:`g42cloudsdksmn.v2.UpdateTopicResponse`
         """
-        return self.update_topic_with_http_info(request)
+        return self._update_topic_with_http_info(request)
 
-    def update_topic_with_http_info(self, request):
-        all_params = ['topic_urn', 'update_topic_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_topic_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1530,14 +1408,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.UpdateTopicAttributeRequest`
         :rtype: :class:`g42cloudsdksmn.v2.UpdateTopicAttributeResponse`
         """
-        return self.update_topic_attribute_with_http_info(request)
+        return self._update_topic_attribute_with_http_info(request)
 
-    def update_topic_attribute_with_http_info(self, request):
-        all_params = ['topic_urn', 'name', 'update_topic_attribute_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_topic_attribute_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1589,14 +1463,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CreateApplicationRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CreateApplicationResponse`
         """
-        return self.create_application_with_http_info(request)
+        return self._create_application_with_http_info(request)
 
-    def create_application_with_http_info(self, request):
-        all_params = ['create_application_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_application_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1644,14 +1514,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteApplicationRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteApplicationResponse`
         """
-        return self.delete_application_with_http_info(request)
+        return self._delete_application_with_http_info(request)
 
-    def delete_application_with_http_info(self, request):
-        all_params = ['application_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_application_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1699,14 +1565,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListApplicationAttributesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListApplicationAttributesResponse`
         """
-        return self.list_application_attributes_with_http_info(request)
+        return self._list_application_attributes_with_http_info(request)
 
-    def list_application_attributes_with_http_info(self, request):
-        all_params = ['application_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_application_attributes_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1754,14 +1616,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListApplicationsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListApplicationsResponse`
         """
-        return self.list_applications_with_http_info(request)
+        return self._list_applications_with_http_info(request)
 
-    def list_applications_with_http_info(self, request):
-        all_params = ['offset', 'limit', 'name', 'platform']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_applications_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1815,14 +1673,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.PublishAppMessageRequest`
         :rtype: :class:`g42cloudsdksmn.v2.PublishAppMessageResponse`
         """
-        return self.publish_app_message_with_http_info(request)
+        return self._publish_app_message_with_http_info(request)
 
-    def publish_app_message_with_http_info(self, request):
-        all_params = ['endpoint_urn', 'publish_app_message_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _publish_app_message_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1872,14 +1726,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.UpdateApplicationRequest`
         :rtype: :class:`g42cloudsdksmn.v2.UpdateApplicationResponse`
         """
-        return self.update_application_with_http_info(request)
+        return self._update_application_with_http_info(request)
 
-    def update_application_with_http_info(self, request):
-        all_params = ['application_urn', 'update_application_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_application_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1929,14 +1779,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.CreateApplicationEndpointRequest`
         :rtype: :class:`g42cloudsdksmn.v2.CreateApplicationEndpointResponse`
         """
-        return self.create_application_endpoint_with_http_info(request)
+        return self._create_application_endpoint_with_http_info(request)
 
-    def create_application_endpoint_with_http_info(self, request):
-        all_params = ['application_urn', 'create_application_endpoint_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_application_endpoint_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1986,14 +1832,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.DeleteApplicationEndpointRequest`
         :rtype: :class:`g42cloudsdksmn.v2.DeleteApplicationEndpointResponse`
         """
-        return self.delete_application_endpoint_with_http_info(request)
+        return self._delete_application_endpoint_with_http_info(request)
 
-    def delete_application_endpoint_with_http_info(self, request):
-        all_params = ['endpoint_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_application_endpoint_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2041,14 +1883,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListApplicationEndpointAttributesRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListApplicationEndpointAttributesResponse`
         """
-        return self.list_application_endpoint_attributes_with_http_info(request)
+        return self._list_application_endpoint_attributes_with_http_info(request)
 
-    def list_application_endpoint_attributes_with_http_info(self, request):
-        all_params = ['endpoint_urn']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_application_endpoint_attributes_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2096,14 +1934,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.ListApplicationEndpointsRequest`
         :rtype: :class:`g42cloudsdksmn.v2.ListApplicationEndpointsResponse`
         """
-        return self.list_application_endpoints_with_http_info(request)
+        return self._list_application_endpoints_with_http_info(request)
 
-    def list_application_endpoints_with_http_info(self, request):
-        all_params = ['application_urn', 'offset', 'limit', 'enabled', 'token', 'user_data']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_application_endpoints_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2161,14 +1995,10 @@ class SmnClient(Client):
         :type request: :class:`g42cloudsdksmn.v2.UpdateApplicationEndpointRequest`
         :rtype: :class:`g42cloudsdksmn.v2.UpdateApplicationEndpointResponse`
         """
-        return self.update_application_endpoint_with_http_info(request)
+        return self._update_application_endpoint_with_http_info(request)
 
-    def update_application_endpoint_with_http_info(self, request):
-        all_params = ['endpoint_urn', 'update_application_endpoint_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_application_endpoint_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

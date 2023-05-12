@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class CdnAsyncClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(CdnAsyncClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkcdn.v1.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -49,14 +31,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.CreateDomainRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.CreateDomainResponse`
         """
-        return self.create_domain_with_http_info(request)
+        return self._create_domain_with_http_info(request)
 
-    def create_domain_with_http_info(self, request):
-        all_params = ['domain']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_domain_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.CreatePreheatingTasksRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.CreatePreheatingTasksResponse`
         """
-        return self.create_preheating_tasks_with_http_info(request)
+        return self._create_preheating_tasks_with_http_info(request)
 
-    def create_preheating_tasks_with_http_info(self, request):
-        all_params = ['preheating_task', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_preheating_tasks_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -163,14 +137,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.CreateRefreshTasksRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.CreateRefreshTasksResponse`
         """
-        return self.create_refresh_tasks_with_http_info(request)
+        return self._create_refresh_tasks_with_http_info(request)
 
-    def create_refresh_tasks_with_http_info(self, request):
-        all_params = ['refresh_task', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_refresh_tasks_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -221,14 +191,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.DeleteDomainRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.DeleteDomainResponse`
         """
-        return self.delete_domain_with_http_info(request)
+        return self._delete_domain_with_http_info(request)
 
-    def delete_domain_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_domain_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -279,14 +245,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.DisableDomainRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.DisableDomainResponse`
         """
-        return self.disable_domain_with_http_info(request)
+        return self._disable_domain_with_http_info(request)
 
-    def disable_domain_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _disable_domain_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -337,14 +299,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.EnableDomainRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.EnableDomainResponse`
         """
-        return self.enable_domain_with_http_info(request)
+        return self._enable_domain_with_http_info(request)
 
-    def enable_domain_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _enable_domain_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -395,14 +353,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ListDomainsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ListDomainsResponse`
         """
-        return self.list_domains_with_http_info(request)
+        return self._list_domains_with_http_info(request)
 
-    def list_domains_with_http_info(self, request):
-        all_params = ['domain_name', 'business_type', 'domain_status', 'service_area', 'page_size', 'page_number', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_domains_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -463,14 +417,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowBlackWhiteListRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowBlackWhiteListResponse`
         """
-        return self.show_black_white_list_with_http_info(request)
+        return self._show_black_white_list_with_http_info(request)
 
-    def show_black_white_list_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_black_white_list_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -521,14 +471,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowCacheRulesRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowCacheRulesResponse`
         """
-        return self.show_cache_rules_with_http_info(request)
+        return self._show_cache_rules_with_http_info(request)
 
-    def show_cache_rules_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_cache_rules_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -579,14 +525,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowCertificatesHttpsInfoRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowCertificatesHttpsInfoResponse`
         """
-        return self.show_certificates_https_info_with_http_info(request)
+        return self._show_certificates_https_info_with_http_info(request)
 
-    def show_certificates_https_info_with_http_info(self, request):
-        all_params = ['page_size', 'page_number', 'domain_name', 'user_domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_certificates_https_info_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -643,14 +585,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainDetailRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainDetailResponse`
         """
-        return self.show_domain_detail_with_http_info(request)
+        return self._show_domain_detail_with_http_info(request)
 
-    def show_domain_detail_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_detail_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -701,14 +639,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainFullConfigRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainFullConfigResponse`
         """
-        return self.show_domain_full_config_with_http_info(request)
+        return self._show_domain_full_config_with_http_info(request)
 
-    def show_domain_full_config_with_http_info(self, request):
-        all_params = ['domain_name', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_full_config_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -759,14 +693,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainItemDetailsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainItemDetailsResponse`
         """
-        return self.show_domain_item_details_with_http_info(request)
+        return self._show_domain_item_details_with_http_info(request)
 
-    def show_domain_item_details_with_http_info(self, request):
-        all_params = ['start_time', 'end_time', 'domain_name', 'stat_type', 'enterprise_project_id', 'service_area']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_item_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -825,14 +755,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainItemLocationDetailsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainItemLocationDetailsResponse`
         """
-        return self.show_domain_item_location_details_with_http_info(request)
+        return self._show_domain_item_location_details_with_http_info(request)
 
-    def show_domain_item_location_details_with_http_info(self, request):
-        all_params = ['start_time', 'end_time', 'domain_name', 'stat_type', 'region', 'isp', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_item_location_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -893,14 +819,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainLocationStatsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainLocationStatsResponse`
         """
-        return self.show_domain_location_stats_with_http_info(request)
+        return self._show_domain_location_stats_with_http_info(request)
 
-    def show_domain_location_stats_with_http_info(self, request):
-        all_params = ['action', 'start_time', 'end_time', 'domain_name', 'stat_type', 'interval', 'group_by', 'country', 'province', 'isp', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_location_stats_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -969,14 +891,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowDomainStatsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowDomainStatsResponse`
         """
-        return self.show_domain_stats_with_http_info(request)
+        return self._show_domain_stats_with_http_info(request)
 
-    def show_domain_stats_with_http_info(self, request):
-        all_params = ['action', 'start_time', 'end_time', 'domain_name', 'stat_type', 'interval', 'group_by', 'service_area', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_domain_stats_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1041,14 +959,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowHistoryTaskDetailsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowHistoryTaskDetailsResponse`
         """
-        return self.show_history_task_details_with_http_info(request)
+        return self._show_history_task_details_with_http_info(request)
 
-    def show_history_task_details_with_http_info(self, request):
-        all_params = ['history_tasks_id', 'enterprise_project_id', 'page_size', 'page_number', 'status', 'url', 'create_time']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_history_task_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1109,14 +1023,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowHistoryTasksRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowHistoryTasksResponse`
         """
-        return self.show_history_tasks_with_http_info(request)
+        return self._show_history_tasks_with_http_info(request)
 
-    def show_history_tasks_with_http_info(self, request):
-        all_params = ['enterprise_project_id', 'page_size', 'page_number', 'status', 'start_date', 'end_date', 'order_field', 'order_type', 'file_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_history_tasks_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1181,14 +1091,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowHttpInfoRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowHttpInfoResponse`
         """
-        return self.show_http_info_with_http_info(request)
+        return self._show_http_info_with_http_info(request)
 
-    def show_http_info_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_http_info_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1239,14 +1145,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowIpInfoRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowIpInfoResponse`
         """
-        return self.show_ip_info_with_http_info(request)
+        return self._show_ip_info_with_http_info(request)
 
-    def show_ip_info_with_http_info(self, request):
-        all_params = ['ips', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_ip_info_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1297,14 +1199,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowLogsRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowLogsResponse`
         """
-        return self.show_logs_with_http_info(request)
+        return self._show_logs_with_http_info(request)
 
-    def show_logs_with_http_info(self, request):
-        all_params = ['domain_name', 'query_date', 'page_size', 'page_number', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_logs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1361,14 +1259,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowOriginHostRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowOriginHostResponse`
         """
-        return self.show_origin_host_with_http_info(request)
+        return self._show_origin_host_with_http_info(request)
 
-    def show_origin_host_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_origin_host_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1419,14 +1313,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowQuotaRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowQuotaResponse`
         """
-        return self.show_quota_with_http_info(request)
+        return self._show_quota_with_http_info(request)
 
-    def show_quota_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_quota_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1473,14 +1363,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowReferRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowReferResponse`
         """
-        return self.show_refer_with_http_info(request)
+        return self._show_refer_with_http_info(request)
 
-    def show_refer_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_refer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1531,14 +1417,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowResponseHeaderRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowResponseHeaderResponse`
         """
-        return self.show_response_header_with_http_info(request)
+        return self._show_response_header_with_http_info(request)
 
-    def show_response_header_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_response_header_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1589,14 +1471,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.ShowTopUrlRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.ShowTopUrlResponse`
         """
-        return self.show_top_url_with_http_info(request)
+        return self._show_top_url_with_http_info(request)
 
-    def show_top_url_with_http_info(self, request):
-        all_params = ['start_time', 'end_time', 'domain_name', 'stat_type', 'enterprise_project_id', 'service_area']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_top_url_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1655,14 +1533,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateBlackWhiteListRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateBlackWhiteListResponse`
         """
-        return self.update_black_white_list_with_http_info(request)
+        return self._update_black_white_list_with_http_info(request)
 
-    def update_black_white_list_with_http_info(self, request):
-        all_params = ['domain_id', 'black_white_list_body', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_black_white_list_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1715,14 +1589,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateCacheRulesRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateCacheRulesResponse`
         """
-        return self.update_cache_rules_with_http_info(request)
+        return self._update_cache_rules_with_http_info(request)
 
-    def update_cache_rules_with_http_info(self, request):
-        all_params = ['domain_id', 'cache_config', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_cache_rules_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1775,14 +1645,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateDomainFullConfigRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateDomainFullConfigResponse`
         """
-        return self.update_domain_full_config_with_http_info(request)
+        return self._update_domain_full_config_with_http_info(request)
 
-    def update_domain_full_config_with_http_info(self, request):
-        all_params = ['domain_name', 'configs', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_domain_full_config_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1835,14 +1701,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateDomainMultiCertificatesRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateDomainMultiCertificatesResponse`
         """
-        return self.update_domain_multi_certificates_with_http_info(request)
+        return self._update_domain_multi_certificates_with_http_info(request)
 
-    def update_domain_multi_certificates_with_http_info(self, request):
-        all_params = ['enterprise_project_id', 'https']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_domain_multi_certificates_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1893,14 +1755,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateDomainOriginRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateDomainOriginResponse`
         """
-        return self.update_domain_origin_with_http_info(request)
+        return self._update_domain_origin_with_http_info(request)
 
-    def update_domain_origin_with_http_info(self, request):
-        all_params = ['domain_id', 'origin', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_domain_origin_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1953,14 +1811,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateFollow302SwitchRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateFollow302SwitchResponse`
         """
-        return self.update_follow302_switch_with_http_info(request)
+        return self._update_follow302_switch_with_http_info(request)
 
-    def update_follow302_switch_with_http_info(self, request):
-        all_params = ['domain_id', 'follow_status', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_follow302_switch_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2013,14 +1867,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateHttpsInfoRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateHttpsInfoResponse`
         """
-        return self.update_https_info_with_http_info(request)
+        return self._update_https_info_with_http_info(request)
 
-    def update_https_info_with_http_info(self, request):
-        all_params = ['domain_id', 'https', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_https_info_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2073,14 +1923,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateOriginHostRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateOriginHostResponse`
         """
-        return self.update_origin_host_with_http_info(request)
+        return self._update_origin_host_with_http_info(request)
 
-    def update_origin_host_with_http_info(self, request):
-        all_params = ['domain_id', 'origin_host', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_origin_host_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2133,14 +1979,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdatePrivateBucketAccessRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdatePrivateBucketAccessResponse`
         """
-        return self.update_private_bucket_access_with_http_info(request)
+        return self._update_private_bucket_access_with_http_info(request)
 
-    def update_private_bucket_access_with_http_info(self, request):
-        all_params = ['domain_id', 'enterprise_project_id', 'status']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_private_bucket_access_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2193,14 +2035,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateRangeSwitchRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateRangeSwitchResponse`
         """
-        return self.update_range_switch_with_http_info(request)
+        return self._update_range_switch_with_http_info(request)
 
-    def update_range_switch_with_http_info(self, request):
-        all_params = ['domain_id', 'range_status', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_range_switch_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2253,14 +2091,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateReferRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateReferResponse`
         """
-        return self.update_refer_with_http_info(request)
+        return self._update_refer_with_http_info(request)
 
-    def update_refer_with_http_info(self, request):
-        all_params = ['domain_id', 'refer', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_refer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2313,14 +2147,10 @@ class CdnAsyncClient(Client):
         :type request: :class:`g42cloudsdkcdn.v1.UpdateResponseHeaderRequest`
         :rtype: :class:`g42cloudsdkcdn.v1.UpdateResponseHeaderResponse`
         """
-        return self.update_response_header_with_http_info(request)
+        return self._update_response_header_with_http_info(request)
 
-    def update_response_header_with_http_info(self, request):
-        all_params = ['domain_id', 'headers', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_response_header_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -27,7 +24,7 @@ class VaultGet:
         'project_id': 'str',
         'provider_id': 'str',
         'resources': 'list[ResourceResp]',
-        'tags': 'list[TagsResp]',
+        'tags': 'list[Tag]',
         'enterprise_project_id': 'str',
         'auto_bind': 'bool',
         'bind_rules': 'VaultBindRules',
@@ -81,7 +78,7 @@ class VaultGet:
         :param resources: The param of the VaultGet
         :type resources: list[:class:`g42cloudsdkcbr.v1.ResourceResp`]
         :param tags: The param of the VaultGet
-        :type tags: list[:class:`g42cloudsdkcbr.v1.TagsResp`]
+        :type tags: list[:class:`g42cloudsdkcbr.v1.Tag`]
         :param enterprise_project_id: The param of the VaultGet
         :type enterprise_project_id: str
         :param auto_bind: The param of the VaultGet
@@ -287,7 +284,7 @@ class VaultGet:
         """Gets the tags of this VaultGet.
 
         :return: The tags of this VaultGet.
-        :rtype: list[:class:`g42cloudsdkcbr.v1.TagsResp`]
+        :rtype: list[:class:`g42cloudsdkcbr.v1.Tag`]
         """
         return self._tags
 
@@ -296,7 +293,7 @@ class VaultGet:
         """Sets the tags of this VaultGet.
 
         :param tags: The tags of this VaultGet.
-        :type tags: list[:class:`g42cloudsdkcbr.v1.TagsResp`]
+        :type tags: list[:class:`g42cloudsdkcbr.v1.Tag`]
         """
         self._tags = tags
 

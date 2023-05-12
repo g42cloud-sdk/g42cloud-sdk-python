@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -25,7 +22,8 @@ class CheckpointParam:
         'incremental': 'bool',
         'name': 'str',
         'resources': 'list[str]',
-        'resource_details': 'list[Resource]'
+        'resource_details': 'list[Resource]',
+        'policy_id': 'str'
     }
 
     attribute_map = {
@@ -34,10 +32,11 @@ class CheckpointParam:
         'incremental': 'incremental',
         'name': 'name',
         'resources': 'resources',
-        'resource_details': 'resource_details'
+        'resource_details': 'resource_details',
+        'policy_id': 'policy_id'
     }
 
-    def __init__(self, auto_trigger=None, description=None, incremental=None, name=None, resources=None, resource_details=None):
+    def __init__(self, auto_trigger=None, description=None, incremental=None, name=None, resources=None, resource_details=None, policy_id=None):
         """CheckpointParam
 
         The model defined in g42cloud sdk
@@ -54,6 +53,8 @@ class CheckpointParam:
         :type resources: list[str]
         :param resource_details: The param of the CheckpointParam
         :type resource_details: list[:class:`g42cloudsdkcbr.v1.Resource`]
+        :param policy_id: The param of the CheckpointParam
+        :type policy_id: str
         """
         
         
@@ -64,6 +65,7 @@ class CheckpointParam:
         self._name = None
         self._resources = None
         self._resource_details = None
+        self._policy_id = None
         self.discriminator = None
 
         if auto_trigger is not None:
@@ -78,6 +80,8 @@ class CheckpointParam:
             self.resources = resources
         if resource_details is not None:
             self.resource_details = resource_details
+        if policy_id is not None:
+            self.policy_id = policy_id
 
     @property
     def auto_trigger(self):
@@ -186,6 +190,24 @@ class CheckpointParam:
         :type resource_details: list[:class:`g42cloudsdkcbr.v1.Resource`]
         """
         self._resource_details = resource_details
+
+    @property
+    def policy_id(self):
+        """Gets the policy_id of this CheckpointParam.
+
+        :return: The policy_id of this CheckpointParam.
+        :rtype: str
+        """
+        return self._policy_id
+
+    @policy_id.setter
+    def policy_id(self, policy_id):
+        """Sets the policy_id of this CheckpointParam.
+
+        :param policy_id: The policy_id of this CheckpointParam.
+        :type policy_id: str
+        """
+        self._policy_id = policy_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

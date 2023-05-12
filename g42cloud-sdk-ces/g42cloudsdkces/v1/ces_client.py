@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class CesClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(CesClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkces.v1.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -48,14 +30,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.BatchListMetricDataRequest`
         :rtype: :class:`g42cloudsdkces.v1.BatchListMetricDataResponse`
         """
-        return self.batch_list_metric_data_with_http_info(request)
+        return self._batch_list_metric_data_with_http_info(request)
 
-    def batch_list_metric_data_with_http_info(self, request):
-        all_params = ['batch_list_metric_data_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_list_metric_data_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -103,14 +81,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.CreateAlarmRequest`
         :rtype: :class:`g42cloudsdkces.v1.CreateAlarmResponse`
         """
-        return self.create_alarm_with_http_info(request)
+        return self._create_alarm_with_http_info(request)
 
-    def create_alarm_with_http_info(self, request):
-        all_params = ['create_alarm_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_alarm_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -158,14 +132,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.CreateAlarmTemplateRequest`
         :rtype: :class:`g42cloudsdkces.v1.CreateAlarmTemplateResponse`
         """
-        return self.create_alarm_template_with_http_info(request)
+        return self._create_alarm_template_with_http_info(request)
 
-    def create_alarm_template_with_http_info(self, request):
-        all_params = ['create_alarm_template_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_alarm_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -213,14 +183,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.CreateEventsRequest`
         :rtype: :class:`g42cloudsdkces.v1.CreateEventsResponse`
         """
-        return self.create_events_with_http_info(request)
+        return self._create_events_with_http_info(request)
 
-    def create_events_with_http_info(self, request):
-        all_params = ['event_items']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_events_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -268,14 +234,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.CreateMetricDataRequest`
         :rtype: :class:`g42cloudsdkces.v1.CreateMetricDataResponse`
         """
-        return self.create_metric_data_with_http_info(request)
+        return self._create_metric_data_with_http_info(request)
 
-    def create_metric_data_with_http_info(self, request):
-        all_params = ['metric_data_item']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_metric_data_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -323,14 +285,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.CreateResourceGroupRequest`
         :rtype: :class:`g42cloudsdkces.v1.CreateResourceGroupResponse`
         """
-        return self.create_resource_group_with_http_info(request)
+        return self._create_resource_group_with_http_info(request)
 
-    def create_resource_group_with_http_info(self, request):
-        all_params = ['create_resource_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_resource_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -378,14 +336,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.DeleteAlarmRequest`
         :rtype: :class:`g42cloudsdkces.v1.DeleteAlarmResponse`
         """
-        return self.delete_alarm_with_http_info(request)
+        return self._delete_alarm_with_http_info(request)
 
-    def delete_alarm_with_http_info(self, request):
-        all_params = ['alarm_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_alarm_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -433,14 +387,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.DeleteAlarmTemplateRequest`
         :rtype: :class:`g42cloudsdkces.v1.DeleteAlarmTemplateResponse`
         """
-        return self.delete_alarm_template_with_http_info(request)
+        return self._delete_alarm_template_with_http_info(request)
 
-    def delete_alarm_template_with_http_info(self, request):
-        all_params = ['template_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_alarm_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -488,14 +438,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.DeleteResourceGroupRequest`
         :rtype: :class:`g42cloudsdkces.v1.DeleteResourceGroupResponse`
         """
-        return self.delete_resource_group_with_http_info(request)
+        return self._delete_resource_group_with_http_info(request)
 
-    def delete_resource_group_with_http_info(self, request):
-        all_params = ['group_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_resource_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -543,14 +489,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListAlarmHistoriesRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListAlarmHistoriesResponse`
         """
-        return self.list_alarm_histories_with_http_info(request)
+        return self._list_alarm_histories_with_http_info(request)
 
-    def list_alarm_histories_with_http_info(self, request):
-        all_params = ['group_id', 'alarm_id', 'alarm_name', 'alarm_status', 'alarm_level', 'namespace', '_from', 'to', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_alarm_histories_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -616,14 +558,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListAlarmTemplatesRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListAlarmTemplatesResponse`
         """
-        return self.list_alarm_templates_with_http_info(request)
+        return self._list_alarm_templates_with_http_info(request)
 
-    def list_alarm_templates_with_http_info(self, request):
-        all_params = ['alarm_template_id', 'namespace', 'dname', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_alarm_templates_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -679,14 +617,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListAlarmsRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListAlarmsResponse`
         """
-        return self.list_alarms_with_http_info(request)
+        return self._list_alarms_with_http_info(request)
 
-    def list_alarms_with_http_info(self, request):
-        all_params = ['limit', 'order', 'start']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_alarms_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -738,14 +672,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListEventDetailRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListEventDetailResponse`
         """
-        return self.list_event_detail_with_http_info(request)
+        return self._list_event_detail_with_http_info(request)
 
-    def list_event_detail_with_http_info(self, request):
-        all_params = ['event_name', 'event_type', 'event_source', 'event_level', 'event_user', 'event_state', '_from', 'to', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_event_detail_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -811,14 +741,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListEventsRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListEventsResponse`
         """
-        return self.list_events_with_http_info(request)
+        return self._list_events_with_http_info(request)
 
-    def list_events_with_http_info(self, request):
-        all_params = ['event_type', 'event_name', '_from', 'to', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_events_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -876,14 +802,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListMetricsRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListMetricsResponse`
         """
-        return self.list_metrics_with_http_info(request)
+        return self._list_metrics_with_http_info(request)
 
-    def list_metrics_with_http_info(self, request):
-        all_params = ['dim_0', 'dim_1', 'dim_2', 'limit', 'metric_name', 'namespace', 'order', 'start']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_metrics_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -945,14 +867,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ListResourceGroupRequest`
         :rtype: :class:`g42cloudsdkces.v1.ListResourceGroupResponse`
         """
-        return self.list_resource_group_with_http_info(request)
+        return self._list_resource_group_with_http_info(request)
 
-    def list_resource_group_with_http_info(self, request):
-        all_params = ['group_name', 'group_id', 'status', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_resource_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1008,14 +926,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ShowAlarmRequest`
         :rtype: :class:`g42cloudsdkces.v1.ShowAlarmResponse`
         """
-        return self.show_alarm_with_http_info(request)
+        return self._show_alarm_with_http_info(request)
 
-    def show_alarm_with_http_info(self, request):
-        all_params = ['alarm_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_alarm_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1063,14 +977,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ShowEventDataRequest`
         :rtype: :class:`g42cloudsdkces.v1.ShowEventDataResponse`
         """
-        return self.show_event_data_with_http_info(request)
+        return self._show_event_data_with_http_info(request)
 
-    def show_event_data_with_http_info(self, request):
-        all_params = ['namespace', 'dim_0', 'type', '_from', 'to', 'dim_1', 'dim_2', 'dim_3']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_event_data_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1132,14 +1042,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ShowMetricDataRequest`
         :rtype: :class:`g42cloudsdkces.v1.ShowMetricDataResponse`
         """
-        return self.show_metric_data_with_http_info(request)
+        return self._show_metric_data_with_http_info(request)
 
-    def show_metric_data_with_http_info(self, request):
-        all_params = ['namespace', 'metric_name', 'dim_0', 'filter', 'period', '_from', 'to', 'dim_1', 'dim_2', 'dim_3']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_metric_data_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1205,14 +1111,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ShowQuotasRequest`
         :rtype: :class:`g42cloudsdkces.v1.ShowQuotasResponse`
         """
-        return self.show_quotas_with_http_info(request)
+        return self._show_quotas_with_http_info(request)
 
-    def show_quotas_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_quotas_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1258,14 +1160,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.ShowResourceGroupRequest`
         :rtype: :class:`g42cloudsdkces.v1.ShowResourceGroupResponse`
         """
-        return self.show_resource_group_with_http_info(request)
+        return self._show_resource_group_with_http_info(request)
 
-    def show_resource_group_with_http_info(self, request):
-        all_params = ['group_id', 'status', 'namespace', 'dname', 'start', 'limit']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_resource_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1323,14 +1221,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.UpdateAlarmRequest`
         :rtype: :class:`g42cloudsdkces.v1.UpdateAlarmResponse`
         """
-        return self.update_alarm_with_http_info(request)
+        return self._update_alarm_with_http_info(request)
 
-    def update_alarm_with_http_info(self, request):
-        all_params = ['alarm_id', 'update_alarm_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_alarm_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1380,14 +1274,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.UpdateAlarmActionRequest`
         :rtype: :class:`g42cloudsdkces.v1.UpdateAlarmActionResponse`
         """
-        return self.update_alarm_action_with_http_info(request)
+        return self._update_alarm_action_with_http_info(request)
 
-    def update_alarm_action_with_http_info(self, request):
-        all_params = ['alarm_id', 'modify_alarm_action_req']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_alarm_action_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1437,14 +1327,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.UpdateAlarmTemplateRequest`
         :rtype: :class:`g42cloudsdkces.v1.UpdateAlarmTemplateResponse`
         """
-        return self.update_alarm_template_with_http_info(request)
+        return self._update_alarm_template_with_http_info(request)
 
-    def update_alarm_template_with_http_info(self, request):
-        all_params = ['template_id', 'update_alarm_template_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_alarm_template_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1494,14 +1380,10 @@ class CesClient(Client):
         :type request: :class:`g42cloudsdkces.v1.UpdateResourceGroupRequest`
         :rtype: :class:`g42cloudsdkces.v1.UpdateResourceGroupResponse`
         """
-        return self.update_resource_group_with_http_info(request)
+        return self._update_resource_group_with_http_info(request)
 
-    def update_resource_group_with_http_info(self, request):
-        all_params = ['group_id', 'update_resource_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_resource_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

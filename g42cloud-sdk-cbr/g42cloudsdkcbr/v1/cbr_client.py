@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class CbrClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(CbrClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkcbr.v1.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -48,14 +30,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.AddMemberRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.AddMemberResponse`
         """
-        return self.add_member_with_http_info(request)
+        return self._add_member_with_http_info(request)
 
-    def add_member_with_http_info(self, request):
-        all_params = ['backup_id', 'add_member_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _add_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.AddVaultResourceRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.AddVaultResourceResponse`
         """
-        return self.add_vault_resource_with_http_info(request)
+        return self._add_vault_resource_with_http_info(request)
 
-    def add_vault_resource_with_http_info(self, request):
-        all_params = ['vault_id', 'add_vault_resource_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _add_vault_resource_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -162,14 +136,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.AssociateVaultPolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.AssociateVaultPolicyResponse`
         """
-        return self.associate_vault_policy_with_http_info(request)
+        return self._associate_vault_policy_with_http_info(request)
 
-    def associate_vault_policy_with_http_info(self, request):
-        all_params = ['vault_id', 'associate_vault_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _associate_vault_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -219,14 +189,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.BatchCreateAndDeleteVaultTagsRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.BatchCreateAndDeleteVaultTagsResponse`
         """
-        return self.batch_create_and_delete_vault_tags_with_http_info(request)
+        return self._batch_create_and_delete_vault_tags_with_http_info(request)
 
-    def batch_create_and_delete_vault_tags_with_http_info(self, request):
-        all_params = ['vault_id', 'batch_create_and_delete_vault_tags_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_create_and_delete_vault_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -270,132 +236,16 @@ class CbrClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
-    def copy_backup(self, request):
-        """
-        :param request: Request instance for CopyBackup
-        :type request: :class:`g42cloudsdkcbr.v1.CopyBackupRequest`
-        :rtype: :class:`g42cloudsdkcbr.v1.CopyBackupResponse`
-        """
-        return self.copy_backup_with_http_info(request)
-
-    def copy_backup_with_http_info(self, request):
-        all_params = ['backup_id', 'copy_backup_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
-
-        cname = None
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'backup_id' in local_var_params:
-            path_params['backup_id'] = local_var_params['backup_id']
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = {}
-
-        body_params = None
-        if 'body' in local_var_params:
-            body_params = local_var_params['body']
-        if isinstance(request, SdkStreamRequest):
-            body_params = request.get_file_stream()
-
-        response_headers = []
-
-        header_params['Content-Type'] = http_utils.select_header_content_type(
-            ['application/json;charset=UTF-8'])
-
-        auth_settings = []
-
-        return self.call_api(
-            resource_path='/v3/{project_id}/backups/{backup_id}/replicate',
-            method='POST',
-            path_params=path_params,
-            query_params=query_params,
-            header_params=header_params,
-            body=body_params,
-            post_params=form_params,
-            cname=cname,
-            response_type='CopyBackupResponse',
-            response_headers=response_headers,
-            auth_settings=auth_settings,
-            collection_formats=collection_formats,
-            request_type=request.__class__.__name__)
-
-    def copy_checkpoint(self, request):
-        """
-        :param request: Request instance for CopyCheckpoint
-        :type request: :class:`g42cloudsdkcbr.v1.CopyCheckpointRequest`
-        :rtype: :class:`g42cloudsdkcbr.v1.CopyCheckpointResponse`
-        """
-        return self.copy_checkpoint_with_http_info(request)
-
-    def copy_checkpoint_with_http_info(self, request):
-        all_params = ['copy_checkpoint_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
-
-        cname = None
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = {}
-
-        body_params = None
-        if 'body' in local_var_params:
-            body_params = local_var_params['body']
-        if isinstance(request, SdkStreamRequest):
-            body_params = request.get_file_stream()
-
-        response_headers = []
-
-        header_params['Content-Type'] = http_utils.select_header_content_type(
-            ['application/json;charset=UTF-8'])
-
-        auth_settings = []
-
-        return self.call_api(
-            resource_path='/v3/{project_id}/checkpoints/replicate',
-            method='POST',
-            path_params=path_params,
-            query_params=query_params,
-            header_params=header_params,
-            body=body_params,
-            post_params=form_params,
-            cname=cname,
-            response_type='CopyCheckpointResponse',
-            response_headers=response_headers,
-            auth_settings=auth_settings,
-            collection_formats=collection_formats,
-            request_type=request.__class__.__name__)
-
     def create_checkpoint(self, request):
         """
         :param request: Request instance for CreateCheckpoint
         :type request: :class:`g42cloudsdkcbr.v1.CreateCheckpointRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.CreateCheckpointResponse`
         """
-        return self.create_checkpoint_with_http_info(request)
+        return self._create_checkpoint_with_http_info(request)
 
-    def create_checkpoint_with_http_info(self, request):
-        all_params = ['create_checkpoint_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_checkpoint_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -443,14 +293,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.CreatePolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.CreatePolicyResponse`
         """
-        return self.create_policy_with_http_info(request)
+        return self._create_policy_with_http_info(request)
 
-    def create_policy_with_http_info(self, request):
-        all_params = ['create_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -498,14 +344,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.CreateVaultRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.CreateVaultResponse`
         """
-        return self.create_vault_with_http_info(request)
+        return self._create_vault_with_http_info(request)
 
-    def create_vault_with_http_info(self, request):
-        all_params = ['create_vault_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_vault_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -553,14 +395,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.CreateVaultTagsRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.CreateVaultTagsResponse`
         """
-        return self.create_vault_tags_with_http_info(request)
+        return self._create_vault_tags_with_http_info(request)
 
-    def create_vault_tags_with_http_info(self, request):
-        all_params = ['vault_id', 'create_vault_tags_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_vault_tags_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -610,14 +448,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DeleteBackupRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DeleteBackupResponse`
         """
-        return self.delete_backup_with_http_info(request)
+        return self._delete_backup_with_http_info(request)
 
-    def delete_backup_with_http_info(self, request):
-        all_params = ['backup_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_backup_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -665,14 +499,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DeleteMemberRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DeleteMemberResponse`
         """
-        return self.delete_member_with_http_info(request)
+        return self._delete_member_with_http_info(request)
 
-    def delete_member_with_http_info(self, request):
-        all_params = ['backup_id', 'member_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -722,14 +552,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DeletePolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DeletePolicyResponse`
         """
-        return self.delete_policy_with_http_info(request)
+        return self._delete_policy_with_http_info(request)
 
-    def delete_policy_with_http_info(self, request):
-        all_params = ['policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -777,14 +603,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DeleteVaultRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DeleteVaultResponse`
         """
-        return self.delete_vault_with_http_info(request)
+        return self._delete_vault_with_http_info(request)
 
-    def delete_vault_with_http_info(self, request):
-        all_params = ['vault_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_vault_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -832,14 +654,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DeleteVaultTagRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DeleteVaultTagResponse`
         """
-        return self.delete_vault_tag_with_http_info(request)
+        return self._delete_vault_tag_with_http_info(request)
 
-    def delete_vault_tag_with_http_info(self, request):
-        all_params = ['key', 'vault_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_vault_tag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -889,14 +707,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.DisassociateVaultPolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.DisassociateVaultPolicyResponse`
         """
-        return self.disassociate_vault_policy_with_http_info(request)
+        return self._disassociate_vault_policy_with_http_info(request)
 
-    def disassociate_vault_policy_with_http_info(self, request):
-        all_params = ['vault_id', 'disassociate_vault_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _disassociate_vault_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -940,75 +754,16 @@ class CbrClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
-    def import_backup(self, request):
-        """
-        :param request: Request instance for ImportBackup
-        :type request: :class:`g42cloudsdkcbr.v1.ImportBackupRequest`
-        :rtype: :class:`g42cloudsdkcbr.v1.ImportBackupResponse`
-        """
-        return self.import_backup_with_http_info(request)
-
-    def import_backup_with_http_info(self, request):
-        all_params = ['import_backup_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
-
-        cname = None
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = {}
-
-        body_params = None
-        if 'body' in local_var_params:
-            body_params = local_var_params['body']
-        if isinstance(request, SdkStreamRequest):
-            body_params = request.get_file_stream()
-
-        response_headers = []
-
-        header_params['Content-Type'] = http_utils.select_header_content_type(
-            ['application/json;charset=UTF-8'])
-
-        auth_settings = []
-
-        return self.call_api(
-            resource_path='/v3/{project_id}/backups/sync',
-            method='POST',
-            path_params=path_params,
-            query_params=query_params,
-            header_params=header_params,
-            body=body_params,
-            post_params=form_params,
-            cname=cname,
-            response_type='ImportBackupResponse',
-            response_headers=response_headers,
-            auth_settings=auth_settings,
-            collection_formats=collection_formats,
-            request_type=request.__class__.__name__)
-
     def list_backups(self, request):
         """
         :param request: Request instance for ListBackups
         :type request: :class:`g42cloudsdkcbr.v1.ListBackupsRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ListBackupsResponse`
         """
-        return self.list_backups_with_http_info(request)
+        return self._list_backups_with_http_info(request)
 
-    def list_backups_with_http_info(self, request):
-        all_params = ['checkpoint_id', 'dec', 'end_time', 'image_type', 'limit', 'marker', 'name', 'offset', 'resource_az', 'resource_id', 'resource_name', 'resource_type', 'sort', 'start_time', 'status', 'vault_id', 'enterprise_project_id', 'own_type', 'member_status', 'parent_id', 'used_percent', 'show_replication']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_backups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1061,6 +816,8 @@ class CbrClient(Client):
             query_params.append(('used_percent', local_var_params['used_percent']))
         if 'show_replication' in local_var_params:
             query_params.append(('show_replication', local_var_params['show_replication']))
+        if 'incremental' in local_var_params:
+            query_params.append(('incremental', local_var_params['incremental']))
 
         header_params = {}
 
@@ -1098,14 +855,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ListOpLogsRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ListOpLogsResponse`
         """
-        return self.list_op_logs_with_http_info(request)
+        return self._list_op_logs_with_http_info(request)
 
-    def list_op_logs_with_http_info(self, request):
-        all_params = ['end_time', 'limit', 'offset', 'operation_type', 'provider_id', 'resource_id', 'resource_name', 'start_time', 'status', 'vault_id', 'vault_name', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_op_logs_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1175,14 +928,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ListPoliciesRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ListPoliciesResponse`
         """
-        return self.list_policies_with_http_info(request)
+        return self._list_policies_with_http_info(request)
 
-    def list_policies_with_http_info(self, request):
-        all_params = ['operation_type', 'vault_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_policies_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1232,14 +981,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ListProtectableRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ListProtectableResponse`
         """
-        return self.list_protectable_with_http_info(request)
+        return self._list_protectable_with_http_info(request)
 
-    def list_protectable_with_http_info(self, request):
-        all_params = ['protectable_type', 'limit', 'marker', 'name', 'offset', 'status', 'id', 'server_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_protectable_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1301,14 +1046,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ListVaultRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ListVaultResponse`
         """
-        return self.list_vault_with_http_info(request)
+        return self._list_vault_with_http_info(request)
 
-    def list_vault_with_http_info(self, request):
-        all_params = ['limit', 'name', 'offset', 'cloud_type', 'protect_type', 'object_type', 'enterprise_project_id', 'id', 'policy_id', 'status', 'resource_ids']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_vault_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1370,77 +1111,16 @@ class CbrClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
-    def migrate_vault_resource(self, request):
-        """
-        :param request: Request instance for MigrateVaultResource
-        :type request: :class:`g42cloudsdkcbr.v1.MigrateVaultResourceRequest`
-        :rtype: :class:`g42cloudsdkcbr.v1.MigrateVaultResourceResponse`
-        """
-        return self.migrate_vault_resource_with_http_info(request)
-
-    def migrate_vault_resource_with_http_info(self, request):
-        all_params = ['vault_id', 'migrate_vault_resource_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
-
-        cname = None
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'vault_id' in local_var_params:
-            path_params['vault_id'] = local_var_params['vault_id']
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = {}
-
-        body_params = None
-        if 'body' in local_var_params:
-            body_params = local_var_params['body']
-        if isinstance(request, SdkStreamRequest):
-            body_params = request.get_file_stream()
-
-        response_headers = []
-
-        header_params['Content-Type'] = http_utils.select_header_content_type(
-            ['application/json;charset=UTF-8'])
-
-        auth_settings = []
-
-        return self.call_api(
-            resource_path='/v3/{project_id}/vaults/{vault_id}/migrateresources',
-            method='POST',
-            path_params=path_params,
-            query_params=query_params,
-            header_params=header_params,
-            body=body_params,
-            post_params=form_params,
-            cname=cname,
-            response_type='MigrateVaultResourceResponse',
-            response_headers=response_headers,
-            auth_settings=auth_settings,
-            collection_formats=collection_formats,
-            request_type=request.__class__.__name__)
-
     def remove_vault_resource(self, request):
         """
         :param request: Request instance for RemoveVaultResource
         :type request: :class:`g42cloudsdkcbr.v1.RemoveVaultResourceRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.RemoveVaultResourceResponse`
         """
-        return self.remove_vault_resource_with_http_info(request)
+        return self._remove_vault_resource_with_http_info(request)
 
-    def remove_vault_resource_with_http_info(self, request):
-        all_params = ['vault_id', 'remove_vault_resource_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _remove_vault_resource_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1490,14 +1170,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.RestoreBackupRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.RestoreBackupResponse`
         """
-        return self.restore_backup_with_http_info(request)
+        return self._restore_backup_with_http_info(request)
 
-    def restore_backup_with_http_info(self, request):
-        all_params = ['backup_id', 'restore_backup_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _restore_backup_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1547,14 +1223,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowBackupRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowBackupResponse`
         """
-        return self.show_backup_with_http_info(request)
+        return self._show_backup_with_http_info(request)
 
-    def show_backup_with_http_info(self, request):
-        all_params = ['backup_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_backup_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1602,14 +1274,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowCheckpointRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowCheckpointResponse`
         """
-        return self.show_checkpoint_with_http_info(request)
+        return self._show_checkpoint_with_http_info(request)
 
-    def show_checkpoint_with_http_info(self, request):
-        all_params = ['checkpoint_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_checkpoint_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1657,14 +1325,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowMemberDetailRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowMemberDetailResponse`
         """
-        return self.show_member_detail_with_http_info(request)
+        return self._show_member_detail_with_http_info(request)
 
-    def show_member_detail_with_http_info(self, request):
-        all_params = ['backup_id', 'member_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_member_detail_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1714,14 +1378,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowMembersDetailRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowMembersDetailResponse`
         """
-        return self.show_members_detail_with_http_info(request)
+        return self._show_members_detail_with_http_info(request)
 
-    def show_members_detail_with_http_info(self, request):
-        all_params = ['backup_id', 'dest_project_id', 'image_id', 'status', 'vault_id', 'limit', 'marker', 'offset', 'sort']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_members_detail_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1785,14 +1445,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowOpLogRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowOpLogResponse`
         """
-        return self.show_op_log_with_http_info(request)
+        return self._show_op_log_with_http_info(request)
 
-    def show_op_log_with_http_info(self, request):
-        all_params = ['operation_log_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_op_log_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1840,14 +1496,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowPolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowPolicyResponse`
         """
-        return self.show_policy_with_http_info(request)
+        return self._show_policy_with_http_info(request)
 
-    def show_policy_with_http_info(self, request):
-        all_params = ['policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1895,14 +1547,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowProtectableRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowProtectableResponse`
         """
-        return self.show_protectable_with_http_info(request)
+        return self._show_protectable_with_http_info(request)
 
-    def show_protectable_with_http_info(self, request):
-        all_params = ['instance_id', 'protectable_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_protectable_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1946,73 +1594,16 @@ class CbrClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
-    def show_replication_capabilities(self, request):
-        """
-        :param request: Request instance for ShowReplicationCapabilities
-        :type request: :class:`g42cloudsdkcbr.v1.ShowReplicationCapabilitiesRequest`
-        :rtype: :class:`g42cloudsdkcbr.v1.ShowReplicationCapabilitiesResponse`
-        """
-        return self.show_replication_capabilities_with_http_info(request)
-
-    def show_replication_capabilities_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
-
-        cname = None
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = {}
-
-        body_params = None
-        if isinstance(request, SdkStreamRequest):
-            body_params = request.get_file_stream()
-
-        response_headers = []
-
-        header_params['Content-Type'] = http_utils.select_header_content_type(
-            ['application/json'])
-
-        auth_settings = []
-
-        return self.call_api(
-            resource_path='/v3/{project_id}/replication-capabilities',
-            method='GET',
-            path_params=path_params,
-            query_params=query_params,
-            header_params=header_params,
-            body=body_params,
-            post_params=form_params,
-            cname=cname,
-            response_type='ShowReplicationCapabilitiesResponse',
-            response_headers=response_headers,
-            auth_settings=auth_settings,
-            collection_formats=collection_formats,
-            request_type=request.__class__.__name__)
-
     def show_vault(self, request):
         """
         :param request: Request instance for ShowVault
         :type request: :class:`g42cloudsdkcbr.v1.ShowVaultRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowVaultResponse`
         """
-        return self.show_vault_with_http_info(request)
+        return self._show_vault_with_http_info(request)
 
-    def show_vault_with_http_info(self, request):
-        all_params = ['vault_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_vault_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2060,14 +1651,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowVaultProjectTagRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowVaultProjectTagResponse`
         """
-        return self.show_vault_project_tag_with_http_info(request)
+        return self._show_vault_project_tag_with_http_info(request)
 
-    def show_vault_project_tag_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_vault_project_tag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2113,14 +1700,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowVaultResourceInstancesRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowVaultResourceInstancesResponse`
         """
-        return self.show_vault_resource_instances_with_http_info(request)
+        return self._show_vault_resource_instances_with_http_info(request)
 
-    def show_vault_resource_instances_with_http_info(self, request):
-        all_params = ['show_vault_resource_instances_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_vault_resource_instances_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2168,14 +1751,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.ShowVaultTagRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.ShowVaultTagResponse`
         """
-        return self.show_vault_tag_with_http_info(request)
+        return self._show_vault_tag_with_http_info(request)
 
-    def show_vault_tag_with_http_info(self, request):
-        all_params = ['vault_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_vault_tag_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2223,14 +1802,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.UpdateMemberStatusRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.UpdateMemberStatusResponse`
         """
-        return self.update_member_status_with_http_info(request)
+        return self._update_member_status_with_http_info(request)
 
-    def update_member_status_with_http_info(self, request):
-        all_params = ['member_id', 'backup_id', 'update_member_status_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_member_status_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2282,14 +1857,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.UpdatePolicyRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.UpdatePolicyResponse`
         """
-        return self.update_policy_with_http_info(request)
+        return self._update_policy_with_http_info(request)
 
-    def update_policy_with_http_info(self, request):
-        all_params = ['policy_id', 'update_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2339,14 +1910,10 @@ class CbrClient(Client):
         :type request: :class:`g42cloudsdkcbr.v1.UpdateVaultRequest`
         :rtype: :class:`g42cloudsdkcbr.v1.UpdateVaultResponse`
         """
-        return self.update_vault_with_http_info(request)
+        return self._update_vault_with_http_info(request)
 
-    def update_vault_with_http_info(self, request):
-        all_params = ['vault_id', 'update_vault_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_vault_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

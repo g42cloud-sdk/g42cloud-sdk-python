@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -20,7 +17,7 @@ class VaultBindRules:
     sensitive_list = []
 
     openapi_types = {
-        'tags': 'list[Tag]'
+        'tags': 'list[BindRulesTags]'
     }
 
     attribute_map = {
@@ -33,7 +30,7 @@ class VaultBindRules:
         The model defined in g42cloud sdk
 
         :param tags: The param of the VaultBindRules
-        :type tags: list[:class:`g42cloudsdkcbr.v1.Tag`]
+        :type tags: list[:class:`g42cloudsdkcbr.v1.BindRulesTags`]
         """
         
         
@@ -49,7 +46,7 @@ class VaultBindRules:
         """Gets the tags of this VaultBindRules.
 
         :return: The tags of this VaultBindRules.
-        :rtype: list[:class:`g42cloudsdkcbr.v1.Tag`]
+        :rtype: list[:class:`g42cloudsdkcbr.v1.BindRulesTags`]
         """
         return self._tags
 
@@ -58,7 +55,7 @@ class VaultBindRules:
         """Sets the tags of this VaultBindRules.
 
         :param tags: The tags of this VaultBindRules.
-        :type tags: list[:class:`g42cloudsdkcbr.v1.Tag`]
+        :type tags: list[:class:`g42cloudsdkcbr.v1.BindRulesTags`]
         """
         self._tags = tags
 

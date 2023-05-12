@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -29,7 +26,8 @@ class BackupExtendInfo:
         'os_images_data': 'list[ImageData]',
         'contain_system_disk': 'bool',
         'encrypted': 'bool',
-        'system_disk': 'bool'
+        'system_disk': 'bool',
+        'is_multi_az': 'bool'
     }
 
     attribute_map = {
@@ -42,10 +40,11 @@ class BackupExtendInfo:
         'os_images_data': 'os_images_data',
         'contain_system_disk': 'contain_system_disk',
         'encrypted': 'encrypted',
-        'system_disk': 'system_disk'
+        'system_disk': 'system_disk',
+        'is_multi_az': 'is_multi_az'
     }
 
-    def __init__(self, auto_trigger=None, bootable=None, incremental=None, snapshot_id=None, support_lld=None, supported_restore_mode=None, os_images_data=None, contain_system_disk=None, encrypted=None, system_disk=None):
+    def __init__(self, auto_trigger=None, bootable=None, incremental=None, snapshot_id=None, support_lld=None, supported_restore_mode=None, os_images_data=None, contain_system_disk=None, encrypted=None, system_disk=None, is_multi_az=None):
         """BackupExtendInfo
 
         The model defined in g42cloud sdk
@@ -70,6 +69,8 @@ class BackupExtendInfo:
         :type encrypted: bool
         :param system_disk: The param of the BackupExtendInfo
         :type system_disk: bool
+        :param is_multi_az: The param of the BackupExtendInfo
+        :type is_multi_az: bool
         """
         
         
@@ -84,6 +85,7 @@ class BackupExtendInfo:
         self._contain_system_disk = None
         self._encrypted = None
         self._system_disk = None
+        self._is_multi_az = None
         self.discriminator = None
 
         if auto_trigger is not None:
@@ -106,6 +108,8 @@ class BackupExtendInfo:
             self.encrypted = encrypted
         if system_disk is not None:
             self.system_disk = system_disk
+        if is_multi_az is not None:
+            self.is_multi_az = is_multi_az
 
     @property
     def auto_trigger(self):
@@ -286,6 +290,24 @@ class BackupExtendInfo:
         :type system_disk: bool
         """
         self._system_disk = system_disk
+
+    @property
+    def is_multi_az(self):
+        """Gets the is_multi_az of this BackupExtendInfo.
+
+        :return: The is_multi_az of this BackupExtendInfo.
+        :rtype: bool
+        """
+        return self._is_multi_az
+
+    @is_multi_az.setter
+    def is_multi_az(self, is_multi_az):
+        """Sets the is_multi_az of this BackupExtendInfo.
+
+        :param is_multi_az: The is_multi_az of this BackupExtendInfo.
+        :type is_multi_az: bool
+        """
+        self._is_multi_az = is_multi_az
 
     def to_dict(self):
         """Returns the model properties as a dict"""

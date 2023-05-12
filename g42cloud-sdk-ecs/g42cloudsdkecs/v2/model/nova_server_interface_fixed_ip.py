@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class BackupReplicateReq:
+class NovaServerInterfaceFixedIp:
 
     """
     Attributes:
@@ -20,46 +17,70 @@ class BackupReplicateReq:
     sensitive_list = []
 
     openapi_types = {
-        'replicate': 'BackupReplicateReqBody'
+        'ip_address': 'str',
+        'subnet_id': 'str'
     }
 
     attribute_map = {
-        'replicate': 'replicate'
+        'ip_address': 'ip_address',
+        'subnet_id': 'subnet_id'
     }
 
-    def __init__(self, replicate=None):
-        """BackupReplicateReq
+    def __init__(self, ip_address=None, subnet_id=None):
+        """NovaServerInterfaceFixedIp
 
         The model defined in g42cloud sdk
 
-        :param replicate: The param of the BackupReplicateReq
-        :type replicate: :class:`g42cloudsdkcbr.v1.BackupReplicateReqBody`
+        :param ip_address: The param of the NovaServerInterfaceFixedIp
+        :type ip_address: str
+        :param subnet_id: The param of the NovaServerInterfaceFixedIp
+        :type subnet_id: str
         """
         
         
 
-        self._replicate = None
+        self._ip_address = None
+        self._subnet_id = None
         self.discriminator = None
 
-        self.replicate = replicate
+        self.ip_address = ip_address
+        self.subnet_id = subnet_id
 
     @property
-    def replicate(self):
-        """Gets the replicate of this BackupReplicateReq.
+    def ip_address(self):
+        """Gets the ip_address of this NovaServerInterfaceFixedIp.
 
-        :return: The replicate of this BackupReplicateReq.
-        :rtype: :class:`g42cloudsdkcbr.v1.BackupReplicateReqBody`
+        :return: The ip_address of this NovaServerInterfaceFixedIp.
+        :rtype: str
         """
-        return self._replicate
+        return self._ip_address
 
-    @replicate.setter
-    def replicate(self, replicate):
-        """Sets the replicate of this BackupReplicateReq.
+    @ip_address.setter
+    def ip_address(self, ip_address):
+        """Sets the ip_address of this NovaServerInterfaceFixedIp.
 
-        :param replicate: The replicate of this BackupReplicateReq.
-        :type replicate: :class:`g42cloudsdkcbr.v1.BackupReplicateReqBody`
+        :param ip_address: The ip_address of this NovaServerInterfaceFixedIp.
+        :type ip_address: str
         """
-        self._replicate = replicate
+        self._ip_address = ip_address
+
+    @property
+    def subnet_id(self):
+        """Gets the subnet_id of this NovaServerInterfaceFixedIp.
+
+        :return: The subnet_id of this NovaServerInterfaceFixedIp.
+        :rtype: str
+        """
+        return self._subnet_id
+
+    @subnet_id.setter
+    def subnet_id(self, subnet_id):
+        """Sets the subnet_id of this NovaServerInterfaceFixedIp.
+
+        :param subnet_id: The subnet_id of this NovaServerInterfaceFixedIp.
+        :type subnet_id: str
+        """
+        self._subnet_id = subnet_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -103,7 +124,7 @@ class BackupReplicateReq:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, BackupReplicateReq):
+        if not isinstance(other, NovaServerInterfaceFixedIp):
             return False
 
         return self.__dict__ == other.__dict__

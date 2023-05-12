@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -27,7 +24,8 @@ class ResourceResp:
         'size': 'int',
         'type': 'str',
         'backup_size': 'int',
-        'backup_count': 'int'
+        'backup_count': 'int',
+        'auto_protect': 'bool'
     }
 
     attribute_map = {
@@ -38,10 +36,11 @@ class ResourceResp:
         'size': 'size',
         'type': 'type',
         'backup_size': 'backup_size',
-        'backup_count': 'backup_count'
+        'backup_count': 'backup_count',
+        'auto_protect': 'auto_protect'
     }
 
-    def __init__(self, extra_info=None, id=None, name=None, protect_status=None, size=None, type=None, backup_size=None, backup_count=None):
+    def __init__(self, extra_info=None, id=None, name=None, protect_status=None, size=None, type=None, backup_size=None, backup_count=None, auto_protect=None):
         """ResourceResp
 
         The model defined in g42cloud sdk
@@ -62,6 +61,8 @@ class ResourceResp:
         :type backup_size: int
         :param backup_count: The param of the ResourceResp
         :type backup_count: int
+        :param auto_protect: The param of the ResourceResp
+        :type auto_protect: bool
         """
         
         
@@ -74,6 +75,7 @@ class ResourceResp:
         self._type = None
         self._backup_size = None
         self._backup_count = None
+        self._auto_protect = None
         self.discriminator = None
 
         if extra_info is not None:
@@ -89,6 +91,8 @@ class ResourceResp:
             self.backup_size = backup_size
         if backup_count is not None:
             self.backup_count = backup_count
+        if auto_protect is not None:
+            self.auto_protect = auto_protect
 
     @property
     def extra_info(self):
@@ -233,6 +237,24 @@ class ResourceResp:
         :type backup_count: int
         """
         self._backup_count = backup_count
+
+    @property
+    def auto_protect(self):
+        """Gets the auto_protect of this ResourceResp.
+
+        :return: The auto_protect of this ResourceResp.
+        :rtype: bool
+        """
+        return self._auto_protect
+
+    @auto_protect.setter
+    def auto_protect(self, auto_protect):
+        """Sets the auto_protect of this ResourceResp.
+
+        :param auto_protect: The auto_protect of this ResourceResp.
+        :type auto_protect: bool
+        """
+        self._auto_protect = auto_protect
 
     def to_dict(self):
         """Returns the model properties as a dict"""

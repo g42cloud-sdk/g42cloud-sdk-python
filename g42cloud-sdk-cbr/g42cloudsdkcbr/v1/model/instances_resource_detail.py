@@ -1,14 +1,11 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class MigrateVaultResourceRequest:
+class InstancesResourceDetail:
 
     """
     Attributes:
@@ -20,71 +17,47 @@ class MigrateVaultResourceRequest:
     sensitive_list = []
 
     openapi_types = {
-        'vault_id': 'str',
-        'body': 'VaultMigrateResourceReq'
+        'vault': 'Vault'
     }
 
     attribute_map = {
-        'vault_id': 'vault_id',
-        'body': 'body'
+        'vault': 'vault'
     }
 
-    def __init__(self, vault_id=None, body=None):
-        """MigrateVaultResourceRequest
+    def __init__(self, vault=None):
+        """InstancesResourceDetail
 
         The model defined in g42cloud sdk
 
-        :param vault_id: The param of the MigrateVaultResourceRequest
-        :type vault_id: str
-        :param body: The param of the MigrateVaultResourceRequest
-        :type body: :class:`g42cloudsdkcbr.v1.VaultMigrateResourceReq`
+        :param vault: The param of the InstancesResourceDetail
+        :type vault: :class:`g42cloudsdkcbr.v1.Vault`
         """
         
         
 
-        self._vault_id = None
-        self._body = None
+        self._vault = None
         self.discriminator = None
 
-        self.vault_id = vault_id
-        if body is not None:
-            self.body = body
+        if vault is not None:
+            self.vault = vault
 
     @property
-    def vault_id(self):
-        """Gets the vault_id of this MigrateVaultResourceRequest.
+    def vault(self):
+        """Gets the vault of this InstancesResourceDetail.
 
-        :return: The vault_id of this MigrateVaultResourceRequest.
-        :rtype: str
+        :return: The vault of this InstancesResourceDetail.
+        :rtype: :class:`g42cloudsdkcbr.v1.Vault`
         """
-        return self._vault_id
+        return self._vault
 
-    @vault_id.setter
-    def vault_id(self, vault_id):
-        """Sets the vault_id of this MigrateVaultResourceRequest.
+    @vault.setter
+    def vault(self, vault):
+        """Sets the vault of this InstancesResourceDetail.
 
-        :param vault_id: The vault_id of this MigrateVaultResourceRequest.
-        :type vault_id: str
+        :param vault: The vault of this InstancesResourceDetail.
+        :type vault: :class:`g42cloudsdkcbr.v1.Vault`
         """
-        self._vault_id = vault_id
-
-    @property
-    def body(self):
-        """Gets the body of this MigrateVaultResourceRequest.
-
-        :return: The body of this MigrateVaultResourceRequest.
-        :rtype: :class:`g42cloudsdkcbr.v1.VaultMigrateResourceReq`
-        """
-        return self._body
-
-    @body.setter
-    def body(self, body):
-        """Sets the body of this MigrateVaultResourceRequest.
-
-        :param body: The body of this MigrateVaultResourceRequest.
-        :type body: :class:`g42cloudsdkcbr.v1.VaultMigrateResourceReq`
-        """
-        self._body = body
+        self._vault = vault
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -128,7 +101,7 @@ class MigrateVaultResourceRequest:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, MigrateVaultResourceRequest):
+        if not isinstance(other, InstancesResourceDetail):
             return False
 
         return self.__dict__ == other.__dict__

@@ -25,14 +25,14 @@ from mimetypes import MimeTypes
 import six
 
 from g42cloudsdkcore.http.formdata import FormFile
-from g42cloudsdkcore.http.primitive_types import primitive_types
+from g42cloudsdkcore.http.primitive_types import PRIMITIVE_TYPES
 
 
 def sanitize_for_serialization(obj):
     if obj is None:
         return None
 
-    elif isinstance(obj, primitive_types):
+    elif isinstance(obj, PRIMITIVE_TYPES):
         return obj
 
     elif isinstance(obj, decimal.Decimal):

@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class ElbClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(ElbClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkelb.v3.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -48,14 +30,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.BatchCreateMembersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.BatchCreateMembersResponse`
         """
-        return self.batch_create_members_with_http_info(request)
+        return self._batch_create_members_with_http_info(request)
 
-    def batch_create_members_with_http_info(self, request):
-        all_params = ['pool_id', 'batch_create_members_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_create_members_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.BatchDeleteMembersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.BatchDeleteMembersResponse`
         """
-        return self.batch_delete_members_with_http_info(request)
+        return self._batch_delete_members_with_http_info(request)
 
-    def batch_delete_members_with_http_info(self, request):
-        all_params = ['pool_id', 'batch_delete_members_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_delete_members_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -162,14 +136,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.BatchUpdatePoliciesPriorityRequest`
         :rtype: :class:`g42cloudsdkelb.v3.BatchUpdatePoliciesPriorityResponse`
         """
-        return self.batch_update_policies_priority_with_http_info(request)
+        return self._batch_update_policies_priority_with_http_info(request)
 
-    def batch_update_policies_priority_with_http_info(self, request):
-        all_params = ['batch_update_policies_priority_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_update_policies_priority_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -217,14 +187,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ChangeLoadbalancerChargeModeRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ChangeLoadbalancerChargeModeResponse`
         """
-        return self.change_loadbalancer_charge_mode_with_http_info(request)
+        return self._change_loadbalancer_charge_mode_with_http_info(request)
 
-    def change_loadbalancer_charge_mode_with_http_info(self, request):
-        all_params = ['change_loadbalancer_charge_mode_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _change_loadbalancer_charge_mode_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -272,14 +238,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateCertificateRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateCertificateResponse`
         """
-        return self.create_certificate_with_http_info(request)
+        return self._create_certificate_with_http_info(request)
 
-    def create_certificate_with_http_info(self, request):
-        all_params = ['create_certificate_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_certificate_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -327,14 +289,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateHealthMonitorRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateHealthMonitorResponse`
         """
-        return self.create_health_monitor_with_http_info(request)
+        return self._create_health_monitor_with_http_info(request)
 
-    def create_health_monitor_with_http_info(self, request):
-        all_params = ['create_health_monitor_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_health_monitor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -382,14 +340,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateL7PolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateL7PolicyResponse`
         """
-        return self.create_l7_policy_with_http_info(request)
+        return self._create_l7_policy_with_http_info(request)
 
-    def create_l7_policy_with_http_info(self, request):
-        all_params = ['create_l7_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_l7_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -437,14 +391,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateL7RuleRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateL7RuleResponse`
         """
-        return self.create_l7_rule_with_http_info(request)
+        return self._create_l7_rule_with_http_info(request)
 
-    def create_l7_rule_with_http_info(self, request):
-        all_params = ['l7policy_id', 'create_l7_rule_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_l7_rule_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -494,14 +444,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateListenerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateListenerResponse`
         """
-        return self.create_listener_with_http_info(request)
+        return self._create_listener_with_http_info(request)
 
-    def create_listener_with_http_info(self, request):
-        all_params = ['create_listener_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_listener_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -549,14 +495,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateLoadBalancerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateLoadBalancerResponse`
         """
-        return self.create_load_balancer_with_http_info(request)
+        return self._create_load_balancer_with_http_info(request)
 
-    def create_load_balancer_with_http_info(self, request):
-        all_params = ['create_load_balancer_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_load_balancer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -604,14 +546,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateLogtankRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateLogtankResponse`
         """
-        return self.create_logtank_with_http_info(request)
+        return self._create_logtank_with_http_info(request)
 
-    def create_logtank_with_http_info(self, request):
-        all_params = ['create_logtank_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -659,14 +597,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateMemberRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateMemberResponse`
         """
-        return self.create_member_with_http_info(request)
+        return self._create_member_with_http_info(request)
 
-    def create_member_with_http_info(self, request):
-        all_params = ['pool_id', 'create_member_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -716,14 +650,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreatePoolRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreatePoolResponse`
         """
-        return self.create_pool_with_http_info(request)
+        return self._create_pool_with_http_info(request)
 
-    def create_pool_with_http_info(self, request):
-        all_params = ['create_pool_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_pool_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -771,14 +701,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateSecurityPolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateSecurityPolicyResponse`
         """
-        return self.create_security_policy_with_http_info(request)
+        return self._create_security_policy_with_http_info(request)
 
-    def create_security_policy_with_http_info(self, request):
-        all_params = ['create_security_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_security_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -826,14 +752,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteCertificateRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteCertificateResponse`
         """
-        return self.delete_certificate_with_http_info(request)
+        return self._delete_certificate_with_http_info(request)
 
-    def delete_certificate_with_http_info(self, request):
-        all_params = ['certificate_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_certificate_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -881,14 +803,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteHealthMonitorRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteHealthMonitorResponse`
         """
-        return self.delete_health_monitor_with_http_info(request)
+        return self._delete_health_monitor_with_http_info(request)
 
-    def delete_health_monitor_with_http_info(self, request):
-        all_params = ['healthmonitor_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_health_monitor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -936,14 +854,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteL7PolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteL7PolicyResponse`
         """
-        return self.delete_l7_policy_with_http_info(request)
+        return self._delete_l7_policy_with_http_info(request)
 
-    def delete_l7_policy_with_http_info(self, request):
-        all_params = ['l7policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_l7_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -991,14 +905,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteL7RuleRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteL7RuleResponse`
         """
-        return self.delete_l7_rule_with_http_info(request)
+        return self._delete_l7_rule_with_http_info(request)
 
-    def delete_l7_rule_with_http_info(self, request):
-        all_params = ['l7policy_id', 'l7rule_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_l7_rule_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1048,14 +958,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteListenerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteListenerResponse`
         """
-        return self.delete_listener_with_http_info(request)
+        return self._delete_listener_with_http_info(request)
 
-    def delete_listener_with_http_info(self, request):
-        all_params = ['listener_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_listener_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1103,14 +1009,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteLoadBalancerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteLoadBalancerResponse`
         """
-        return self.delete_load_balancer_with_http_info(request)
+        return self._delete_load_balancer_with_http_info(request)
 
-    def delete_load_balancer_with_http_info(self, request):
-        all_params = ['loadbalancer_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_load_balancer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1158,14 +1060,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteLogtankRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteLogtankResponse`
         """
-        return self.delete_logtank_with_http_info(request)
+        return self._delete_logtank_with_http_info(request)
 
-    def delete_logtank_with_http_info(self, request):
-        all_params = ['logtank_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1213,14 +1111,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteMemberRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteMemberResponse`
         """
-        return self.delete_member_with_http_info(request)
+        return self._delete_member_with_http_info(request)
 
-    def delete_member_with_http_info(self, request):
-        all_params = ['pool_id', 'member_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1270,14 +1164,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeletePoolRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeletePoolResponse`
         """
-        return self.delete_pool_with_http_info(request)
+        return self._delete_pool_with_http_info(request)
 
-    def delete_pool_with_http_info(self, request):
-        all_params = ['pool_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_pool_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1325,14 +1215,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteSecurityPolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteSecurityPolicyResponse`
         """
-        return self.delete_security_policy_with_http_info(request)
+        return self._delete_security_policy_with_http_info(request)
 
-    def delete_security_policy_with_http_info(self, request):
-        all_params = ['security_policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_security_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1380,14 +1266,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListAllMembersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListAllMembersResponse`
         """
-        return self.list_all_members_with_http_info(request)
+        return self._list_all_members_with_http_info(request)
 
-    def list_all_members_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'name', 'weight', 'admin_state_up', 'subnet_cidr_id', 'address', 'protocol_port', 'id', 'operating_status', 'enterprise_project_id', 'ip_version', 'pool_id', 'loadbalancer_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_all_members_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1474,14 +1356,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListAvailabilityZonesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListAvailabilityZonesResponse`
         """
-        return self.list_availability_zones_with_http_info(request)
+        return self._list_availability_zones_with_http_info(request)
 
-    def list_availability_zones_with_http_info(self, request):
-        all_params = ['public_border_group']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_availability_zones_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1529,14 +1407,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListCertificatesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListCertificatesResponse`
         """
-        return self.list_certificates_with_http_info(request)
+        return self._list_certificates_with_http_info(request)
 
-    def list_certificates_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'name', 'description', 'admin_state_up', 'domain', 'type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_certificates_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1605,14 +1479,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListFlavorsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListFlavorsResponse`
         """
-        return self.list_flavors_with_http_info(request)
+        return self._list_flavors_with_http_info(request)
 
-    def list_flavors_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'name', 'type', 'shared']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_flavors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1675,14 +1545,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListHealthMonitorsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListHealthMonitorsResponse`
         """
-        return self.list_health_monitors_with_http_info(request)
+        return self._list_health_monitors_with_http_info(request)
 
-    def list_health_monitors_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'monitor_port', 'domain_name', 'name', 'delay', 'max_retries', 'admin_state_up', 'max_retries_down', 'timeout', 'type', 'expected_codes', 'url_path', 'http_method', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_health_monitors_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1774,14 +1640,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListL7PoliciesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListL7PoliciesResponse`
         """
-        return self.list_l7_policies_with_http_info(request)
+        return self._list_l7_policies_with_http_info(request)
 
-    def list_l7_policies_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'enterprise_project_id', 'id', 'name', 'description', 'admin_state_up', 'listener_id', 'position', 'action', 'redirect_url', 'redirect_pool_id', 'redirect_listener_id', 'provisioning_status', 'display_all_rules', 'priority']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_l7_policies_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1873,14 +1735,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListL7RulesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListL7RulesResponse`
         """
-        return self.list_l7_rules_with_http_info(request)
+        return self._list_l7_rules_with_http_info(request)
 
-    def list_l7_rules_with_http_info(self, request):
-        all_params = ['l7policy_id', 'limit', 'marker', 'page_reverse', 'id', 'compare_type', 'provisioning_status', 'invert', 'admin_state_up', 'value', 'key', 'type', 'enterprise_project_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_l7_rules_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -1959,14 +1817,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListListenersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListListenersResponse`
         """
-        return self.list_listeners_with_http_info(request)
+        return self._list_listeners_with_http_info(request)
 
-    def list_listeners_with_http_info(self, request):
-        all_params = ['limit', 'marker', 'page_reverse', 'protocol_port', 'protocol', 'description', 'default_tls_container_ref', 'client_ca_tls_container_ref', 'admin_state_up', 'connection_limit', 'default_pool_id', 'id', 'name', 'http2_enable', 'loadbalancer_id', 'tls_ciphers_policy', 'member_address', 'member_device_id', 'enterprise_project_id', 'enable_member_retry', 'member_timeout', 'client_timeout', 'keepalive_timeout', 'transparent_client_ip_enable', 'enhance_l7policy_enable', 'member_instance_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_listeners_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2082,14 +1936,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListLoadBalancersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListLoadBalancersResponse`
         """
-        return self.list_load_balancers_with_http_info(request)
+        return self._list_load_balancers_with_http_info(request)
 
-    def list_load_balancers_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'name', 'description', 'admin_state_up', 'provisioning_status', 'operating_status', 'guaranteed', 'vpc_id', 'vip_port_id', 'vip_address', 'vip_subnet_cidr_id', 'ipv6_vip_port_id', 'ipv6_vip_address', 'ipv6_vip_virsubnet_id', 'eips', 'publicips', 'availability_zone_list', 'l4_flavor_id', 'l4_scale_flavor_id', 'l7_flavor_id', 'l7_scale_flavor_id', 'billing_info', 'member_device_id', 'member_address', 'enterprise_project_id', 'ip_version', 'deletion_protection_enable', 'elb_virsubnet_type', 'autoscaling']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_load_balancers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2225,14 +2075,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListLogtanksRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListLogtanksResponse`
         """
-        return self.list_logtanks_with_http_info(request)
+        return self._list_logtanks_with_http_info(request)
 
-    def list_logtanks_with_http_info(self, request):
-        all_params = ['limit', 'marker', 'page_reverse', 'enterprise_project_id', 'id', 'loadbalancer_id', 'log_group_id', 'log_topic_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_logtanks_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2299,14 +2145,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListMembersRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListMembersResponse`
         """
-        return self.list_members_with_http_info(request)
+        return self._list_members_with_http_info(request)
 
-    def list_members_with_http_info(self, request):
-        all_params = ['pool_id', 'marker', 'limit', 'page_reverse', 'name', 'weight', 'admin_state_up', 'subnet_cidr_id', 'address', 'protocol_port', 'id', 'operating_status', 'enterprise_project_id', 'ip_version', 'member_type', 'instance_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_members_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2395,14 +2237,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListPoolsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListPoolsResponse`
         """
-        return self.list_pools_with_http_info(request)
+        return self._list_pools_with_http_info(request)
 
-    def list_pools_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'description', 'admin_state_up', 'healthmonitor_id', 'id', 'name', 'loadbalancer_id', 'protocol', 'lb_algorithm', 'enterprise_project_id', 'ip_version', 'member_address', 'member_device_id', 'member_deletion_protection_enable', 'listener_id', 'member_instance_id', 'vpc_id', 'type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_pools_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2503,14 +2341,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListQuotaDetailsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListQuotaDetailsResponse`
         """
-        return self.list_quota_details_with_http_info(request)
+        return self._list_quota_details_with_http_info(request)
 
-    def list_quota_details_with_http_info(self, request):
-        all_params = ['quota_key']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_quota_details_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2559,14 +2393,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListSecurityPoliciesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListSecurityPoliciesResponse`
         """
-        return self.list_security_policies_with_http_info(request)
+        return self._list_security_policies_with_http_info(request)
 
-    def list_security_policies_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'name', 'description', 'protocols', 'ciphers']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_security_policies_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2633,14 +2463,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListSystemSecurityPoliciesRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListSystemSecurityPoliciesResponse`
         """
-        return self.list_system_security_policies_with_http_info(request)
+        return self._list_system_security_policies_with_http_info(request)
 
-    def list_system_security_policies_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_system_security_policies_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2686,14 +2512,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowCertificateRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowCertificateResponse`
         """
-        return self.show_certificate_with_http_info(request)
+        return self._show_certificate_with_http_info(request)
 
-    def show_certificate_with_http_info(self, request):
-        all_params = ['certificate_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_certificate_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2741,14 +2563,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowFlavorRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowFlavorResponse`
         """
-        return self.show_flavor_with_http_info(request)
+        return self._show_flavor_with_http_info(request)
 
-    def show_flavor_with_http_info(self, request):
-        all_params = ['flavor_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_flavor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2796,14 +2614,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowHealthMonitorRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowHealthMonitorResponse`
         """
-        return self.show_health_monitor_with_http_info(request)
+        return self._show_health_monitor_with_http_info(request)
 
-    def show_health_monitor_with_http_info(self, request):
-        all_params = ['healthmonitor_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_health_monitor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2851,14 +2665,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowL7PolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowL7PolicyResponse`
         """
-        return self.show_l7_policy_with_http_info(request)
+        return self._show_l7_policy_with_http_info(request)
 
-    def show_l7_policy_with_http_info(self, request):
-        all_params = ['l7policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_l7_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2906,14 +2716,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowL7RuleRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowL7RuleResponse`
         """
-        return self.show_l7_rule_with_http_info(request)
+        return self._show_l7_rule_with_http_info(request)
 
-    def show_l7_rule_with_http_info(self, request):
-        all_params = ['l7policy_id', 'l7rule_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_l7_rule_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -2963,14 +2769,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowListenerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowListenerResponse`
         """
-        return self.show_listener_with_http_info(request)
+        return self._show_listener_with_http_info(request)
 
-    def show_listener_with_http_info(self, request):
-        all_params = ['listener_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_listener_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3018,14 +2820,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowLoadBalancerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowLoadBalancerResponse`
         """
-        return self.show_load_balancer_with_http_info(request)
+        return self._show_load_balancer_with_http_info(request)
 
-    def show_load_balancer_with_http_info(self, request):
-        all_params = ['loadbalancer_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_load_balancer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3073,14 +2871,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowLoadBalancerStatusRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowLoadBalancerStatusResponse`
         """
-        return self.show_load_balancer_status_with_http_info(request)
+        return self._show_load_balancer_status_with_http_info(request)
 
-    def show_load_balancer_status_with_http_info(self, request):
-        all_params = ['loadbalancer_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_load_balancer_status_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3128,14 +2922,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowLogtankRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowLogtankResponse`
         """
-        return self.show_logtank_with_http_info(request)
+        return self._show_logtank_with_http_info(request)
 
-    def show_logtank_with_http_info(self, request):
-        all_params = ['logtank_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3183,14 +2973,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowMemberRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowMemberResponse`
         """
-        return self.show_member_with_http_info(request)
+        return self._show_member_with_http_info(request)
 
-    def show_member_with_http_info(self, request):
-        all_params = ['pool_id', 'member_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3240,14 +3026,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowPoolRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowPoolResponse`
         """
-        return self.show_pool_with_http_info(request)
+        return self._show_pool_with_http_info(request)
 
-    def show_pool_with_http_info(self, request):
-        all_params = ['pool_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_pool_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3295,14 +3077,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowQuotaRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowQuotaResponse`
         """
-        return self.show_quota_with_http_info(request)
+        return self._show_quota_with_http_info(request)
 
-    def show_quota_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_quota_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3348,14 +3126,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowSecurityPolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowSecurityPolicyResponse`
         """
-        return self.show_security_policy_with_http_info(request)
+        return self._show_security_policy_with_http_info(request)
 
-    def show_security_policy_with_http_info(self, request):
-        all_params = ['security_policy_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_security_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3403,14 +3177,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateCertificateRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateCertificateResponse`
         """
-        return self.update_certificate_with_http_info(request)
+        return self._update_certificate_with_http_info(request)
 
-    def update_certificate_with_http_info(self, request):
-        all_params = ['certificate_id', 'update_certificate_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_certificate_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3460,14 +3230,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateHealthMonitorRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateHealthMonitorResponse`
         """
-        return self.update_health_monitor_with_http_info(request)
+        return self._update_health_monitor_with_http_info(request)
 
-    def update_health_monitor_with_http_info(self, request):
-        all_params = ['healthmonitor_id', 'update_health_monitor_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_health_monitor_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3517,14 +3283,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateL7PolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateL7PolicyResponse`
         """
-        return self.update_l7_policy_with_http_info(request)
+        return self._update_l7_policy_with_http_info(request)
 
-    def update_l7_policy_with_http_info(self, request):
-        all_params = ['l7policy_id', 'update_l7_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_l7_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3574,14 +3336,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateL7RuleRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateL7RuleResponse`
         """
-        return self.update_l7_rule_with_http_info(request)
+        return self._update_l7_rule_with_http_info(request)
 
-    def update_l7_rule_with_http_info(self, request):
-        all_params = ['l7policy_id', 'l7rule_id', 'update_l7_rule_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_l7_rule_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3633,14 +3391,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateListenerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateListenerResponse`
         """
-        return self.update_listener_with_http_info(request)
+        return self._update_listener_with_http_info(request)
 
-    def update_listener_with_http_info(self, request):
-        all_params = ['listener_id', 'update_listener_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_listener_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3690,14 +3444,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateLoadBalancerRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateLoadBalancerResponse`
         """
-        return self.update_load_balancer_with_http_info(request)
+        return self._update_load_balancer_with_http_info(request)
 
-    def update_load_balancer_with_http_info(self, request):
-        all_params = ['loadbalancer_id', 'update_load_balancer_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_load_balancer_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3747,14 +3497,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateLogtankRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateLogtankResponse`
         """
-        return self.update_logtank_with_http_info(request)
+        return self._update_logtank_with_http_info(request)
 
-    def update_logtank_with_http_info(self, request):
-        all_params = ['logtank_id', 'update_logtank_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3804,14 +3550,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateMemberRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateMemberResponse`
         """
-        return self.update_member_with_http_info(request)
+        return self._update_member_with_http_info(request)
 
-    def update_member_with_http_info(self, request):
-        all_params = ['member_id', 'pool_id', 'update_member_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_member_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3863,14 +3605,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdatePoolRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdatePoolResponse`
         """
-        return self.update_pool_with_http_info(request)
+        return self._update_pool_with_http_info(request)
 
-    def update_pool_with_http_info(self, request):
-        all_params = ['pool_id', 'update_pool_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_pool_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3920,14 +3658,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateSecurityPolicyRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateSecurityPolicyResponse`
         """
-        return self.update_security_policy_with_http_info(request)
+        return self._update_security_policy_with_http_info(request)
 
-    def update_security_policy_with_http_info(self, request):
-        all_params = ['security_policy_id', 'update_security_policy_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_security_policy_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -3977,14 +3711,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListApiVersionsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListApiVersionsResponse`
         """
-        return self.list_api_versions_with_http_info(request)
+        return self._list_api_versions_with_http_info(request)
 
-    def list_api_versions_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_api_versions_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4030,14 +3760,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.BatchDeleteIpListRequest`
         :rtype: :class:`g42cloudsdkelb.v3.BatchDeleteIpListResponse`
         """
-        return self.batch_delete_ip_list_with_http_info(request)
+        return self._batch_delete_ip_list_with_http_info(request)
 
-    def batch_delete_ip_list_with_http_info(self, request):
-        all_params = ['ipgroup_id', 'batch_delete_ip_list_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _batch_delete_ip_list_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4087,14 +3813,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CountPreoccupyIpNumRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CountPreoccupyIpNumResponse`
         """
-        return self.count_preoccupy_ip_num_with_http_info(request)
+        return self._count_preoccupy_ip_num_with_http_info(request)
 
-    def count_preoccupy_ip_num_with_http_info(self, request):
-        all_params = ['l7_flavor_id', 'ip_target_enable', 'ip_version', 'loadbalancer_id', 'availability_zone_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _count_preoccupy_ip_num_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4151,14 +3873,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.CreateIpGroupRequest`
         :rtype: :class:`g42cloudsdkelb.v3.CreateIpGroupResponse`
         """
-        return self.create_ip_group_with_http_info(request)
+        return self._create_ip_group_with_http_info(request)
 
-    def create_ip_group_with_http_info(self, request):
-        all_params = ['create_ip_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_ip_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4206,14 +3924,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.DeleteIpGroupRequest`
         :rtype: :class:`g42cloudsdkelb.v3.DeleteIpGroupResponse`
         """
-        return self.delete_ip_group_with_http_info(request)
+        return self._delete_ip_group_with_http_info(request)
 
-    def delete_ip_group_with_http_info(self, request):
-        all_params = ['ipgroup_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_ip_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4261,14 +3975,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ListIpGroupsRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ListIpGroupsResponse`
         """
-        return self.list_ip_groups_with_http_info(request)
+        return self._list_ip_groups_with_http_info(request)
 
-    def list_ip_groups_with_http_info(self, request):
-        all_params = ['marker', 'limit', 'page_reverse', 'id', 'name', 'description', 'ip_list']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_ip_groups_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4332,14 +4042,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.ShowIpGroupRequest`
         :rtype: :class:`g42cloudsdkelb.v3.ShowIpGroupResponse`
         """
-        return self.show_ip_group_with_http_info(request)
+        return self._show_ip_group_with_http_info(request)
 
-    def show_ip_group_with_http_info(self, request):
-        all_params = ['ipgroup_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _show_ip_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4387,14 +4093,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateIpGroupRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateIpGroupResponse`
         """
-        return self.update_ip_group_with_http_info(request)
+        return self._update_ip_group_with_http_info(request)
 
-    def update_ip_group_with_http_info(self, request):
-        all_params = ['ipgroup_id', 'update_ip_group_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_ip_group_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -4444,14 +4146,10 @@ class ElbClient(Client):
         :type request: :class:`g42cloudsdkelb.v3.UpdateIpListRequest`
         :rtype: :class:`g42cloudsdkelb.v3.UpdateIpListResponse`
         """
-        return self.update_ip_list_with_http_info(request)
+        return self._update_ip_list_with_http_info(request)
 
-    def update_ip_list_with_http_info(self, request):
-        all_params = ['ipgroup_id', 'update_ip_list_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_ip_list_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 

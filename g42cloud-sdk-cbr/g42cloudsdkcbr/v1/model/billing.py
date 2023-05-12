@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -33,7 +30,8 @@ class Billing:
         'status': 'str',
         'storage_unit': 'str',
         'used': 'int',
-        'frozen_scene': 'str'
+        'frozen_scene': 'str',
+        'is_multi_az': 'bool'
     }
 
     attribute_map = {
@@ -50,10 +48,11 @@ class Billing:
         'status': 'status',
         'storage_unit': 'storage_unit',
         'used': 'used',
-        'frozen_scene': 'frozen_scene'
+        'frozen_scene': 'frozen_scene',
+        'is_multi_az': 'is_multi_az'
     }
 
-    def __init__(self, allocated=None, charging_mode=None, cloud_type=None, consistent_level=None, object_type=None, order_id=None, product_id=None, protect_type=None, size=None, spec_code=None, status=None, storage_unit=None, used=None, frozen_scene=None):
+    def __init__(self, allocated=None, charging_mode=None, cloud_type=None, consistent_level=None, object_type=None, order_id=None, product_id=None, protect_type=None, size=None, spec_code=None, status=None, storage_unit=None, used=None, frozen_scene=None, is_multi_az=None):
         """Billing
 
         The model defined in g42cloud sdk
@@ -86,6 +85,8 @@ class Billing:
         :type used: int
         :param frozen_scene: The param of the Billing
         :type frozen_scene: str
+        :param is_multi_az: The param of the Billing
+        :type is_multi_az: bool
         """
         
         
@@ -104,6 +105,7 @@ class Billing:
         self._storage_unit = None
         self._used = None
         self._frozen_scene = None
+        self._is_multi_az = None
         self.discriminator = None
 
         self.allocated = allocated
@@ -126,6 +128,8 @@ class Billing:
         self.used = used
         if frozen_scene is not None:
             self.frozen_scene = frozen_scene
+        if is_multi_az is not None:
+            self.is_multi_az = is_multi_az
 
     @property
     def allocated(self):
@@ -378,6 +382,24 @@ class Billing:
         :type frozen_scene: str
         """
         self._frozen_scene = frozen_scene
+
+    @property
+    def is_multi_az(self):
+        """Gets the is_multi_az of this Billing.
+
+        :return: The is_multi_az of this Billing.
+        :rtype: bool
+        """
+        return self._is_multi_az
+
+    @is_multi_az.setter
+    def is_multi_az(self, is_multi_az):
+        """Sets the is_multi_az of this Billing.
+
+        :param is_multi_az: The is_multi_az of this Billing.
+        :type is_multi_az: bool
+        """
+        self._is_multi_az = is_multi_az
 
     def to_dict(self):
         """Returns the model properties as a dict"""

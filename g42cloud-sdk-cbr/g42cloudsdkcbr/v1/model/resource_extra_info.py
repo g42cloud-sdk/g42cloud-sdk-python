@@ -1,9 +1,6 @@
 # coding: utf-8
 
-import re
 import six
-
-
 
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
@@ -20,29 +17,36 @@ class ResourceExtraInfo:
     sensitive_list = []
 
     openapi_types = {
-        'exclude_volumes': 'list[str]'
+        'exclude_volumes': 'list[str]',
+        'include_volumes': 'list[ResourceExtraInfoIncludeVolumes]'
     }
 
     attribute_map = {
-        'exclude_volumes': 'exclude_volumes'
+        'exclude_volumes': 'exclude_volumes',
+        'include_volumes': 'include_volumes'
     }
 
-    def __init__(self, exclude_volumes=None):
+    def __init__(self, exclude_volumes=None, include_volumes=None):
         """ResourceExtraInfo
 
         The model defined in g42cloud sdk
 
         :param exclude_volumes: The param of the ResourceExtraInfo
         :type exclude_volumes: list[str]
+        :param include_volumes: The param of the ResourceExtraInfo
+        :type include_volumes: list[:class:`g42cloudsdkcbr.v1.ResourceExtraInfoIncludeVolumes`]
         """
         
         
 
         self._exclude_volumes = None
+        self._include_volumes = None
         self.discriminator = None
 
         if exclude_volumes is not None:
             self.exclude_volumes = exclude_volumes
+        if include_volumes is not None:
+            self.include_volumes = include_volumes
 
     @property
     def exclude_volumes(self):
@@ -61,6 +65,24 @@ class ResourceExtraInfo:
         :type exclude_volumes: list[str]
         """
         self._exclude_volumes = exclude_volumes
+
+    @property
+    def include_volumes(self):
+        """Gets the include_volumes of this ResourceExtraInfo.
+
+        :return: The include_volumes of this ResourceExtraInfo.
+        :rtype: list[:class:`g42cloudsdkcbr.v1.ResourceExtraInfoIncludeVolumes`]
+        """
+        return self._include_volumes
+
+    @include_volumes.setter
+    def include_volumes(self, include_volumes):
+        """Sets the include_volumes of this ResourceExtraInfo.
+
+        :param include_volumes: The include_volumes of this ResourceExtraInfo.
+        :type include_volumes: list[:class:`g42cloudsdkcbr.v1.ResourceExtraInfoIncludeVolumes`]
+        """
+        self._include_volumes = include_volumes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

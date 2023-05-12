@@ -2,35 +2,17 @@
 
 from __future__ import absolute_import
 
-import datetime
-import re
 import importlib
 
-import six
-
 from g42cloudsdkcore.client import Client, ClientBuilder
-from g42cloudsdkcore.exceptions import exceptions
 from g42cloudsdkcore.utils import http_utils
 from g42cloudsdkcore.sdk_stream_request import SdkStreamRequest
 
 
 class CtsAsyncClient(Client):
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int if six.PY3 else long,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': datetime.date,
-        'datetime': datetime.datetime,
-        'object': object,
-    }
-
     def __init__(self):
         super(CtsAsyncClient, self).__init__()
         self.model_package = importlib.import_module("g42cloudsdkcts.v3.model")
-        self.preset_headers = {'User-Agent': 'G42Cloud-SDK-Python'}
 
     @classmethod
     def new_builder(cls, clazz=None):
@@ -49,14 +31,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.CreateNotificationRequest`
         :rtype: :class:`g42cloudsdkcts.v3.CreateNotificationResponse`
         """
-        return self.create_notification_with_http_info(request)
+        return self._create_notification_with_http_info(request)
 
-    def create_notification_with_http_info(self, request):
-        all_params = ['create_notification_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_notification_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -105,14 +83,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.CreateTrackerRequest`
         :rtype: :class:`g42cloudsdkcts.v3.CreateTrackerResponse`
         """
-        return self.create_tracker_with_http_info(request)
+        return self._create_tracker_with_http_info(request)
 
-    def create_tracker_with_http_info(self, request):
-        all_params = ['create_tracker_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _create_tracker_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -161,14 +135,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.DeleteNotificationRequest`
         :rtype: :class:`g42cloudsdkcts.v3.DeleteNotificationResponse`
         """
-        return self.delete_notification_with_http_info(request)
+        return self._delete_notification_with_http_info(request)
 
-    def delete_notification_with_http_info(self, request):
-        all_params = ['notification_id']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_notification_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -217,14 +187,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.DeleteTrackerRequest`
         :rtype: :class:`g42cloudsdkcts.v3.DeleteTrackerResponse`
         """
-        return self.delete_tracker_with_http_info(request)
+        return self._delete_tracker_with_http_info(request)
 
-    def delete_tracker_with_http_info(self, request):
-        all_params = ['tracker_name', 'tracker_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _delete_tracker_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -275,14 +241,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.ListNotificationsRequest`
         :rtype: :class:`g42cloudsdkcts.v3.ListNotificationsResponse`
         """
-        return self.list_notifications_with_http_info(request)
+        return self._list_notifications_with_http_info(request)
 
-    def list_notifications_with_http_info(self, request):
-        all_params = ['notification_type', 'notification_name']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_notifications_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -333,14 +295,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.ListQuotasRequest`
         :rtype: :class:`g42cloudsdkcts.v3.ListQuotasResponse`
         """
-        return self.list_quotas_with_http_info(request)
+        return self._list_quotas_with_http_info(request)
 
-    def list_quotas_with_http_info(self, request):
-        all_params = []
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_quotas_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -387,14 +345,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.ListTracesRequest`
         :rtype: :class:`g42cloudsdkcts.v3.ListTracesResponse`
         """
-        return self.list_traces_with_http_info(request)
+        return self._list_traces_with_http_info(request)
 
-    def list_traces_with_http_info(self, request):
-        all_params = ['trace_type', 'limit', '_from', 'next', 'to', 'tracker_name', 'service_type', 'user', 'resource_id', 'resource_name', 'resource_type', 'trace_id', 'trace_name', 'trace_rating']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_traces_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -469,14 +423,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.ListTrackersRequest`
         :rtype: :class:`g42cloudsdkcts.v3.ListTrackersResponse`
         """
-        return self.list_trackers_with_http_info(request)
+        return self._list_trackers_with_http_info(request)
 
-    def list_trackers_with_http_info(self, request):
-        all_params = ['tracker_name', 'tracker_type']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _list_trackers_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -527,14 +477,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.UpdateNotificationRequest`
         :rtype: :class:`g42cloudsdkcts.v3.UpdateNotificationResponse`
         """
-        return self.update_notification_with_http_info(request)
+        return self._update_notification_with_http_info(request)
 
-    def update_notification_with_http_info(self, request):
-        all_params = ['update_notification_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_notification_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
@@ -583,14 +529,10 @@ class CtsAsyncClient(Client):
         :type request: :class:`g42cloudsdkcts.v3.UpdateTrackerRequest`
         :rtype: :class:`g42cloudsdkcts.v3.UpdateTrackerResponse`
         """
-        return self.update_tracker_with_http_info(request)
+        return self._update_tracker_with_http_info(request)
 
-    def update_tracker_with_http_info(self, request):
-        all_params = ['update_tracker_request_body']
-        local_var_params = {}
-        for attr in request.attribute_map:
-            if hasattr(request, attr):
-                local_var_params[attr] = getattr(request, attr)
+    def _update_tracker_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
 
         cname = None
 
