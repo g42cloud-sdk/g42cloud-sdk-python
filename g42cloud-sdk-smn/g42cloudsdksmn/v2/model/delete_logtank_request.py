@@ -5,7 +5,7 @@ import six
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class CreateResourceTagRequestBodyTag:
+class DeleteLogtankRequest:
 
     """
     Attributes:
@@ -17,70 +17,70 @@ class CreateResourceTagRequestBodyTag:
     sensitive_list = []
 
     openapi_types = {
-        'key': 'str',
-        'value': 'str'
+        'topic_urn': 'str',
+        'logtank_id': 'str'
     }
 
     attribute_map = {
-        'key': 'key',
-        'value': 'value'
+        'topic_urn': 'topic_urn',
+        'logtank_id': 'logtank_id'
     }
 
-    def __init__(self, key=None, value=None):
-        """CreateResourceTagRequestBodyTag
+    def __init__(self, topic_urn=None, logtank_id=None):
+        """DeleteLogtankRequest
 
         The model defined in g42cloud sdk
 
-        :param key: The param of the CreateResourceTagRequestBodyTag
-        :type key: str
-        :param value: The param of the CreateResourceTagRequestBodyTag
-        :type value: str
+        :param topic_urn: The param of the DeleteLogtankRequest
+        :type topic_urn: str
+        :param logtank_id: The param of the DeleteLogtankRequest
+        :type logtank_id: str
         """
         
         
 
-        self._key = None
-        self._value = None
+        self._topic_urn = None
+        self._logtank_id = None
         self.discriminator = None
 
-        self.key = key
-        self.value = value
+        self.topic_urn = topic_urn
+        self.logtank_id = logtank_id
 
     @property
-    def key(self):
-        """Gets the key of this CreateResourceTagRequestBodyTag.
+    def topic_urn(self):
+        """Gets the topic_urn of this DeleteLogtankRequest.
 
-        :return: The key of this CreateResourceTagRequestBodyTag.
+        :return: The topic_urn of this DeleteLogtankRequest.
         :rtype: str
         """
-        return self._key
+        return self._topic_urn
 
-    @key.setter
-    def key(self, key):
-        """Sets the key of this CreateResourceTagRequestBodyTag.
+    @topic_urn.setter
+    def topic_urn(self, topic_urn):
+        """Sets the topic_urn of this DeleteLogtankRequest.
 
-        :param key: The key of this CreateResourceTagRequestBodyTag.
-        :type key: str
+        :param topic_urn: The topic_urn of this DeleteLogtankRequest.
+        :type topic_urn: str
         """
-        self._key = key
+        self._topic_urn = topic_urn
 
     @property
-    def value(self):
-        """Gets the value of this CreateResourceTagRequestBodyTag.
+    def logtank_id(self):
+        """Gets the logtank_id of this DeleteLogtankRequest.
 
-        :return: The value of this CreateResourceTagRequestBodyTag.
+        :return: The logtank_id of this DeleteLogtankRequest.
         :rtype: str
         """
-        return self._value
+        return self._logtank_id
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this CreateResourceTagRequestBodyTag.
+    @logtank_id.setter
+    def logtank_id(self, logtank_id):
+        """Sets the logtank_id of this DeleteLogtankRequest.
 
-        :param value: The value of this CreateResourceTagRequestBodyTag.
-        :type value: str
+        :param logtank_id: The logtank_id of this DeleteLogtankRequest.
+        :type logtank_id: str
         """
-        self._value = value
+        self._logtank_id = logtank_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +124,7 @@ class CreateResourceTagRequestBodyTag:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, CreateResourceTagRequestBodyTag):
+        if not isinstance(other, DeleteLogtankRequest):
             return False
 
         return self.__dict__ == other.__dict__

@@ -25,7 +25,8 @@ class ListTopicDetailsResponse(SdkResponse):
         'topic_urn': 'str',
         'display_name': 'str',
         'request_id': 'str',
-        'enterprise_project_id': 'str'
+        'enterprise_project_id': 'str',
+        'topic_id': 'str'
     }
 
     attribute_map = {
@@ -36,10 +37,11 @@ class ListTopicDetailsResponse(SdkResponse):
         'topic_urn': 'topic_urn',
         'display_name': 'display_name',
         'request_id': 'request_id',
-        'enterprise_project_id': 'enterprise_project_id'
+        'enterprise_project_id': 'enterprise_project_id',
+        'topic_id': 'topic_id'
     }
 
-    def __init__(self, update_time=None, push_policy=None, create_time=None, name=None, topic_urn=None, display_name=None, request_id=None, enterprise_project_id=None):
+    def __init__(self, update_time=None, push_policy=None, create_time=None, name=None, topic_urn=None, display_name=None, request_id=None, enterprise_project_id=None, topic_id=None):
         """ListTopicDetailsResponse
 
         The model defined in g42cloud sdk
@@ -60,6 +62,8 @@ class ListTopicDetailsResponse(SdkResponse):
         :type request_id: str
         :param enterprise_project_id: The param of the ListTopicDetailsResponse
         :type enterprise_project_id: str
+        :param topic_id: The param of the ListTopicDetailsResponse
+        :type topic_id: str
         """
         
         super(ListTopicDetailsResponse, self).__init__()
@@ -72,6 +76,7 @@ class ListTopicDetailsResponse(SdkResponse):
         self._display_name = None
         self._request_id = None
         self._enterprise_project_id = None
+        self._topic_id = None
         self.discriminator = None
 
         if update_time is not None:
@@ -90,6 +95,8 @@ class ListTopicDetailsResponse(SdkResponse):
             self.request_id = request_id
         if enterprise_project_id is not None:
             self.enterprise_project_id = enterprise_project_id
+        if topic_id is not None:
+            self.topic_id = topic_id
 
     @property
     def update_time(self):
@@ -234,6 +241,24 @@ class ListTopicDetailsResponse(SdkResponse):
         :type enterprise_project_id: str
         """
         self._enterprise_project_id = enterprise_project_id
+
+    @property
+    def topic_id(self):
+        """Gets the topic_id of this ListTopicDetailsResponse.
+
+        :return: The topic_id of this ListTopicDetailsResponse.
+        :rtype: str
+        """
+        return self._topic_id
+
+    @topic_id.setter
+    def topic_id(self, topic_id):
+        """Sets the topic_id of this ListTopicDetailsResponse.
+
+        :param topic_id: The topic_id of this ListTopicDetailsResponse.
+        :type topic_id: str
+        """
+        self._topic_id = topic_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

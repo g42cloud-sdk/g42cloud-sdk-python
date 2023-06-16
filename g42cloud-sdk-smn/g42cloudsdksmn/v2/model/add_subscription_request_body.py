@@ -19,16 +19,18 @@ class AddSubscriptionRequestBody:
     openapi_types = {
         'protocol': 'str',
         'endpoint': 'str',
-        'remark': 'str'
+        'remark': 'str',
+        'extension': 'SubscriptionExtension'
     }
 
     attribute_map = {
         'protocol': 'protocol',
         'endpoint': 'endpoint',
-        'remark': 'remark'
+        'remark': 'remark',
+        'extension': 'extension'
     }
 
-    def __init__(self, protocol=None, endpoint=None, remark=None):
+    def __init__(self, protocol=None, endpoint=None, remark=None, extension=None):
         """AddSubscriptionRequestBody
 
         The model defined in g42cloud sdk
@@ -39,6 +41,8 @@ class AddSubscriptionRequestBody:
         :type endpoint: str
         :param remark: The param of the AddSubscriptionRequestBody
         :type remark: str
+        :param extension: The param of the AddSubscriptionRequestBody
+        :type extension: :class:`g42cloudsdksmn.v2.SubscriptionExtension`
         """
         
         
@@ -46,12 +50,15 @@ class AddSubscriptionRequestBody:
         self._protocol = None
         self._endpoint = None
         self._remark = None
+        self._extension = None
         self.discriminator = None
 
         self.protocol = protocol
         self.endpoint = endpoint
         if remark is not None:
             self.remark = remark
+        if extension is not None:
+            self.extension = extension
 
     @property
     def protocol(self):
@@ -106,6 +113,24 @@ class AddSubscriptionRequestBody:
         :type remark: str
         """
         self._remark = remark
+
+    @property
+    def extension(self):
+        """Gets the extension of this AddSubscriptionRequestBody.
+
+        :return: The extension of this AddSubscriptionRequestBody.
+        :rtype: :class:`g42cloudsdksmn.v2.SubscriptionExtension`
+        """
+        return self._extension
+
+    @extension.setter
+    def extension(self, extension):
+        """Sets the extension of this AddSubscriptionRequestBody.
+
+        :param extension: The extension of this AddSubscriptionRequestBody.
+        :type extension: :class:`g42cloudsdksmn.v2.SubscriptionExtension`
+        """
+        self._extension = extension
 
     def to_dict(self):
         """Returns the model properties as a dict"""

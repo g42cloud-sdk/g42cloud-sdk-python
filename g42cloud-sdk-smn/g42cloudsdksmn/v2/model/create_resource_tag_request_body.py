@@ -17,7 +17,7 @@ class CreateResourceTagRequestBody:
     sensitive_list = []
 
     openapi_types = {
-        'tag': 'CreateResourceTagRequestBodyTag'
+        'tag': 'ResourceTag'
     }
 
     attribute_map = {
@@ -30,7 +30,7 @@ class CreateResourceTagRequestBody:
         The model defined in g42cloud sdk
 
         :param tag: The param of the CreateResourceTagRequestBody
-        :type tag: :class:`g42cloudsdksmn.v2.CreateResourceTagRequestBodyTag`
+        :type tag: :class:`g42cloudsdksmn.v2.ResourceTag`
         """
         
         
@@ -45,7 +45,7 @@ class CreateResourceTagRequestBody:
         """Gets the tag of this CreateResourceTagRequestBody.
 
         :return: The tag of this CreateResourceTagRequestBody.
-        :rtype: :class:`g42cloudsdksmn.v2.CreateResourceTagRequestBodyTag`
+        :rtype: :class:`g42cloudsdksmn.v2.ResourceTag`
         """
         return self._tag
 
@@ -54,7 +54,7 @@ class CreateResourceTagRequestBody:
         """Sets the tag of this CreateResourceTagRequestBody.
 
         :param tag: The tag of this CreateResourceTagRequestBody.
-        :type tag: :class:`g42cloudsdksmn.v2.CreateResourceTagRequestBodyTag`
+        :type tag: :class:`g42cloudsdksmn.v2.ResourceTag`
         """
         self._tag = tag
 

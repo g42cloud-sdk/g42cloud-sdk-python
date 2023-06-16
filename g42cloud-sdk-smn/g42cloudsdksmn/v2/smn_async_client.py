@@ -186,6 +186,60 @@ class SmnAsyncClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
+    def create_logtank_async(self, request):
+        """
+
+        :param request: Request instance for CreateLogtank
+        :type request: :class:`g42cloudsdksmn.v2.CreateLogtankRequest`
+        :rtype: :class:`g42cloudsdksmn.v2.CreateLogtankResponse`
+        """
+        return self._create_logtank_with_http_info(request)
+
+    def _create_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'topic_urn' in local_var_params:
+            path_params['topic_urn'] = local_var_params['topic_urn']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json;charset=UTF-8'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2/{project_id}/notifications/topics/{topic_urn}/logtanks',
+            method='POST',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='CreateLogtankResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
     def create_message_template_async(self, request):
         """
 
@@ -341,6 +395,60 @@ class SmnAsyncClient(Client):
             post_params=form_params,
             cname=cname,
             response_type='CreateTopicResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
+    def delete_logtank_async(self, request):
+        """
+
+        :param request: Request instance for DeleteLogtank
+        :type request: :class:`g42cloudsdksmn.v2.DeleteLogtankRequest`
+        :rtype: :class:`g42cloudsdksmn.v2.DeleteLogtankResponse`
+        """
+        return self._delete_logtank_with_http_info(request)
+
+    def _delete_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'topic_urn' in local_var_params:
+            path_params['topic_urn'] = local_var_params['topic_urn']
+        if 'logtank_id' in local_var_params:
+            path_params['logtank_id'] = local_var_params['logtank_id']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2/{project_id}/notifications/topics/{topic_urn}/logtanks/{logtank_id}',
+            method='DELETE',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='DeleteLogtankResponse',
             response_headers=response_headers,
             auth_settings=auth_settings,
             collection_formats=collection_formats,
@@ -607,6 +715,58 @@ class SmnAsyncClient(Client):
             post_params=form_params,
             cname=cname,
             response_type='DeleteTopicAttributesResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
+    def list_logtank_async(self, request):
+        """
+
+        :param request: Request instance for ListLogtank
+        :type request: :class:`g42cloudsdksmn.v2.ListLogtankRequest`
+        :rtype: :class:`g42cloudsdksmn.v2.ListLogtankResponse`
+        """
+        return self._list_logtank_with_http_info(request)
+
+    def _list_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'topic_urn' in local_var_params:
+            path_params['topic_urn'] = local_var_params['topic_urn']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2/{project_id}/notifications/topics/{topic_urn}/logtanks',
+            method='GET',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='ListLogtankResponse',
             response_headers=response_headers,
             auth_settings=auth_settings,
             collection_formats=collection_formats,
@@ -1133,6 +1293,8 @@ class SmnAsyncClient(Client):
             query_params.append(('name', local_var_params['name']))
         if 'fuzzy_name' in local_var_params:
             query_params.append(('fuzzy_name', local_var_params['fuzzy_name']))
+        if 'topic_id' in local_var_params:
+            query_params.append(('topic_id', local_var_params['topic_id']))
 
         header_params = {}
 
@@ -1181,8 +1343,6 @@ class SmnAsyncClient(Client):
         collection_formats = {}
 
         path_params = {}
-        if 'api_version' in local_var_params:
-            path_params['api_version'] = local_var_params['api_version']
 
         query_params = []
 
@@ -1202,7 +1362,7 @@ class SmnAsyncClient(Client):
         auth_settings = []
 
         return self.call_api(
-            resource_path='/{api_version}',
+            resource_path='/v2',
             method='GET',
             path_params=path_params,
             query_params=query_params,
@@ -1320,6 +1480,62 @@ class SmnAsyncClient(Client):
             collection_formats=collection_formats,
             request_type=request.__class__.__name__)
 
+    def update_logtank_async(self, request):
+        """
+
+        :param request: Request instance for UpdateLogtank
+        :type request: :class:`g42cloudsdksmn.v2.UpdateLogtankRequest`
+        :rtype: :class:`g42cloudsdksmn.v2.UpdateLogtankResponse`
+        """
+        return self._update_logtank_with_http_info(request)
+
+    def _update_logtank_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'topic_urn' in local_var_params:
+            path_params['topic_urn'] = local_var_params['topic_urn']
+        if 'logtank_id' in local_var_params:
+            path_params['logtank_id'] = local_var_params['logtank_id']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json;charset=UTF-8'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2/{project_id}/notifications/topics/{topic_urn}/logtanks/{logtank_id}',
+            method='PUT',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='UpdateLogtankResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
     def update_message_template_async(self, request):
         """
 
@@ -1369,6 +1585,62 @@ class SmnAsyncClient(Client):
             post_params=form_params,
             cname=cname,
             response_type='UpdateMessageTemplateResponse',
+            response_headers=response_headers,
+            auth_settings=auth_settings,
+            collection_formats=collection_formats,
+            request_type=request.__class__.__name__)
+
+    def update_subscription_async(self, request):
+        """
+
+        :param request: Request instance for UpdateSubscription
+        :type request: :class:`g42cloudsdksmn.v2.UpdateSubscriptionRequest`
+        :rtype: :class:`g42cloudsdksmn.v2.UpdateSubscriptionResponse`
+        """
+        return self._update_subscription_with_http_info(request)
+
+    def _update_subscription_with_http_info(self, request):
+        local_var_params = {attr: getattr(request, attr) for attr in request.attribute_map if hasattr(request, attr)}
+
+        cname = None
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'topic_urn' in local_var_params:
+            path_params['topic_urn'] = local_var_params['topic_urn']
+        if 'subscription_urn' in local_var_params:
+            path_params['subscription_urn'] = local_var_params['subscription_urn']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        if isinstance(request, SdkStreamRequest):
+            body_params = request.get_file_stream()
+
+        response_headers = []
+
+        header_params['Content-Type'] = http_utils.select_header_content_type(
+            ['application/json;charset=UTF-8'])
+
+        auth_settings = []
+
+        return self.call_api(
+            resource_path='/v2/{project_id}/notifications/topics/{topic_urn}/subscriptions/{subscription_urn}',
+            method='PUT',
+            path_params=path_params,
+            query_params=query_params,
+            header_params=header_params,
+            body=body_params,
+            post_params=form_params,
+            cname=cname,
+            response_type='UpdateSubscriptionResponse',
             response_headers=response_headers,
             auth_settings=auth_settings,
             collection_formats=collection_formats,

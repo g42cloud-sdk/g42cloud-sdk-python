@@ -26,7 +26,8 @@ class PrePaidServerDataVolume:
         'cluster_type': 'str',
         'cluster_id': 'str',
         'metadata': 'PrePaidServerDataVolumeMetadata',
-        'data_image_id': 'str'
+        'data_image_id': 'str',
+        'delete_on_termination': 'bool'
     }
 
     attribute_map = {
@@ -39,10 +40,11 @@ class PrePaidServerDataVolume:
         'cluster_type': 'cluster_type',
         'cluster_id': 'cluster_id',
         'metadata': 'metadata',
-        'data_image_id': 'data_image_id'
+        'data_image_id': 'data_image_id',
+        'delete_on_termination': 'delete_on_termination'
     }
 
-    def __init__(self, volumetype=None, size=None, shareable=None, multiattach=None, hwpassthrough=None, extendparam=None, cluster_type=None, cluster_id=None, metadata=None, data_image_id=None):
+    def __init__(self, volumetype=None, size=None, shareable=None, multiattach=None, hwpassthrough=None, extendparam=None, cluster_type=None, cluster_id=None, metadata=None, data_image_id=None, delete_on_termination=None):
         """PrePaidServerDataVolume
 
         The model defined in g42cloud sdk
@@ -67,6 +69,8 @@ class PrePaidServerDataVolume:
         :type metadata: :class:`g42cloudsdkecs.v2.PrePaidServerDataVolumeMetadata`
         :param data_image_id: The param of the PrePaidServerDataVolume
         :type data_image_id: str
+        :param delete_on_termination: The param of the PrePaidServerDataVolume
+        :type delete_on_termination: bool
         """
         
         
@@ -81,6 +85,7 @@ class PrePaidServerDataVolume:
         self._cluster_id = None
         self._metadata = None
         self._data_image_id = None
+        self._delete_on_termination = None
         self.discriminator = None
 
         self.volumetype = volumetype
@@ -101,6 +106,8 @@ class PrePaidServerDataVolume:
             self.metadata = metadata
         if data_image_id is not None:
             self.data_image_id = data_image_id
+        if delete_on_termination is not None:
+            self.delete_on_termination = delete_on_termination
 
     @property
     def volumetype(self):
@@ -281,6 +288,24 @@ class PrePaidServerDataVolume:
         :type data_image_id: str
         """
         self._data_image_id = data_image_id
+
+    @property
+    def delete_on_termination(self):
+        """Gets the delete_on_termination of this PrePaidServerDataVolume.
+
+        :return: The delete_on_termination of this PrePaidServerDataVolume.
+        :rtype: bool
+        """
+        return self._delete_on_termination
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, delete_on_termination):
+        """Sets the delete_on_termination of this PrePaidServerDataVolume.
+
+        :param delete_on_termination: The delete_on_termination of this PrePaidServerDataVolume.
+        :type delete_on_termination: bool
+        """
+        self._delete_on_termination = delete_on_termination
 
     def to_dict(self):
         """Returns the model properties as a dict"""

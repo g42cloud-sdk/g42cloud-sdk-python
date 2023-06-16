@@ -5,7 +5,7 @@ import six
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class TopicAttribute:
+class UpdateLogtankRequestBody:
 
     """
     Attributes:
@@ -17,72 +17,70 @@ class TopicAttribute:
     sensitive_list = []
 
     openapi_types = {
-        'access_policy': 'AccessPolicy',
-        'introduction': 'str'
+        'log_group_id': 'str',
+        'log_stream_id': 'str'
     }
 
     attribute_map = {
-        'access_policy': 'access_policy',
-        'introduction': 'introduction'
+        'log_group_id': 'log_group_id',
+        'log_stream_id': 'log_stream_id'
     }
 
-    def __init__(self, access_policy=None, introduction=None):
-        """TopicAttribute
+    def __init__(self, log_group_id=None, log_stream_id=None):
+        """UpdateLogtankRequestBody
 
         The model defined in g42cloud sdk
 
-        :param access_policy: The param of the TopicAttribute
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        :param introduction: The param of the TopicAttribute
-        :type introduction: str
+        :param log_group_id: The param of the UpdateLogtankRequestBody
+        :type log_group_id: str
+        :param log_stream_id: The param of the UpdateLogtankRequestBody
+        :type log_stream_id: str
         """
         
         
 
-        self._access_policy = None
-        self._introduction = None
+        self._log_group_id = None
+        self._log_stream_id = None
         self.discriminator = None
 
-        if access_policy is not None:
-            self.access_policy = access_policy
-        if introduction is not None:
-            self.introduction = introduction
+        self.log_group_id = log_group_id
+        self.log_stream_id = log_stream_id
 
     @property
-    def access_policy(self):
-        """Gets the access_policy of this TopicAttribute.
+    def log_group_id(self):
+        """Gets the log_group_id of this UpdateLogtankRequestBody.
 
-        :return: The access_policy of this TopicAttribute.
-        :rtype: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        return self._access_policy
-
-    @access_policy.setter
-    def access_policy(self, access_policy):
-        """Sets the access_policy of this TopicAttribute.
-
-        :param access_policy: The access_policy of this TopicAttribute.
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        self._access_policy = access_policy
-
-    @property
-    def introduction(self):
-        """Gets the introduction of this TopicAttribute.
-
-        :return: The introduction of this TopicAttribute.
+        :return: The log_group_id of this UpdateLogtankRequestBody.
         :rtype: str
         """
-        return self._introduction
+        return self._log_group_id
 
-    @introduction.setter
-    def introduction(self, introduction):
-        """Sets the introduction of this TopicAttribute.
+    @log_group_id.setter
+    def log_group_id(self, log_group_id):
+        """Sets the log_group_id of this UpdateLogtankRequestBody.
 
-        :param introduction: The introduction of this TopicAttribute.
-        :type introduction: str
+        :param log_group_id: The log_group_id of this UpdateLogtankRequestBody.
+        :type log_group_id: str
         """
-        self._introduction = introduction
+        self._log_group_id = log_group_id
+
+    @property
+    def log_stream_id(self):
+        """Gets the log_stream_id of this UpdateLogtankRequestBody.
+
+        :return: The log_stream_id of this UpdateLogtankRequestBody.
+        :rtype: str
+        """
+        return self._log_stream_id
+
+    @log_stream_id.setter
+    def log_stream_id(self, log_stream_id):
+        """Sets the log_stream_id of this UpdateLogtankRequestBody.
+
+        :param log_stream_id: The log_stream_id of this UpdateLogtankRequestBody.
+        :type log_stream_id: str
+        """
+        self._log_stream_id = log_stream_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -126,7 +124,7 @@ class TopicAttribute:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, TopicAttribute):
+        if not isinstance(other, UpdateLogtankRequestBody):
             return False
 
         return self.__dict__ == other.__dict__

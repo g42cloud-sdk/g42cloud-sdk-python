@@ -18,7 +18,7 @@ class ListVersionResponse(SdkResponse):
     sensitive_list = []
 
     openapi_types = {
-        'version': 'object'
+        'version': 'VersionItem'
     }
 
     attribute_map = {
@@ -31,7 +31,7 @@ class ListVersionResponse(SdkResponse):
         The model defined in g42cloud sdk
 
         :param version: The param of the ListVersionResponse
-        :type version: object
+        :type version: :class:`g42cloudsdksmn.v2.VersionItem`
         """
         
         super(ListVersionResponse, self).__init__()
@@ -47,7 +47,7 @@ class ListVersionResponse(SdkResponse):
         """Gets the version of this ListVersionResponse.
 
         :return: The version of this ListVersionResponse.
-        :rtype: object
+        :rtype: :class:`g42cloudsdksmn.v2.VersionItem`
         """
         return self._version
 
@@ -56,7 +56,7 @@ class ListVersionResponse(SdkResponse):
         """Sets the version of this ListVersionResponse.
 
         :param version: The version of this ListVersionResponse.
-        :type version: object
+        :type version: :class:`g42cloudsdksmn.v2.VersionItem`
         """
         self._version = version
 

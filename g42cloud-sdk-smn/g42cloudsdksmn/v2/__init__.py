@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from g42cloudsdksmn.v2.smn_client import SmnClient
 from g42cloudsdksmn.v2.smn_async_client import SmnAsyncClient
 # import models into sdk package
+from g42cloudsdksmn.v2.model.access_policy import AccessPolicy
 from g42cloudsdksmn.v2.model.add_subscription_request import AddSubscriptionRequest
 from g42cloudsdksmn.v2.model.add_subscription_request_body import AddSubscriptionRequestBody
 from g42cloudsdksmn.v2.model.add_subscription_response import AddSubscriptionResponse
@@ -22,12 +23,14 @@ from g42cloudsdksmn.v2.model.create_application_endpoint_response import CreateA
 from g42cloudsdksmn.v2.model.create_application_request import CreateApplicationRequest
 from g42cloudsdksmn.v2.model.create_application_request_body import CreateApplicationRequestBody
 from g42cloudsdksmn.v2.model.create_application_response import CreateApplicationResponse
+from g42cloudsdksmn.v2.model.create_logtank_request import CreateLogtankRequest
+from g42cloudsdksmn.v2.model.create_logtank_request_body import CreateLogtankRequestBody
+from g42cloudsdksmn.v2.model.create_logtank_response import CreateLogtankResponse
 from g42cloudsdksmn.v2.model.create_message_template_request import CreateMessageTemplateRequest
 from g42cloudsdksmn.v2.model.create_message_template_request_body import CreateMessageTemplateRequestBody
 from g42cloudsdksmn.v2.model.create_message_template_response import CreateMessageTemplateResponse
 from g42cloudsdksmn.v2.model.create_resource_tag_request import CreateResourceTagRequest
 from g42cloudsdksmn.v2.model.create_resource_tag_request_body import CreateResourceTagRequestBody
-from g42cloudsdksmn.v2.model.create_resource_tag_request_body_tag import CreateResourceTagRequestBodyTag
 from g42cloudsdksmn.v2.model.create_resource_tag_response import CreateResourceTagResponse
 from g42cloudsdksmn.v2.model.create_topic_request import CreateTopicRequest
 from g42cloudsdksmn.v2.model.create_topic_request_body import CreateTopicRequestBody
@@ -36,6 +39,8 @@ from g42cloudsdksmn.v2.model.delete_application_endpoint_request import DeleteAp
 from g42cloudsdksmn.v2.model.delete_application_endpoint_response import DeleteApplicationEndpointResponse
 from g42cloudsdksmn.v2.model.delete_application_request import DeleteApplicationRequest
 from g42cloudsdksmn.v2.model.delete_application_response import DeleteApplicationResponse
+from g42cloudsdksmn.v2.model.delete_logtank_request import DeleteLogtankRequest
+from g42cloudsdksmn.v2.model.delete_logtank_response import DeleteLogtankResponse
 from g42cloudsdksmn.v2.model.delete_message_template_request import DeleteMessageTemplateRequest
 from g42cloudsdksmn.v2.model.delete_message_template_response import DeleteMessageTemplateResponse
 from g42cloudsdksmn.v2.model.delete_resource_tag_request import DeleteResourceTagRequest
@@ -58,6 +63,8 @@ from g42cloudsdksmn.v2.model.list_application_endpoints_response import ListAppl
 from g42cloudsdksmn.v2.model.list_applications_request import ListApplicationsRequest
 from g42cloudsdksmn.v2.model.list_applications_response import ListApplicationsResponse
 from g42cloudsdksmn.v2.model.list_instance_request_body import ListInstanceRequestBody
+from g42cloudsdksmn.v2.model.list_logtank_request import ListLogtankRequest
+from g42cloudsdksmn.v2.model.list_logtank_response import ListLogtankResponse
 from g42cloudsdksmn.v2.model.list_message_template_details_request import ListMessageTemplateDetailsRequest
 from g42cloudsdksmn.v2.model.list_message_template_details_response import ListMessageTemplateDetailsResponse
 from g42cloudsdksmn.v2.model.list_message_templates_request import ListMessageTemplatesRequest
@@ -84,6 +91,7 @@ from g42cloudsdksmn.v2.model.list_version_request import ListVersionRequest
 from g42cloudsdksmn.v2.model.list_version_response import ListVersionResponse
 from g42cloudsdksmn.v2.model.list_versions_request import ListVersionsRequest
 from g42cloudsdksmn.v2.model.list_versions_response import ListVersionsResponse
+from g42cloudsdksmn.v2.model.logtank_item import LogtankItem
 from g42cloudsdksmn.v2.model.message_template import MessageTemplate
 from g42cloudsdksmn.v2.model.publish_app_message_request import PublishAppMessageRequest
 from g42cloudsdksmn.v2.model.publish_app_message_request_body import PublishAppMessageRequestBody
@@ -95,6 +103,7 @@ from g42cloudsdksmn.v2.model.resource_detail import ResourceDetail
 from g42cloudsdksmn.v2.model.resource_tag import ResourceTag
 from g42cloudsdksmn.v2.model.resource_tags import ResourceTags
 from g42cloudsdksmn.v2.model.statement import Statement
+from g42cloudsdksmn.v2.model.subscription_extension import SubscriptionExtension
 from g42cloudsdksmn.v2.model.tag_match import TagMatch
 from g42cloudsdksmn.v2.model.tag_resource import TagResource
 from g42cloudsdksmn.v2.model.topic_attribute import TopicAttribute
@@ -104,9 +113,15 @@ from g42cloudsdksmn.v2.model.update_application_endpoint_response import UpdateA
 from g42cloudsdksmn.v2.model.update_application_request import UpdateApplicationRequest
 from g42cloudsdksmn.v2.model.update_application_request_body import UpdateApplicationRequestBody
 from g42cloudsdksmn.v2.model.update_application_response import UpdateApplicationResponse
+from g42cloudsdksmn.v2.model.update_logtank_request import UpdateLogtankRequest
+from g42cloudsdksmn.v2.model.update_logtank_request_body import UpdateLogtankRequestBody
+from g42cloudsdksmn.v2.model.update_logtank_response import UpdateLogtankResponse
 from g42cloudsdksmn.v2.model.update_message_template_request import UpdateMessageTemplateRequest
 from g42cloudsdksmn.v2.model.update_message_template_request_body import UpdateMessageTemplateRequestBody
 from g42cloudsdksmn.v2.model.update_message_template_response import UpdateMessageTemplateResponse
+from g42cloudsdksmn.v2.model.update_subscription_request import UpdateSubscriptionRequest
+from g42cloudsdksmn.v2.model.update_subscription_request_body import UpdateSubscriptionRequestBody
+from g42cloudsdksmn.v2.model.update_subscription_response import UpdateSubscriptionResponse
 from g42cloudsdksmn.v2.model.update_topic_attribute_request import UpdateTopicAttributeRequest
 from g42cloudsdksmn.v2.model.update_topic_attribute_request_body import UpdateTopicAttributeRequestBody
 from g42cloudsdksmn.v2.model.update_topic_attribute_response import UpdateTopicAttributeResponse

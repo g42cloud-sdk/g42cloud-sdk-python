@@ -2,11 +2,10 @@
 
 import six
 
-from g42cloudsdkcore.sdk_response import SdkResponse
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class CreateEngineResponse(SdkResponse):
+class UpdateLogtankRequest:
 
     """
     Attributes:
@@ -18,97 +17,95 @@ class CreateEngineResponse(SdkResponse):
     sensitive_list = []
 
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'job_id': 'int'
+        'topic_urn': 'str',
+        'logtank_id': 'str',
+        'body': 'UpdateLogtankRequestBody'
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'job_id': 'jobId'
+        'topic_urn': 'topic_urn',
+        'logtank_id': 'logtank_id',
+        'body': 'body'
     }
 
-    def __init__(self, id=None, name=None, job_id=None):
-        """CreateEngineResponse
+    def __init__(self, topic_urn=None, logtank_id=None, body=None):
+        """UpdateLogtankRequest
 
         The model defined in g42cloud sdk
 
-        :param id: The param of the CreateEngineResponse
-        :type id: str
-        :param name: The param of the CreateEngineResponse
-        :type name: str
-        :param job_id: The param of the CreateEngineResponse
-        :type job_id: int
+        :param topic_urn: The param of the UpdateLogtankRequest
+        :type topic_urn: str
+        :param logtank_id: The param of the UpdateLogtankRequest
+        :type logtank_id: str
+        :param body: The param of the UpdateLogtankRequest
+        :type body: :class:`g42cloudsdksmn.v2.UpdateLogtankRequestBody`
         """
         
-        super(CreateEngineResponse, self).__init__()
+        
 
-        self._id = None
-        self._name = None
-        self._job_id = None
+        self._topic_urn = None
+        self._logtank_id = None
+        self._body = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if job_id is not None:
-            self.job_id = job_id
+        self.topic_urn = topic_urn
+        self.logtank_id = logtank_id
+        if body is not None:
+            self.body = body
 
     @property
-    def id(self):
-        """Gets the id of this CreateEngineResponse.
+    def topic_urn(self):
+        """Gets the topic_urn of this UpdateLogtankRequest.
 
-        :return: The id of this CreateEngineResponse.
+        :return: The topic_urn of this UpdateLogtankRequest.
         :rtype: str
         """
-        return self._id
+        return self._topic_urn
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this CreateEngineResponse.
+    @topic_urn.setter
+    def topic_urn(self, topic_urn):
+        """Sets the topic_urn of this UpdateLogtankRequest.
 
-        :param id: The id of this CreateEngineResponse.
-        :type id: str
+        :param topic_urn: The topic_urn of this UpdateLogtankRequest.
+        :type topic_urn: str
         """
-        self._id = id
+        self._topic_urn = topic_urn
 
     @property
-    def name(self):
-        """Gets the name of this CreateEngineResponse.
+    def logtank_id(self):
+        """Gets the logtank_id of this UpdateLogtankRequest.
 
-        :return: The name of this CreateEngineResponse.
+        :return: The logtank_id of this UpdateLogtankRequest.
         :rtype: str
         """
-        return self._name
+        return self._logtank_id
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CreateEngineResponse.
+    @logtank_id.setter
+    def logtank_id(self, logtank_id):
+        """Sets the logtank_id of this UpdateLogtankRequest.
 
-        :param name: The name of this CreateEngineResponse.
-        :type name: str
+        :param logtank_id: The logtank_id of this UpdateLogtankRequest.
+        :type logtank_id: str
         """
-        self._name = name
+        self._logtank_id = logtank_id
 
     @property
-    def job_id(self):
-        """Gets the job_id of this CreateEngineResponse.
+    def body(self):
+        """Gets the body of this UpdateLogtankRequest.
 
-        :return: The job_id of this CreateEngineResponse.
-        :rtype: int
+        :return: The body of this UpdateLogtankRequest.
+        :rtype: :class:`g42cloudsdksmn.v2.UpdateLogtankRequestBody`
         """
-        return self._job_id
+        return self._body
 
-    @job_id.setter
-    def job_id(self, job_id):
-        """Sets the job_id of this CreateEngineResponse.
+    @body.setter
+    def body(self, body):
+        """Sets the body of this UpdateLogtankRequest.
 
-        :param job_id: The job_id of this CreateEngineResponse.
-        :type job_id: int
+        :param body: The body of this UpdateLogtankRequest.
+        :type body: :class:`g42cloudsdksmn.v2.UpdateLogtankRequestBody`
         """
-        self._job_id = job_id
+        self._body = body
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -152,7 +149,7 @@ class CreateEngineResponse(SdkResponse):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, CreateEngineResponse):
+        if not isinstance(other, UpdateLogtankRequest):
             return False
 
         return self.__dict__ == other.__dict__

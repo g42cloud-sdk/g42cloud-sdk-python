@@ -2,10 +2,11 @@
 
 import six
 
+from g42cloudsdkcore.sdk_response import SdkResponse
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class TopicAttribute:
+class UpdateSubscriptionResponse(SdkResponse):
 
     """
     Attributes:
@@ -17,72 +18,72 @@ class TopicAttribute:
     sensitive_list = []
 
     openapi_types = {
-        'access_policy': 'AccessPolicy',
-        'introduction': 'str'
+        'request_id': 'str',
+        'subscription_urn': 'str'
     }
 
     attribute_map = {
-        'access_policy': 'access_policy',
-        'introduction': 'introduction'
+        'request_id': 'request_id',
+        'subscription_urn': 'subscription_urn'
     }
 
-    def __init__(self, access_policy=None, introduction=None):
-        """TopicAttribute
+    def __init__(self, request_id=None, subscription_urn=None):
+        """UpdateSubscriptionResponse
 
         The model defined in g42cloud sdk
 
-        :param access_policy: The param of the TopicAttribute
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        :param introduction: The param of the TopicAttribute
-        :type introduction: str
+        :param request_id: The param of the UpdateSubscriptionResponse
+        :type request_id: str
+        :param subscription_urn: The param of the UpdateSubscriptionResponse
+        :type subscription_urn: str
         """
         
-        
+        super(UpdateSubscriptionResponse, self).__init__()
 
-        self._access_policy = None
-        self._introduction = None
+        self._request_id = None
+        self._subscription_urn = None
         self.discriminator = None
 
-        if access_policy is not None:
-            self.access_policy = access_policy
-        if introduction is not None:
-            self.introduction = introduction
+        if request_id is not None:
+            self.request_id = request_id
+        if subscription_urn is not None:
+            self.subscription_urn = subscription_urn
 
     @property
-    def access_policy(self):
-        """Gets the access_policy of this TopicAttribute.
+    def request_id(self):
+        """Gets the request_id of this UpdateSubscriptionResponse.
 
-        :return: The access_policy of this TopicAttribute.
-        :rtype: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        return self._access_policy
-
-    @access_policy.setter
-    def access_policy(self, access_policy):
-        """Sets the access_policy of this TopicAttribute.
-
-        :param access_policy: The access_policy of this TopicAttribute.
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        self._access_policy = access_policy
-
-    @property
-    def introduction(self):
-        """Gets the introduction of this TopicAttribute.
-
-        :return: The introduction of this TopicAttribute.
+        :return: The request_id of this UpdateSubscriptionResponse.
         :rtype: str
         """
-        return self._introduction
+        return self._request_id
 
-    @introduction.setter
-    def introduction(self, introduction):
-        """Sets the introduction of this TopicAttribute.
+    @request_id.setter
+    def request_id(self, request_id):
+        """Sets the request_id of this UpdateSubscriptionResponse.
 
-        :param introduction: The introduction of this TopicAttribute.
-        :type introduction: str
+        :param request_id: The request_id of this UpdateSubscriptionResponse.
+        :type request_id: str
         """
-        self._introduction = introduction
+        self._request_id = request_id
+
+    @property
+    def subscription_urn(self):
+        """Gets the subscription_urn of this UpdateSubscriptionResponse.
+
+        :return: The subscription_urn of this UpdateSubscriptionResponse.
+        :rtype: str
+        """
+        return self._subscription_urn
+
+    @subscription_urn.setter
+    def subscription_urn(self, subscription_urn):
+        """Sets the subscription_urn of this UpdateSubscriptionResponse.
+
+        :param subscription_urn: The subscription_urn of this UpdateSubscriptionResponse.
+        :type subscription_urn: str
+        """
+        self._subscription_urn = subscription_urn
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -126,7 +127,7 @@ class TopicAttribute:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, TopicAttribute):
+        if not isinstance(other, UpdateSubscriptionResponse):
             return False
 
         return self.__dict__ == other.__dict__

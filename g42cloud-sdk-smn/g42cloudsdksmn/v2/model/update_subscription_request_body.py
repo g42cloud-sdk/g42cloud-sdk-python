@@ -5,7 +5,7 @@ import six
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class TopicAttribute:
+class UpdateSubscriptionRequestBody:
 
     """
     Attributes:
@@ -17,72 +17,46 @@ class TopicAttribute:
     sensitive_list = []
 
     openapi_types = {
-        'access_policy': 'AccessPolicy',
-        'introduction': 'str'
+        'remark': 'str'
     }
 
     attribute_map = {
-        'access_policy': 'access_policy',
-        'introduction': 'introduction'
+        'remark': 'remark'
     }
 
-    def __init__(self, access_policy=None, introduction=None):
-        """TopicAttribute
+    def __init__(self, remark=None):
+        """UpdateSubscriptionRequestBody
 
         The model defined in g42cloud sdk
 
-        :param access_policy: The param of the TopicAttribute
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        :param introduction: The param of the TopicAttribute
-        :type introduction: str
+        :param remark: The param of the UpdateSubscriptionRequestBody
+        :type remark: str
         """
         
         
 
-        self._access_policy = None
-        self._introduction = None
+        self._remark = None
         self.discriminator = None
 
-        if access_policy is not None:
-            self.access_policy = access_policy
-        if introduction is not None:
-            self.introduction = introduction
+        self.remark = remark
 
     @property
-    def access_policy(self):
-        """Gets the access_policy of this TopicAttribute.
+    def remark(self):
+        """Gets the remark of this UpdateSubscriptionRequestBody.
 
-        :return: The access_policy of this TopicAttribute.
-        :rtype: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        return self._access_policy
-
-    @access_policy.setter
-    def access_policy(self, access_policy):
-        """Sets the access_policy of this TopicAttribute.
-
-        :param access_policy: The access_policy of this TopicAttribute.
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        self._access_policy = access_policy
-
-    @property
-    def introduction(self):
-        """Gets the introduction of this TopicAttribute.
-
-        :return: The introduction of this TopicAttribute.
+        :return: The remark of this UpdateSubscriptionRequestBody.
         :rtype: str
         """
-        return self._introduction
+        return self._remark
 
-    @introduction.setter
-    def introduction(self, introduction):
-        """Sets the introduction of this TopicAttribute.
+    @remark.setter
+    def remark(self, remark):
+        """Sets the remark of this UpdateSubscriptionRequestBody.
 
-        :param introduction: The introduction of this TopicAttribute.
-        :type introduction: str
+        :param remark: The remark of this UpdateSubscriptionRequestBody.
+        :type remark: str
         """
-        self._introduction = introduction
+        self._remark = remark
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -126,7 +100,7 @@ class TopicAttribute:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, TopicAttribute):
+        if not isinstance(other, UpdateSubscriptionRequestBody):
             return False
 
         return self.__dict__ == other.__dict__

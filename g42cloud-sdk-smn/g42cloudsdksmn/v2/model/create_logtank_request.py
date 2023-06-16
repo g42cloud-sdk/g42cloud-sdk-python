@@ -5,7 +5,7 @@ import six
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class TopicAttribute:
+class CreateLogtankRequest:
 
     """
     Attributes:
@@ -17,72 +17,71 @@ class TopicAttribute:
     sensitive_list = []
 
     openapi_types = {
-        'access_policy': 'AccessPolicy',
-        'introduction': 'str'
+        'topic_urn': 'str',
+        'body': 'CreateLogtankRequestBody'
     }
 
     attribute_map = {
-        'access_policy': 'access_policy',
-        'introduction': 'introduction'
+        'topic_urn': 'topic_urn',
+        'body': 'body'
     }
 
-    def __init__(self, access_policy=None, introduction=None):
-        """TopicAttribute
+    def __init__(self, topic_urn=None, body=None):
+        """CreateLogtankRequest
 
         The model defined in g42cloud sdk
 
-        :param access_policy: The param of the TopicAttribute
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        :param introduction: The param of the TopicAttribute
-        :type introduction: str
+        :param topic_urn: The param of the CreateLogtankRequest
+        :type topic_urn: str
+        :param body: The param of the CreateLogtankRequest
+        :type body: :class:`g42cloudsdksmn.v2.CreateLogtankRequestBody`
         """
         
         
 
-        self._access_policy = None
-        self._introduction = None
+        self._topic_urn = None
+        self._body = None
         self.discriminator = None
 
-        if access_policy is not None:
-            self.access_policy = access_policy
-        if introduction is not None:
-            self.introduction = introduction
+        self.topic_urn = topic_urn
+        if body is not None:
+            self.body = body
 
     @property
-    def access_policy(self):
-        """Gets the access_policy of this TopicAttribute.
+    def topic_urn(self):
+        """Gets the topic_urn of this CreateLogtankRequest.
 
-        :return: The access_policy of this TopicAttribute.
-        :rtype: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        return self._access_policy
-
-    @access_policy.setter
-    def access_policy(self, access_policy):
-        """Sets the access_policy of this TopicAttribute.
-
-        :param access_policy: The access_policy of this TopicAttribute.
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        self._access_policy = access_policy
-
-    @property
-    def introduction(self):
-        """Gets the introduction of this TopicAttribute.
-
-        :return: The introduction of this TopicAttribute.
+        :return: The topic_urn of this CreateLogtankRequest.
         :rtype: str
         """
-        return self._introduction
+        return self._topic_urn
 
-    @introduction.setter
-    def introduction(self, introduction):
-        """Sets the introduction of this TopicAttribute.
+    @topic_urn.setter
+    def topic_urn(self, topic_urn):
+        """Sets the topic_urn of this CreateLogtankRequest.
 
-        :param introduction: The introduction of this TopicAttribute.
-        :type introduction: str
+        :param topic_urn: The topic_urn of this CreateLogtankRequest.
+        :type topic_urn: str
         """
-        self._introduction = introduction
+        self._topic_urn = topic_urn
+
+    @property
+    def body(self):
+        """Gets the body of this CreateLogtankRequest.
+
+        :return: The body of this CreateLogtankRequest.
+        :rtype: :class:`g42cloudsdksmn.v2.CreateLogtankRequestBody`
+        """
+        return self._body
+
+    @body.setter
+    def body(self, body):
+        """Sets the body of this CreateLogtankRequest.
+
+        :param body: The body of this CreateLogtankRequest.
+        :type body: :class:`g42cloudsdksmn.v2.CreateLogtankRequestBody`
+        """
+        self._body = body
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -126,7 +125,7 @@ class TopicAttribute:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, TopicAttribute):
+        if not isinstance(other, CreateLogtankRequest):
             return False
 
         return self.__dict__ == other.__dict__

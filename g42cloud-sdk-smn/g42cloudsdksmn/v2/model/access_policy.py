@@ -5,7 +5,7 @@ import six
 from g42cloudsdkcore.utils.http_utils import sanitize_for_serialization
 
 
-class TopicAttribute:
+class AccessPolicy:
 
     """
     Attributes:
@@ -17,72 +17,94 @@ class TopicAttribute:
     sensitive_list = []
 
     openapi_types = {
-        'access_policy': 'AccessPolicy',
-        'introduction': 'str'
+        'version': 'str',
+        'id': 'str',
+        'statement': 'list[Statement]'
     }
 
     attribute_map = {
-        'access_policy': 'access_policy',
-        'introduction': 'introduction'
+        'version': 'Version',
+        'id': 'Id',
+        'statement': 'Statement'
     }
 
-    def __init__(self, access_policy=None, introduction=None):
-        """TopicAttribute
+    def __init__(self, version=None, id=None, statement=None):
+        """AccessPolicy
 
         The model defined in g42cloud sdk
 
-        :param access_policy: The param of the TopicAttribute
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        :param introduction: The param of the TopicAttribute
-        :type introduction: str
+        :param version: The param of the AccessPolicy
+        :type version: str
+        :param id: The param of the AccessPolicy
+        :type id: str
+        :param statement: The param of the AccessPolicy
+        :type statement: list[:class:`g42cloudsdksmn.v2.Statement`]
         """
         
         
 
-        self._access_policy = None
-        self._introduction = None
+        self._version = None
+        self._id = None
+        self._statement = None
         self.discriminator = None
 
-        if access_policy is not None:
-            self.access_policy = access_policy
-        if introduction is not None:
-            self.introduction = introduction
+        self.version = version
+        self.id = id
+        self.statement = statement
 
     @property
-    def access_policy(self):
-        """Gets the access_policy of this TopicAttribute.
+    def version(self):
+        """Gets the version of this AccessPolicy.
 
-        :return: The access_policy of this TopicAttribute.
-        :rtype: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        return self._access_policy
-
-    @access_policy.setter
-    def access_policy(self, access_policy):
-        """Sets the access_policy of this TopicAttribute.
-
-        :param access_policy: The access_policy of this TopicAttribute.
-        :type access_policy: :class:`g42cloudsdksmn.v2.AccessPolicy`
-        """
-        self._access_policy = access_policy
-
-    @property
-    def introduction(self):
-        """Gets the introduction of this TopicAttribute.
-
-        :return: The introduction of this TopicAttribute.
+        :return: The version of this AccessPolicy.
         :rtype: str
         """
-        return self._introduction
+        return self._version
 
-    @introduction.setter
-    def introduction(self, introduction):
-        """Sets the introduction of this TopicAttribute.
+    @version.setter
+    def version(self, version):
+        """Sets the version of this AccessPolicy.
 
-        :param introduction: The introduction of this TopicAttribute.
-        :type introduction: str
+        :param version: The version of this AccessPolicy.
+        :type version: str
         """
-        self._introduction = introduction
+        self._version = version
+
+    @property
+    def id(self):
+        """Gets the id of this AccessPolicy.
+
+        :return: The id of this AccessPolicy.
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this AccessPolicy.
+
+        :param id: The id of this AccessPolicy.
+        :type id: str
+        """
+        self._id = id
+
+    @property
+    def statement(self):
+        """Gets the statement of this AccessPolicy.
+
+        :return: The statement of this AccessPolicy.
+        :rtype: list[:class:`g42cloudsdksmn.v2.Statement`]
+        """
+        return self._statement
+
+    @statement.setter
+    def statement(self, statement):
+        """Sets the statement of this AccessPolicy.
+
+        :param statement: The statement of this AccessPolicy.
+        :type statement: list[:class:`g42cloudsdksmn.v2.Statement`]
+        """
+        self._statement = statement
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -126,7 +148,7 @@ class TopicAttribute:
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, TopicAttribute):
+        if not isinstance(other, AccessPolicy):
             return False
 
         return self.__dict__ == other.__dict__
