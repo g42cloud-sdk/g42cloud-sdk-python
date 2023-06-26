@@ -1,1 +1,1 @@
-g42cloudsdkcore >= 0.0.7-beta
+g42cloudsdkcore >= 0.0.8-beta

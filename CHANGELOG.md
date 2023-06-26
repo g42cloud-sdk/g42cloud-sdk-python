@@ -1,3 +1,14 @@
+# 0.0.8-beta 2023-06-26
+
+### G42Cloud SDK MPC
+
+- _Features_
+  - New Support MPC
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
 # 0.0.7-beta 2023-06-16
 
 ### G42Cloud SDK CCE
