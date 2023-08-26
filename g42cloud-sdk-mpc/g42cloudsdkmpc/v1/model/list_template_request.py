@@ -17,38 +17,22 @@ class ListTemplateRequest:
     sensitive_list = []
 
     openapi_types = {
-        'authorization': 'str',
-        'x_project_id': 'str',
-        'x_sdk_date': 'str',
-        'x_vod_project_id': 'str',
         'template_id': 'list[int]',
         'page': 'int',
         'size': 'int'
     }
 
     attribute_map = {
-        'authorization': 'Authorization',
-        'x_project_id': 'X-Project_Id',
-        'x_sdk_date': 'X-Sdk-Date',
-        'x_vod_project_id': 'x-vod-projectId',
         'template_id': 'template_id',
         'page': 'page',
         'size': 'size'
     }
 
-    def __init__(self, authorization=None, x_project_id=None, x_sdk_date=None, x_vod_project_id=None, template_id=None, page=None, size=None):
+    def __init__(self, template_id=None, page=None, size=None):
         """ListTemplateRequest
 
         The model defined in g42cloud sdk
 
-        :param authorization: The param of the ListTemplateRequest
-        :type authorization: str
-        :param x_project_id: The param of the ListTemplateRequest
-        :type x_project_id: str
-        :param x_sdk_date: The param of the ListTemplateRequest
-        :type x_sdk_date: str
-        :param x_vod_project_id: The param of the ListTemplateRequest
-        :type x_vod_project_id: str
         :param template_id: The param of the ListTemplateRequest
         :type template_id: list[int]
         :param page: The param of the ListTemplateRequest
@@ -59,101 +43,17 @@ class ListTemplateRequest:
         
         
 
-        self._authorization = None
-        self._x_project_id = None
-        self._x_sdk_date = None
-        self._x_vod_project_id = None
         self._template_id = None
         self._page = None
         self._size = None
         self.discriminator = None
 
-        if authorization is not None:
-            self.authorization = authorization
-        if x_project_id is not None:
-            self.x_project_id = x_project_id
-        if x_sdk_date is not None:
-            self.x_sdk_date = x_sdk_date
-        if x_vod_project_id is not None:
-            self.x_vod_project_id = x_vod_project_id
         if template_id is not None:
             self.template_id = template_id
         if page is not None:
             self.page = page
         if size is not None:
             self.size = size
-
-    @property
-    def authorization(self):
-        """Gets the authorization of this ListTemplateRequest.
-
-        :return: The authorization of this ListTemplateRequest.
-        :rtype: str
-        """
-        return self._authorization
-
-    @authorization.setter
-    def authorization(self, authorization):
-        """Sets the authorization of this ListTemplateRequest.
-
-        :param authorization: The authorization of this ListTemplateRequest.
-        :type authorization: str
-        """
-        self._authorization = authorization
-
-    @property
-    def x_project_id(self):
-        """Gets the x_project_id of this ListTemplateRequest.
-
-        :return: The x_project_id of this ListTemplateRequest.
-        :rtype: str
-        """
-        return self._x_project_id
-
-    @x_project_id.setter
-    def x_project_id(self, x_project_id):
-        """Sets the x_project_id of this ListTemplateRequest.
-
-        :param x_project_id: The x_project_id of this ListTemplateRequest.
-        :type x_project_id: str
-        """
-        self._x_project_id = x_project_id
-
-    @property
-    def x_sdk_date(self):
-        """Gets the x_sdk_date of this ListTemplateRequest.
-
-        :return: The x_sdk_date of this ListTemplateRequest.
-        :rtype: str
-        """
-        return self._x_sdk_date
-
-    @x_sdk_date.setter
-    def x_sdk_date(self, x_sdk_date):
-        """Sets the x_sdk_date of this ListTemplateRequest.
-
-        :param x_sdk_date: The x_sdk_date of this ListTemplateRequest.
-        :type x_sdk_date: str
-        """
-        self._x_sdk_date = x_sdk_date
-
-    @property
-    def x_vod_project_id(self):
-        """Gets the x_vod_project_id of this ListTemplateRequest.
-
-        :return: The x_vod_project_id of this ListTemplateRequest.
-        :rtype: str
-        """
-        return self._x_vod_project_id
-
-    @x_vod_project_id.setter
-    def x_vod_project_id(self, x_vod_project_id):
-        """Sets the x_vod_project_id of this ListTemplateRequest.
-
-        :param x_vod_project_id: The x_vod_project_id of this ListTemplateRequest.
-        :type x_vod_project_id: str
-        """
-        self._x_vod_project_id = x_vod_project_id
 
     @property
     def template_id(self):

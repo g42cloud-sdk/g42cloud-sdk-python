@@ -1,3 +1,30 @@
+# 0.0.9-beta 2023-08-26
+
+### G42Cloud SDK SMS
+
+- _Features_
+  - New Support SMS
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK MPC
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **CreateThumbnailsTask**
+    - changes of request param
+      - `+ thumbnail_para.dots_ms`
+      - `+ thumbnail_para.type: enum value [DOTS_MS]`
+  - **CreateTranscodingTask**
+    - changes of request param
+      - `+ thumbnail.params.dots_ms`
+      - `+ thumbnail.params.type: enum value [DOTS_MS]`
+
 # 0.0.8-beta 2023-06-26
 
 ### G42Cloud SDK MPC

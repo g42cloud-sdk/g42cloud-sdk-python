@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import VpcClient
 from g42cloudsdkvpc.v2.vpc_client import VpcClient
 from g42cloudsdkvpc.v2.vpc_async_client import VpcAsyncClient
-# import models into sdk package
+
 from g42cloudsdkvpc.v2.model.accept_vpc_peering_request import AcceptVpcPeeringRequest
 from g42cloudsdkvpc.v2.model.accept_vpc_peering_response import AcceptVpcPeeringResponse
 from g42cloudsdkvpc.v2.model.allowed_address_pair import AllowedAddressPair

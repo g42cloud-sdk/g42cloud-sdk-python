@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding= utf-8
 """
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -17,21 +17,19 @@
  specific language governing permissions and limitations
  under the LICENSE.
 """
-import os
-from sys import platform
+
+try:
+    from enum import Enum
+
+    _ENUM_CLS = Enum
+except ImportError:
+    _ENUM_CLS = object
 
 
-def get_home_path():
-    home_path = None
-    if platform.startswith("win32"):
-        home_path = os.environ.get("USERPROFILE")
-    elif platform.startswith("linux") or platform.startswith("darwin"):
-        home_path = os.environ.get("HOME")
+class SigningAlgorithm(_ENUM_CLS):
+    HMAC_SHA256 = 1
+    HMAC_SM3 = 2
 
-    return home_path
-
-
-def is_path_exist(path):
-    if not path:
-        return False
-    return os.path.exists(path)
+    @classmethod
+    def get_default(cls):
+        return cls.HMAC_SHA256

@@ -17,34 +17,22 @@ class ListWatermarkTemplateRequest:
     sensitive_list = []
 
     openapi_types = {
-        'authorization': 'str',
-        'x_project_id': 'str',
-        'x_sdk_date': 'str',
         'template_id': 'list[int]',
         'page': 'int',
         'size': 'int'
     }
 
     attribute_map = {
-        'authorization': 'Authorization',
-        'x_project_id': 'X-Project_Id',
-        'x_sdk_date': 'X-Sdk-Date',
         'template_id': 'template_id',
         'page': 'page',
         'size': 'size'
     }
 
-    def __init__(self, authorization=None, x_project_id=None, x_sdk_date=None, template_id=None, page=None, size=None):
+    def __init__(self, template_id=None, page=None, size=None):
         """ListWatermarkTemplateRequest
 
         The model defined in g42cloud sdk
 
-        :param authorization: The param of the ListWatermarkTemplateRequest
-        :type authorization: str
-        :param x_project_id: The param of the ListWatermarkTemplateRequest
-        :type x_project_id: str
-        :param x_sdk_date: The param of the ListWatermarkTemplateRequest
-        :type x_sdk_date: str
         :param template_id: The param of the ListWatermarkTemplateRequest
         :type template_id: list[int]
         :param page: The param of the ListWatermarkTemplateRequest
@@ -55,80 +43,17 @@ class ListWatermarkTemplateRequest:
         
         
 
-        self._authorization = None
-        self._x_project_id = None
-        self._x_sdk_date = None
         self._template_id = None
         self._page = None
         self._size = None
         self.discriminator = None
 
-        if authorization is not None:
-            self.authorization = authorization
-        if x_project_id is not None:
-            self.x_project_id = x_project_id
-        if x_sdk_date is not None:
-            self.x_sdk_date = x_sdk_date
         if template_id is not None:
             self.template_id = template_id
         if page is not None:
             self.page = page
         if size is not None:
             self.size = size
-
-    @property
-    def authorization(self):
-        """Gets the authorization of this ListWatermarkTemplateRequest.
-
-        :return: The authorization of this ListWatermarkTemplateRequest.
-        :rtype: str
-        """
-        return self._authorization
-
-    @authorization.setter
-    def authorization(self, authorization):
-        """Sets the authorization of this ListWatermarkTemplateRequest.
-
-        :param authorization: The authorization of this ListWatermarkTemplateRequest.
-        :type authorization: str
-        """
-        self._authorization = authorization
-
-    @property
-    def x_project_id(self):
-        """Gets the x_project_id of this ListWatermarkTemplateRequest.
-
-        :return: The x_project_id of this ListWatermarkTemplateRequest.
-        :rtype: str
-        """
-        return self._x_project_id
-
-    @x_project_id.setter
-    def x_project_id(self, x_project_id):
-        """Sets the x_project_id of this ListWatermarkTemplateRequest.
-
-        :param x_project_id: The x_project_id of this ListWatermarkTemplateRequest.
-        :type x_project_id: str
-        """
-        self._x_project_id = x_project_id
-
-    @property
-    def x_sdk_date(self):
-        """Gets the x_sdk_date of this ListWatermarkTemplateRequest.
-
-        :return: The x_sdk_date of this ListWatermarkTemplateRequest.
-        :rtype: str
-        """
-        return self._x_sdk_date
-
-    @x_sdk_date.setter
-    def x_sdk_date(self, x_sdk_date):
-        """Sets the x_sdk_date of this ListWatermarkTemplateRequest.
-
-        :param x_sdk_date: The x_sdk_date of this ListWatermarkTemplateRequest.
-        :type x_sdk_date: str
-        """
-        self._x_sdk_date = x_sdk_date
 
     @property
     def template_id(self):

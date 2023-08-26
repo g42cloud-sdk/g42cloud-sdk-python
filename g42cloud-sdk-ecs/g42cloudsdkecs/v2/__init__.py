@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import EcsClient
 from g42cloudsdkecs.v2.ecs_client import EcsClient
 from g42cloudsdkecs.v2.ecs_async_client import EcsAsyncClient
-# import models into sdk package
+
 from g42cloudsdkecs.v2.model.add_server_group_member_request import AddServerGroupMemberRequest
 from g42cloudsdkecs.v2.model.add_server_group_member_request_body import AddServerGroupMemberRequestBody
 from g42cloudsdkecs.v2.model.add_server_group_member_response import AddServerGroupMemberResponse

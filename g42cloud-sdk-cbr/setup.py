@@ -4,7 +4,7 @@ from os import path
 from setuptools import setup, find_packages
 
 NAME = "g42cloudsdkcbr"
-VERSION = "0.0.8-beta"
+VERSION = "0.0.9-beta"
 AUTHOR = "G42Cloud SDK"
 AUTHOR_EMAIL = "unionsdk@outlook.com"
 URL = "https://github.com/g42cloud-sdk/g42cloud-sdk-python"
@@ -14,7 +14,7 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README_PYPI.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
-REQUIRES = ["g42cloudsdkcore>=0.0.8-beta"]
+REQUIRES = ["g42cloudsdkcore>=0.0.9-beta"]
 
 OPTIONS = {
     'bdist_wheel': {

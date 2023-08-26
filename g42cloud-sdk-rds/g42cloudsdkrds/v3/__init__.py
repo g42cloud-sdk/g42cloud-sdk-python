@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import RdsClient
 from g42cloudsdkrds.v3.rds_client import RdsClient
 from g42cloudsdkrds.v3.rds_async_client import RdsAsyncClient
-# import models into sdk package
+
 from g42cloudsdkrds.v3.model.ad_domain_info import ADDomainInfo
 from g42cloudsdkrds.v3.model.allow_db_privilege_request import AllowDbPrivilegeRequest
 from g42cloudsdkrds.v3.model.allow_db_privilege_response import AllowDbPrivilegeResponse

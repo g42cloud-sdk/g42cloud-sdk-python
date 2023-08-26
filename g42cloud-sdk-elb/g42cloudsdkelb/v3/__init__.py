@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import ElbClient
 from g42cloudsdkelb.v3.elb_client import ElbClient
 from g42cloudsdkelb.v3.elb_async_client import ElbAsyncClient
-# import models into sdk package
+
 from g42cloudsdkelb.v3.model.api_version_info import ApiVersionInfo
 from g42cloudsdkelb.v3.model.autoscaling_ref import AutoscalingRef
 from g42cloudsdkelb.v3.model.availability_zone import AvailabilityZone

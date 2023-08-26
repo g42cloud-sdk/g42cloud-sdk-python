@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import ImsClient
 from g42cloudsdkims.v2.ims_client import ImsClient
 from g42cloudsdkims.v2.ims_async_client import ImsAsyncClient
-# import models into sdk package
+
 from g42cloudsdkims.v2.model.add_image_tag_request import AddImageTagRequest
 from g42cloudsdkims.v2.model.add_image_tag_request_body import AddImageTagRequestBody
 from g42cloudsdkims.v2.model.add_image_tag_response import AddImageTagResponse

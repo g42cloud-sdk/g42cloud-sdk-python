@@ -17,9 +17,6 @@ class ListTemplateGroupRequest:
     sensitive_list = []
 
     openapi_types = {
-        'authorization': 'str',
-        'x_project_id': 'str',
-        'x_sdk_date': 'str',
         'group_id': 'list[str]',
         'group_name': 'list[str]',
         'page': 'int',
@@ -27,26 +24,17 @@ class ListTemplateGroupRequest:
     }
 
     attribute_map = {
-        'authorization': 'Authorization',
-        'x_project_id': 'X-Project_Id',
-        'x_sdk_date': 'X-Sdk-Date',
         'group_id': 'group_id',
         'group_name': 'group_name',
         'page': 'page',
         'size': 'size'
     }
 
-    def __init__(self, authorization=None, x_project_id=None, x_sdk_date=None, group_id=None, group_name=None, page=None, size=None):
+    def __init__(self, group_id=None, group_name=None, page=None, size=None):
         """ListTemplateGroupRequest
 
         The model defined in g42cloud sdk
 
-        :param authorization: The param of the ListTemplateGroupRequest
-        :type authorization: str
-        :param x_project_id: The param of the ListTemplateGroupRequest
-        :type x_project_id: str
-        :param x_sdk_date: The param of the ListTemplateGroupRequest
-        :type x_sdk_date: str
         :param group_id: The param of the ListTemplateGroupRequest
         :type group_id: list[str]
         :param group_name: The param of the ListTemplateGroupRequest
@@ -59,21 +47,12 @@ class ListTemplateGroupRequest:
         
         
 
-        self._authorization = None
-        self._x_project_id = None
-        self._x_sdk_date = None
         self._group_id = None
         self._group_name = None
         self._page = None
         self._size = None
         self.discriminator = None
 
-        if authorization is not None:
-            self.authorization = authorization
-        if x_project_id is not None:
-            self.x_project_id = x_project_id
-        if x_sdk_date is not None:
-            self.x_sdk_date = x_sdk_date
         if group_id is not None:
             self.group_id = group_id
         if group_name is not None:
@@ -82,60 +61,6 @@ class ListTemplateGroupRequest:
             self.page = page
         if size is not None:
             self.size = size
-
-    @property
-    def authorization(self):
-        """Gets the authorization of this ListTemplateGroupRequest.
-
-        :return: The authorization of this ListTemplateGroupRequest.
-        :rtype: str
-        """
-        return self._authorization
-
-    @authorization.setter
-    def authorization(self, authorization):
-        """Sets the authorization of this ListTemplateGroupRequest.
-
-        :param authorization: The authorization of this ListTemplateGroupRequest.
-        :type authorization: str
-        """
-        self._authorization = authorization
-
-    @property
-    def x_project_id(self):
-        """Gets the x_project_id of this ListTemplateGroupRequest.
-
-        :return: The x_project_id of this ListTemplateGroupRequest.
-        :rtype: str
-        """
-        return self._x_project_id
-
-    @x_project_id.setter
-    def x_project_id(self, x_project_id):
-        """Sets the x_project_id of this ListTemplateGroupRequest.
-
-        :param x_project_id: The x_project_id of this ListTemplateGroupRequest.
-        :type x_project_id: str
-        """
-        self._x_project_id = x_project_id
-
-    @property
-    def x_sdk_date(self):
-        """Gets the x_sdk_date of this ListTemplateGroupRequest.
-
-        :return: The x_sdk_date of this ListTemplateGroupRequest.
-        :rtype: str
-        """
-        return self._x_sdk_date
-
-    @x_sdk_date.setter
-    def x_sdk_date(self, x_sdk_date):
-        """Sets the x_sdk_date of this ListTemplateGroupRequest.
-
-        :param x_sdk_date: The x_sdk_date of this ListTemplateGroupRequest.
-        :type x_sdk_date: str
-        """
-        self._x_sdk_date = x_sdk_date
 
     @property
     def group_id(self):

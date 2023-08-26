@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import CdnClient
 from g42cloudsdkcdn.v1.cdn_client import CdnClient
 from g42cloudsdkcdn.v1.cdn_async_client import CdnAsyncClient
-# import models into sdk package
+
 from g42cloudsdkcdn.v1.model.black_white_list_body import BlackWhiteListBody
 from g42cloudsdkcdn.v1.model.cache_config import CacheConfig
 from g42cloudsdkcdn.v1.model.cache_config_request import CacheConfigRequest

@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import CbrClient
 from g42cloudsdkcbr.v1.cbr_client import CbrClient
 from g42cloudsdkcbr.v1.cbr_async_client import CbrAsyncClient
-# import models into sdk package
+
 from g42cloudsdkcbr.v1.model.add_member_request import AddMemberRequest
 from g42cloudsdkcbr.v1.model.add_member_response import AddMemberResponse
 from g42cloudsdkcbr.v1.model.add_members_req import AddMembersReq

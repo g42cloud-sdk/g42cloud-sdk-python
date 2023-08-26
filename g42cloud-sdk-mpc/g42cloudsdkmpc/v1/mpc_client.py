@@ -44,12 +44,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -103,12 +97,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -171,12 +159,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
         if 'x_language' in local_var_params:
             header_params['x-language'] = local_var_params['x_language']
 
@@ -228,12 +210,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -285,12 +261,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -346,12 +316,6 @@ class MpcClient(Client):
             query_params.append(('type', local_var_params['type']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -401,12 +365,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -456,12 +414,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -511,12 +463,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -568,12 +514,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -623,12 +563,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -846,12 +780,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -905,12 +833,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -973,12 +895,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1028,12 +944,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1087,12 +997,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1155,12 +1059,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
         if 'x_language' in local_var_params:
             header_params['x-language'] = local_var_params['x_language']
 
@@ -1263,12 +1161,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1320,12 +1212,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1379,12 +1265,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1436,12 +1316,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1504,12 +1378,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1572,12 +1440,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1627,12 +1489,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1686,12 +1542,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1754,12 +1604,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1860,12 +1704,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1919,12 +1757,6 @@ class MpcClient(Client):
             query_params.append(('template_id', local_var_params['template_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -1974,12 +1806,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2029,12 +1855,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2089,14 +1909,6 @@ class MpcClient(Client):
             collection_formats['task_id'] = 'multi'
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -2148,12 +1960,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2203,12 +2009,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2260,12 +2060,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2319,12 +2113,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2391,12 +2179,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2446,12 +2228,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2505,12 +2281,6 @@ class MpcClient(Client):
             query_params.append(('group_id', local_var_params['group_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2570,12 +2340,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2625,12 +2389,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2682,14 +2440,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -2743,12 +2493,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2811,12 +2555,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
         if 'x_language' in local_var_params:
             header_params['x-language'] = local_var_params['x_language']
 
@@ -2868,14 +2606,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -2929,12 +2659,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -2986,12 +2710,6 @@ class MpcClient(Client):
             query_params.append(('task_id', local_var_params['task_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -3047,12 +2765,6 @@ class MpcClient(Client):
             query_params.append(('stat_type', local_var_params['stat_type']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -3117,12 +2829,6 @@ class MpcClient(Client):
         header_params = {}
         if 'x_language' in local_var_params:
             header_params['x-language'] = local_var_params['x_language']
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -3172,14 +2878,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -3233,14 +2931,6 @@ class MpcClient(Client):
             query_params.append(('template_id', local_var_params['template_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -3297,14 +2987,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -3354,12 +3036,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -3411,14 +3087,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -3472,14 +3140,6 @@ class MpcClient(Client):
             query_params.append(('template_id', local_var_params['template_id']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 
@@ -3536,12 +3196,6 @@ class MpcClient(Client):
             query_params.append(('size', local_var_params['size']))
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
 
         form_params = {}
 
@@ -3591,14 +3245,6 @@ class MpcClient(Client):
         query_params = []
 
         header_params = {}
-        if 'authorization' in local_var_params:
-            header_params['Authorization'] = local_var_params['authorization']
-        if 'x_project_id' in local_var_params:
-            header_params['X-Project_Id'] = local_var_params['x_project_id']
-        if 'x_sdk_date' in local_var_params:
-            header_params['X-Sdk-Date'] = local_var_params['x_sdk_date']
-        if 'x_vod_project_id' in local_var_params:
-            header_params['x-vod-projectId'] = local_var_params['x_vod_project_id']
 
         form_params = {}
 

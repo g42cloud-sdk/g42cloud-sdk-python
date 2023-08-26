@@ -22,6 +22,7 @@ class ThumbnailPara:
         'start_time': 'int',
         'duration': 'int',
         'dots': 'list[int]',
+        'dots_ms': 'list[int]',
         'output_filename': 'str',
         'format': 'int',
         'width': 'int',
@@ -35,6 +36,7 @@ class ThumbnailPara:
         'start_time': 'start_time',
         'duration': 'duration',
         'dots': 'dots',
+        'dots_ms': 'dots_ms',
         'output_filename': 'output_filename',
         'format': 'format',
         'width': 'width',
@@ -42,7 +44,7 @@ class ThumbnailPara:
         'max_length': 'max_length'
     }
 
-    def __init__(self, type=None, time=None, start_time=None, duration=None, dots=None, output_filename=None, format=None, width=None, height=None, max_length=None):
+    def __init__(self, type=None, time=None, start_time=None, duration=None, dots=None, dots_ms=None, output_filename=None, format=None, width=None, height=None, max_length=None):
         """ThumbnailPara
 
         The model defined in g42cloud sdk
@@ -57,6 +59,8 @@ class ThumbnailPara:
         :type duration: int
         :param dots: The param of the ThumbnailPara
         :type dots: list[int]
+        :param dots_ms: The param of the ThumbnailPara
+        :type dots_ms: list[int]
         :param output_filename: The param of the ThumbnailPara
         :type output_filename: str
         :param format: The param of the ThumbnailPara
@@ -76,6 +80,7 @@ class ThumbnailPara:
         self._start_time = None
         self._duration = None
         self._dots = None
+        self._dots_ms = None
         self._output_filename = None
         self._format = None
         self._width = None
@@ -93,6 +98,8 @@ class ThumbnailPara:
             self.duration = duration
         if dots is not None:
             self.dots = dots
+        if dots_ms is not None:
+            self.dots_ms = dots_ms
         if output_filename is not None:
             self.output_filename = output_filename
         if format is not None:
@@ -193,6 +200,24 @@ class ThumbnailPara:
         :type dots: list[int]
         """
         self._dots = dots
+
+    @property
+    def dots_ms(self):
+        """Gets the dots_ms of this ThumbnailPara.
+
+        :return: The dots_ms of this ThumbnailPara.
+        :rtype: list[int]
+        """
+        return self._dots_ms
+
+    @dots_ms.setter
+    def dots_ms(self, dots_ms):
+        """Sets the dots_ms of this ThumbnailPara.
+
+        :param dots_ms: The dots_ms of this ThumbnailPara.
+        :type dots_ms: list[int]
+        """
+        self._dots_ms = dots_ms
 
     @property
     def output_filename(self):

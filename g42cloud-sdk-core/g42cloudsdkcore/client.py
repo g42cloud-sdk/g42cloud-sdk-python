@@ -21,6 +21,7 @@
 import datetime
 import decimal
 import logging
+import os
 import re
 import sys
 import threading
@@ -36,8 +37,9 @@ from six.moves.urllib.parse import quote, urlparse
 
 from g42cloudsdkcore.auth.credentials import BasicCredentials, DerivedCredentials
 from g42cloudsdkcore.auth.provider import CredentialProviderChain
-from g42cloudsdkcore.exceptions.exceptions import HostUnreachableException
 from g42cloudsdkcore.exceptions import exception_handler
+from g42cloudsdkcore.exceptions.exceptions import HostUnreachableException
+from g42cloudsdkcore.http import progress
 from g42cloudsdkcore.http.formdata import FormFile
 from g42cloudsdkcore.http.http_client import HttpClient
 from g42cloudsdkcore.http.http_config import HttpConfig
@@ -48,6 +50,7 @@ from g42cloudsdkcore.sdk_request import SdkRequest
 from g42cloudsdkcore.sdk_response import FutureSdkResponse, SdkResponse
 from g42cloudsdkcore.sdk_stream_response import SdkStreamResponse
 from g42cloudsdkcore.utils import http_utils, core_utils
+from g42cloudsdkcore.utils.filepath_utils import ensure_file_in_rb_mode
 from g42cloudsdkcore.utils.xml_utils import XmlTransfer
 
 try:
@@ -306,13 +309,11 @@ class Client(object):
         path_params = self._post_process_params(path_params) or {}
         if path_params:
             path_params = http_utils.sanitize_for_serialization(path_params)
-            path_params = http_utils.parameters_to_tuples(path_params, collection_formats)
-            for k, v in path_params:
+            for k, v in http_utils.parameters_to_tuples(path_params, collection_formats):
                 resource_path = resource_path.replace('{%s}' % k, quote(str(v), safe=''))
         if update_path_params:
             update_path_params = http_utils.sanitize_for_serialization(update_path_params)
-            update_path_params = http_utils.parameters_to_tuples(update_path_params, collection_formats)
-            for k, v in update_path_params:
+            for k, v in http_utils.parameters_to_tuples(update_path_params, collection_formats):
                 resource_path = resource_path.replace('{%s}' % k, quote(str(v), safe=''))
         return resource_path
 
@@ -327,7 +328,7 @@ class Client(object):
         post_params = self._post_process_params(post_params) if post_params else {}
         if post_params:
             post_params = http_utils.sanitize_for_serialization(post_params)
-            post_params = http_utils.parameters_to_tuples(post_params, collection_formats)
+            return http_utils.parameters_to_tuples(post_params, collection_formats)
         return post_params
 
     @classmethod
@@ -378,6 +379,22 @@ class Client(object):
         multipart = MultipartEncoder(fields=fields)
         return multipart
 
+    @classmethod
+    def _parse_stream_body(cls, body, callback, content_length):
+        file_stream = ensure_file_in_rb_mode(body)
+        if callback:
+            if not content_length:
+                try:
+                    content_length = os.fstat(file_stream.fileno()).st_size
+                except (IOError, OSError):
+                    content_length = -1
+            notifier = progress.ProgressNotifier(callback=callback, total_amount=content_length)
+            stream_body = progress.ProgressRequestBody(file_stream, notifier)
+        else:
+            stream_body = file_stream
+
+        return stream_body
+
     def _is_stream(self, response_type):
         if type(response_type) == str and hasattr(self.model_package, response_type):
             klass = getattr(self.model_package, response_type)
@@ -406,20 +423,21 @@ class Client(object):
 
     def do_http_request(self, method, resource_path, path_params=None, query_params=None, header_params=None,
                         body=None, post_params=None, cname=None, response_type=None, response_headers=None,
-                        collection_formats=None, request_type=None, async_request=False):
+                        collection_formats=None, request_type=None, async_request=False, progress_callback=None):
 
         if async_request:
             future_request = self.build_future_request(method, resource_path, path_params, query_params, header_params,
-                                                       body, post_params, cname, response_type, collection_formats)
+                                                       body, post_params, cname, response_type, collection_formats,
+                                                       progress_callback)
             future_response = self._http_client.executor.submit(self._do_http_request_async, future_request,
-                                                                response_type, response_headers)
+                                                                response_type, response_headers, progress_callback)
             return FutureSdkResponse(future_response, self._logger)
 
         while True:
             try:
                 request = self.build_future_request(method, resource_path, path_params, query_params, header_params,
                                                     body, post_params, cname, response_type,
-                                                    collection_formats).result()
+                                                    collection_formats, progress_callback).result()
                 response = self._do_http_request_sync(request)
                 break
             except HostUnreachableException as e:
@@ -430,10 +448,10 @@ class Client(object):
                         self._endpoint_index = 0
                         raise e
 
-        return self.sync_response_handler(response, response_type, response_headers)
+        return self.sync_response_handler(response, response_type, response_headers, progress_callback)
 
     def build_future_request(self, method, resource_path, path_params, query_params, header_params,
-                             request_body, post_params, cname, response_type, collection_formats):
+                             request_body, post_params, cname, response_type, collection_formats, progress_callback):
         url_parse_result = self._url_parse(cname)
         schema = url_parse_result.scheme
         host = url_parse_result.netloc
@@ -444,20 +462,26 @@ class Client(object):
         query_params = self._parse_query_params(collection_formats, query_params)
         post_params = self._parse_post_params(collection_formats, post_params)
 
-        content_type = header_params.setdefault(self._CONTENT_TYPE, self._APPLICATION_JSON)
+        if self._config.ignore_content_type_for_get_request and method == "GET" and not request_body:
+            content_type = header_params.pop(self._CONTENT_TYPE, None)
+        else:
+            content_type = header_params.setdefault(self._CONTENT_TYPE, self._APPLICATION_JSON)
+
         if content_type == self._MULTIPART_FORM_DATA:
             body = self._parse_formdata_body(request_body)
             header_params[self._CONTENT_TYPE] = body.content_type
         elif content_type == self._APPLICATION_XML:
             body = self._parse_xml_body(request_body)
         elif content_type == self._APPLICATION_OCTET_STREAM:
-            body = request_body
+            content_length = header_params.get("content-length")
+            body = self._parse_stream_body(request_body, progress_callback, content_length)
         else:
             body = self._parse_body(request_body, post_params)
 
         stream = self._is_stream(response_type)
         sdk_request = SdkRequest(method=method, schema=schema, host=host, resource_path=resource_path,
-                                 query_params=query_params, header_params=header_params, body=body, stream=stream)
+                                 query_params=query_params, header_params=header_params, body=body, stream=stream,
+                                 signing_algorithm=self._config.signing_algorithm)
         if self._AUTHORIZATION not in header_params:
             return self._credentials.process_auth_request(sdk_request, self._http_client)
         else:
@@ -467,15 +491,16 @@ class Client(object):
         response = self._http_client.do_request_sync(request)
         return response
 
-    def _do_http_request_async(self, future_request, response_type, response_headers):
+    def _do_http_request_async(self, future_request, response_type, response_headers, progress_callback):
         request = future_request.result()
         future_response = self._http_client.do_request_async(
-            request=request, hooks=[self.async_response_hook_factory(response_type, response_headers)]
+            request=request,
+            hooks=[self.async_response_hook_factory(response_type, response_headers, progress_callback)]
         )
         return future_response
 
-    def sync_response_handler(self, response, response_type, response_headers):
-        concrete_response = self.deserialize(response, response_type)
+    def sync_response_handler(self, response, response_type, response_headers, progress_callback):
+        concrete_response = self.deserialize(response, response_type, progress_callback)
         if isinstance(concrete_response, SdkResponse):
             concrete_response.status_code = response.status_code
         if response_headers:
@@ -486,9 +511,9 @@ class Client(object):
 
         return concrete_response
 
-    def async_response_hook_factory(self, response_type, response_headers):
+    def async_response_hook_factory(self, response_type, response_headers, progress_callback):
         def response_hook(resp, *args, **kwargs):
-            resp.data = self.sync_response_handler(resp, response_type, response_headers)
+            resp.data = self.sync_response_handler(resp, response_type, response_headers, progress_callback)
 
         return response_hook
 
@@ -505,10 +530,15 @@ class Client(object):
             if key_in_response_headers in response_headers and key_in_response_headers in response.headers:
                 setattr(concrete_response, attr, response.headers[key_in_response_headers])
 
-    def deserialize(self, response, response_type):
+    def deserialize(self, response, response_type, progress_callback):
         if type(response_type) == str and hasattr(self.model_package, response_type):
             klass = getattr(self.model_package, response_type)
             if issubclass(klass, SdkStreamResponse):
+                if progress_callback:
+                    content_length = int(response.headers.get("Content-Length")) \
+                        if "Content-Length" in response.headers else -1
+                    notifier = progress.ProgressNotifier(callback=progress_callback, total_amount=content_length)
+                    progress.ProgressHTTPResponse.convert(response.raw, notifier)
                 return klass(response)
 
         try:

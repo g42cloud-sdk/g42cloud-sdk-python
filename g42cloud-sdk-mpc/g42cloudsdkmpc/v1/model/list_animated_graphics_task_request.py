@@ -17,9 +17,6 @@ class ListAnimatedGraphicsTaskRequest:
     sensitive_list = []
 
     openapi_types = {
-        'authorization': 'str',
-        'x_project_id': 'str',
-        'x_sdk_date': 'str',
         'x_language': 'str',
         'task_id': 'list[str]',
         'status': 'str',
@@ -30,9 +27,6 @@ class ListAnimatedGraphicsTaskRequest:
     }
 
     attribute_map = {
-        'authorization': 'Authorization',
-        'x_project_id': 'X-Project_Id',
-        'x_sdk_date': 'X-Sdk-Date',
         'x_language': 'x-language',
         'task_id': 'task_id',
         'status': 'status',
@@ -42,17 +36,11 @@ class ListAnimatedGraphicsTaskRequest:
         'size': 'size'
     }
 
-    def __init__(self, authorization=None, x_project_id=None, x_sdk_date=None, x_language=None, task_id=None, status=None, start_time=None, end_time=None, page=None, size=None):
+    def __init__(self, x_language=None, task_id=None, status=None, start_time=None, end_time=None, page=None, size=None):
         """ListAnimatedGraphicsTaskRequest
 
         The model defined in g42cloud sdk
 
-        :param authorization: The param of the ListAnimatedGraphicsTaskRequest
-        :type authorization: str
-        :param x_project_id: The param of the ListAnimatedGraphicsTaskRequest
-        :type x_project_id: str
-        :param x_sdk_date: The param of the ListAnimatedGraphicsTaskRequest
-        :type x_sdk_date: str
         :param x_language: The param of the ListAnimatedGraphicsTaskRequest
         :type x_language: str
         :param task_id: The param of the ListAnimatedGraphicsTaskRequest
@@ -71,9 +59,6 @@ class ListAnimatedGraphicsTaskRequest:
         
         
 
-        self._authorization = None
-        self._x_project_id = None
-        self._x_sdk_date = None
         self._x_language = None
         self._task_id = None
         self._status = None
@@ -83,12 +68,6 @@ class ListAnimatedGraphicsTaskRequest:
         self._size = None
         self.discriminator = None
 
-        if authorization is not None:
-            self.authorization = authorization
-        if x_project_id is not None:
-            self.x_project_id = x_project_id
-        if x_sdk_date is not None:
-            self.x_sdk_date = x_sdk_date
         if x_language is not None:
             self.x_language = x_language
         if task_id is not None:
@@ -103,60 +82,6 @@ class ListAnimatedGraphicsTaskRequest:
             self.page = page
         if size is not None:
             self.size = size
-
-    @property
-    def authorization(self):
-        """Gets the authorization of this ListAnimatedGraphicsTaskRequest.
-
-        :return: The authorization of this ListAnimatedGraphicsTaskRequest.
-        :rtype: str
-        """
-        return self._authorization
-
-    @authorization.setter
-    def authorization(self, authorization):
-        """Sets the authorization of this ListAnimatedGraphicsTaskRequest.
-
-        :param authorization: The authorization of this ListAnimatedGraphicsTaskRequest.
-        :type authorization: str
-        """
-        self._authorization = authorization
-
-    @property
-    def x_project_id(self):
-        """Gets the x_project_id of this ListAnimatedGraphicsTaskRequest.
-
-        :return: The x_project_id of this ListAnimatedGraphicsTaskRequest.
-        :rtype: str
-        """
-        return self._x_project_id
-
-    @x_project_id.setter
-    def x_project_id(self, x_project_id):
-        """Sets the x_project_id of this ListAnimatedGraphicsTaskRequest.
-
-        :param x_project_id: The x_project_id of this ListAnimatedGraphicsTaskRequest.
-        :type x_project_id: str
-        """
-        self._x_project_id = x_project_id
-
-    @property
-    def x_sdk_date(self):
-        """Gets the x_sdk_date of this ListAnimatedGraphicsTaskRequest.
-
-        :return: The x_sdk_date of this ListAnimatedGraphicsTaskRequest.
-        :rtype: str
-        """
-        return self._x_sdk_date
-
-    @x_sdk_date.setter
-    def x_sdk_date(self, x_sdk_date):
-        """Sets the x_sdk_date of this ListAnimatedGraphicsTaskRequest.
-
-        :param x_sdk_date: The x_sdk_date of this ListAnimatedGraphicsTaskRequest.
-        :type x_sdk_date: str
-        """
-        self._x_sdk_date = x_sdk_date
 
     @property
     def x_language(self):

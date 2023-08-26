@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import EvsClient
 from g42cloudsdkevs.v2.evs_client import EvsClient
 from g42cloudsdkevs.v2.evs_async_client import EvsAsyncClient
-# import models into sdk package
+
 from g42cloudsdkevs.v2.model.attachment import Attachment
 from g42cloudsdkevs.v2.model.az_info import AzInfo
 from g42cloudsdkevs.v2.model.batch_create_volume_tags_request import BatchCreateVolumeTagsRequest

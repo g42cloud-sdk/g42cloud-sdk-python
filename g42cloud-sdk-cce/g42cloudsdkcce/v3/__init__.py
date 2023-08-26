@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import CceClient
 from g42cloudsdkcce.v3.cce_client import CceClient
 from g42cloudsdkcce.v3.cce_async_client import CceAsyncClient
-# import models into sdk package
+
 from g42cloudsdkcce.v3.model.addon_instance import AddonInstance
 from g42cloudsdkcce.v3.model.addon_instance_status import AddonInstanceStatus
 from g42cloudsdkcce.v3.model.addon_template import AddonTemplate

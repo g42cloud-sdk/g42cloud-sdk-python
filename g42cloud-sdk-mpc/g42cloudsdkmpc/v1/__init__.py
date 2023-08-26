@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import MpcClient
 from g42cloudsdkmpc.v1.mpc_client import MpcClient
 from g42cloudsdkmpc.v1.mpc_async_client import MpcAsyncClient
-# import models into sdk package
+
 from g42cloudsdkmpc.v1.model.agencies_task_req import AgenciesTaskReq
 from g42cloudsdkmpc.v1.model.animated_graphics_output_param import AnimatedGraphicsOutputParam
 from g42cloudsdkmpc.v1.model.animated_graphics_task import AnimatedGraphicsTask

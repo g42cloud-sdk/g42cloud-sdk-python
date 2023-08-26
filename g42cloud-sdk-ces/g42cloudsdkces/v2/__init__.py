@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import CesClient
 from g42cloudsdkces.v2.ces_client import CesClient
 from g42cloudsdkces.v2.ces_async_client import CesAsyncClient
-# import models into sdk package
+
 from g42cloudsdkces.v2.model.add_alarm_rule_resources_request import AddAlarmRuleResourcesRequest
 from g42cloudsdkces.v2.model.add_alarm_rule_resources_response import AddAlarmRuleResourcesResponse
 from g42cloudsdkces.v2.model.additional_info import AdditionalInfo

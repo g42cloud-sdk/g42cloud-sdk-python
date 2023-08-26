@@ -2,10 +2,9 @@
 
 from __future__ import absolute_import
 
-# import CtsClient
 from g42cloudsdkcts.v3.cts_client import CtsClient
 from g42cloudsdkcts.v3.cts_async_client import CtsAsyncClient
-# import models into sdk package
+
 from g42cloudsdkcts.v3.model.base_user import BaseUser
 from g42cloudsdkcts.v3.model.create_notification_request import CreateNotificationRequest
 from g42cloudsdkcts.v3.model.create_notification_request_body import CreateNotificationRequestBody

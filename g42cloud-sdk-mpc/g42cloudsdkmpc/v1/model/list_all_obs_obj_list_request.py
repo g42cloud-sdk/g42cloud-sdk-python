@@ -17,34 +17,22 @@ class ListAllObsObjListRequest:
     sensitive_list = []
 
     openapi_types = {
-        'authorization': 'str',
-        'x_project_id': 'str',
-        'x_sdk_date': 'str',
         'bucket': 'str',
         'prefix': 'str',
         'type': 'str'
     }
 
     attribute_map = {
-        'authorization': 'Authorization',
-        'x_project_id': 'X-Project_Id',
-        'x_sdk_date': 'X-Sdk-Date',
         'bucket': 'bucket',
         'prefix': 'prefix',
         'type': 'type'
     }
 
-    def __init__(self, authorization=None, x_project_id=None, x_sdk_date=None, bucket=None, prefix=None, type=None):
+    def __init__(self, bucket=None, prefix=None, type=None):
         """ListAllObsObjListRequest
 
         The model defined in g42cloud sdk
 
-        :param authorization: The param of the ListAllObsObjListRequest
-        :type authorization: str
-        :param x_project_id: The param of the ListAllObsObjListRequest
-        :type x_project_id: str
-        :param x_sdk_date: The param of the ListAllObsObjListRequest
-        :type x_sdk_date: str
         :param bucket: The param of the ListAllObsObjListRequest
         :type bucket: str
         :param prefix: The param of the ListAllObsObjListRequest
@@ -55,79 +43,16 @@ class ListAllObsObjListRequest:
         
         
 
-        self._authorization = None
-        self._x_project_id = None
-        self._x_sdk_date = None
         self._bucket = None
         self._prefix = None
         self._type = None
         self.discriminator = None
 
-        if authorization is not None:
-            self.authorization = authorization
-        if x_project_id is not None:
-            self.x_project_id = x_project_id
-        if x_sdk_date is not None:
-            self.x_sdk_date = x_sdk_date
         self.bucket = bucket
         if prefix is not None:
             self.prefix = prefix
         if type is not None:
             self.type = type
-
-    @property
-    def authorization(self):
-        """Gets the authorization of this ListAllObsObjListRequest.
-
-        :return: The authorization of this ListAllObsObjListRequest.
-        :rtype: str
-        """
-        return self._authorization
-
-    @authorization.setter
-    def authorization(self, authorization):
-        """Sets the authorization of this ListAllObsObjListRequest.
-
-        :param authorization: The authorization of this ListAllObsObjListRequest.
-        :type authorization: str
-        """
-        self._authorization = authorization
-
-    @property
-    def x_project_id(self):
-        """Gets the x_project_id of this ListAllObsObjListRequest.
-
-        :return: The x_project_id of this ListAllObsObjListRequest.
-        :rtype: str
-        """
-        return self._x_project_id
-
-    @x_project_id.setter
-    def x_project_id(self, x_project_id):
-        """Sets the x_project_id of this ListAllObsObjListRequest.
-
-        :param x_project_id: The x_project_id of this ListAllObsObjListRequest.
-        :type x_project_id: str
-        """
-        self._x_project_id = x_project_id
-
-    @property
-    def x_sdk_date(self):
-        """Gets the x_sdk_date of this ListAllObsObjListRequest.
-
-        :return: The x_sdk_date of this ListAllObsObjListRequest.
-        :rtype: str
-        """
-        return self._x_sdk_date
-
-    @x_sdk_date.setter
-    def x_sdk_date(self, x_sdk_date):
-        """Sets the x_sdk_date of this ListAllObsObjListRequest.
-
-        :param x_sdk_date: The x_sdk_date of this ListAllObsObjListRequest.
-        :type x_sdk_date: str
-        """
-        self._x_sdk_date = x_sdk_date
 
     @property
     def bucket(self):
