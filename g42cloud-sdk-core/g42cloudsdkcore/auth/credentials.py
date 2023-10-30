@@ -17,17 +17,18 @@
  specific language governing permissions and limitations
  under the LICENSE.
 """
-
-import re
 import os
+import re
 from abc import abstractmethod
 
+from g42cloudsdkcore.auth.cache import AuthCache
 from g42cloudsdkcore.auth.internal import Iam, Metadata
 from g42cloudsdkcore.exceptions.exceptions import ApiValueError, ServiceResponseException, SdkException
-from g42cloudsdkcore.signer.signer import Signer, SM3Signer, DerivationAKSKSigner
 from g42cloudsdkcore.signer.algorithm import SigningAlgorithm
-from g42cloudsdkcore.auth.cache import AuthCache
+from g42cloudsdkcore.signer.signer import Signer, SM3Signer, DerivationAKSKSigner, P256SHA256Signer, SM2SM3Signer
 from g42cloudsdkcore.utils import time_utils, six_utils
+from g42cloudsdkcore.sdk_request import SdkRequest
+from g42cloudsdkcore.http.http_client import HttpClient
 
 
 class DerivedCredentials(six_utils.get_abstract_meta_class()):
@@ -35,6 +36,7 @@ class DerivedCredentials(six_utils.get_abstract_meta_class()):
 
     @abstractmethod
     def _process_derived_auth_params(self, derived_auth_service_name, region_id):
+        # type: (str, str) -> None
         pass
 
     @abstractmethod
@@ -43,6 +45,7 @@ class DerivedCredentials(six_utils.get_abstract_meta_class()):
 
     @abstractmethod
     def _is_derived_auth(self, request):
+        # type: (SdkRequest) -> bool
         pass
 
     @classmethod
@@ -53,6 +56,7 @@ class DerivedCredentials(six_utils.get_abstract_meta_class()):
 class TempCredentials(six_utils.get_abstract_meta_class()):
     @abstractmethod
     def _need_update_security_token(self):
+        # type: () -> bool
         pass
 
     @abstractmethod
@@ -63,6 +67,7 @@ class TempCredentials(six_utils.get_abstract_meta_class()):
 class FederalCredentials(six_utils.get_abstract_meta_class()):
     @abstractmethod
     def _need_update_auth_token(self):
+        # type: () -> bool
         pass
 
     @abstractmethod
@@ -74,6 +79,13 @@ class Credentials(DerivedCredentials, TempCredentials, FederalCredentials):
     _TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
     _X_SECURITY_TOKEN = "X-Security-Token"
     _X_AUTH_TOKEN = "X-Auth-Token"
+    _SIGNER_CACHE = {}
+    _SIGNER_CASE = {
+        SigningAlgorithm.HMAC_SHA256: Signer,
+        SigningAlgorithm.HMAC_SM3: SM3Signer,
+        SigningAlgorithm.ECDSA_P256_SHA256: P256SHA256Signer,
+        SigningAlgorithm.SM2_SM3: SM2SM3Signer
+    }
 
     def __init__(self, ak=None, sk=None):
         super(Credentials, self).__init__()
@@ -114,9 +126,11 @@ class Credentials(DerivedCredentials, TempCredentials, FederalCredentials):
         return self
 
     def get_update_path_params(self):
+        # type: () -> dict
         pass
 
     def process_auth_params(self, http_client, region_id):
+        # type: (HttpClient, str) -> Credentials
         pass
 
     def process_auth_request(self, request, http_client):
@@ -128,6 +142,7 @@ class Credentials(DerivedCredentials, TempCredentials, FederalCredentials):
         return http_client.executor.submit(self.sign_request, request)
 
     def sign_request(self, request):
+        # type: (SdkRequest) -> SdkRequest
         if self._auth_token:
             request.header_params[self._X_AUTH_TOKEN] = self._auth_token
             Signer.process_request_uri(request)
@@ -135,19 +150,21 @@ class Credentials(DerivedCredentials, TempCredentials, FederalCredentials):
         if self.security_token is not None:
             request.header_params["X-Security-Token"] = self.security_token
 
-        if "Content-Type" in request.header_params and not request.header_params["Content-Type"].startswith(
-                "application/json"):
-            request.header_params["X-Sdk-Content-Sha256"] = "UNSIGNED-PAYLOAD"
-
         if self._is_derived_auth(request):
             return DerivationAKSKSigner(self).sign(request, self._derived_auth_service_name, self._region_id)
 
-        if request.signing_algorithm == SigningAlgorithm.HMAC_SHA256:
-            return Signer(self).sign(request)
-        elif request.signing_algorithm == SigningAlgorithm.HMAC_SM3:
-            return SM3Signer(self).sign(request)
+        signer_key = str(request.signing_algorithm) + self.ak
+        if signer_key in self._SIGNER_CACHE:
+            signer = self._SIGNER_CACHE.get(signer_key)
+        else:
+            signer_cls = self._SIGNER_CASE.get(request.signing_algorithm)
+            if not signer_cls:
+                raise SdkException("unsupported signing algorithm: " + str(request.signing_algorithm))
 
-        raise SdkException("unsupported signing algorithm: " + str(request.signing_algorithm))
+            signer = signer_cls(self)
+            self._SIGNER_CACHE[signer_key] = signer
+
+        return signer.sign(request)
 
     def _is_derived_auth(self, request):
         if not self._derived_predicate:
@@ -253,11 +270,15 @@ class BasicCredentials(Credentials):
         future_request = self.process_auth_request(req, http_client)
         request = future_request.result()
         try:
+            http_client.logger.info("project id of region '%s' not found in BasicCredentials, "
+                                    "trying to obtain project id from IAM service: %s", region_id, self.iam_endpoint)
             self.project_id = Iam.keystone_list_projects(http_client, request)
+            http_client.logger.info("success to obtain project id of region '%s': %s", region_id, self.project_id)
             AuthCache.put_auth(ak_with_name, self.project_id)
         except ServiceResponseException as e:
-            err_msg = e.error_msg if hasattr(e, "error_msg") else "unknown exception."
-            raise ApiValueError("Failed to get project id, " + err_msg)
+            err_msg = "failed to obtain project id, " \
+                      + (e.error_msg if hasattr(e, "error_msg") else "unknown exception.")
+            raise ApiValueError(err_msg)
 
         self._derived_predicate = derived_predicate
 
@@ -326,11 +347,15 @@ class GlobalCredentials(Credentials):
         future_request = self.process_auth_request(req, http_client)
         request = future_request.result()
         try:
+            http_client.logger.info('domain id not found in GlobalCredentials, '
+                                    'trying to obtain domain id from IAM service: %s', self.iam_endpoint)
             self.domain_id = Iam.keystone_list_auth_domains(http_client, request)
+            http_client.logger.info('success to obtain domain id: %s', self.domain_id)
             AuthCache.put_auth(self.ak, self.domain_id)
         except ServiceResponseException as e:
-            err_msg = e.error_msg if hasattr(e, "error_msg") else "unknown exception."
-            raise ApiValueError("Failed to get domain id, " + err_msg)
+            err_msg = "failed to obtain domain id, " \
+                      + (e.error_msg if hasattr(e, "error_msg") else "unknown exception.")
+            raise ApiValueError(err_msg)
 
         self._derived_predicate = derived_predicate
 

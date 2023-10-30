@@ -16,13 +16,16 @@ class CbrAsyncClient(Client):
 
     @classmethod
     def new_builder(cls, clazz=None):
-        if clazz is None:
-            return ClientBuilder(cls)
+        if not clazz:
+            client_builder = ClientBuilder(cls)
+        else:
+            if clazz.__name__ != "CbrAsyncClient":
+                raise TypeError("client type error, support client type is CbrAsyncClient")
+            client_builder = ClientBuilder(clazz)
 
-        if clazz.__name__ != "CbrClient":
-            raise TypeError("client type error, support client type is CbrClient")
+        
 
-        return ClientBuilder(clazz)
+        return client_builder
 
     def add_member_async(self, request):
         """

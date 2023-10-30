@@ -22,7 +22,7 @@ from os import path
 from setuptools import setup, find_packages
 
 NAME = "g42cloudsdkcore"
-VERSION = "0.0.9-beta"
+VERSION = "0.0.10-beta"
 AUTHOR = "G42Cloud SDK"
 AUTHOR_EMAIL = "unionsdk@outlook.com"
 URL = "https://github.com/g42cloud-sdk/g42cloud-sdk-python"
@@ -38,6 +38,7 @@ INSTALL_REQUIRES = [
     "six>=1.16.0",
     "simplejson>=3.18.0",
     "PyYAML>=5.4.1",
+    "ecdsa>=0.18.0",
     "typing_extensions"
 ]
 

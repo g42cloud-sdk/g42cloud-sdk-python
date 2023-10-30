@@ -37,8 +37,8 @@ from six.moves.urllib.parse import quote, urlparse
 
 from g42cloudsdkcore.auth.credentials import BasicCredentials, DerivedCredentials
 from g42cloudsdkcore.auth.provider import CredentialProviderChain
-from g42cloudsdkcore.exceptions import exception_handler
 from g42cloudsdkcore.exceptions.exceptions import HostUnreachableException
+from g42cloudsdkcore.exceptions.exception_handler import ExceptionHandler, DefaultExceptionHandler
 from g42cloudsdkcore.http import progress
 from g42cloudsdkcore.http.formdata import FormFile
 from g42cloudsdkcore.http.http_client import HttpClient
@@ -84,6 +84,7 @@ class ClientBuilder(Generic[T]):
         self._http_handler = None
         self._file_logger_handler = None
         self._stream_logger_handler = None
+        self._exception_handler = None
 
     def with_http_config(self, config):
         """
@@ -120,6 +121,14 @@ class ClientBuilder(Generic[T]):
 
     def with_endpoints(self, endpoints):
         self._endpoints = endpoints
+        return self
+
+    def with_exception_handler(self, exception_handler):
+        """
+        :param exception_handler: ExceptionHandler for ClientBuilder
+        :type exception_handler: :class:`g42cloudsdkcore.exceptions.exception_handler.ExceptionHandler`
+        """
+        self._exception_handler = exception_handler
         return self
 
     def with_http_handler(self, http_handler):
@@ -160,9 +169,14 @@ class ClientBuilder(Generic[T]):
         client = self._client_type() \
             .with_credentials(self._credentials) \
             .with_config(self._config) \
-            .with_http_handler(self._http_handler)
+            .with_http_handler(self._http_handler) \
+            .with_exception_handler(self._exception_handler)
 
         client.init_http_client()
+        if self._file_logger_handler is not None:
+            client.add_file_logger(**self._file_logger_handler)
+        if self._stream_logger_handler is not None:
+            client.add_stream_logger(**self._stream_logger_handler)
 
         if not self._credentials:
             provider = CredentialProviderChain.get_default_credential_provider_chain(self._credential_type[0])
@@ -188,11 +202,6 @@ class ClientBuilder(Generic[T]):
 
         client.with_endpoints(self._endpoints).with_credentials(self._credentials)
 
-        if self._file_logger_handler is not None:
-            client.add_file_logger(**self._file_logger_handler)
-        if self._stream_logger_handler is not None:
-            client.add_stream_logger(**self._stream_logger_handler)
-
         return client
 
 
@@ -207,6 +216,7 @@ class Client(object):
     _HEADERS = "headers"
 
     def __init__(self):
+        self.preset_headers = {}
         self._agent = {"User-Agent": "g42cloud-usdk-python/3.0"}
         self._logger = self._init_logger()
 
@@ -218,9 +228,9 @@ class Client(object):
 
         self._http_client = None
         self._http_handler = None
+        self._exception_handler = None
 
         self.model_package = None
-        self.exception_handler = None
 
     @classmethod
     def _init_logger(cls):
@@ -253,6 +263,14 @@ class Client(object):
         self._endpoints += endpoints
         return self
 
+    def with_exception_handler(self, exception_handler):
+        """
+        :param exception_handler: ExceptionHandler for Client
+        :type exception_handler: :class:`g42cloudsdkcore.exceptions.exception_handler.ExceptionHandler`
+        """
+        self._exception_handler = exception_handler
+        return self
+
     def with_http_handler(self, http_handler):
         """
         :param http_handler: HttpHandler for Client
@@ -262,10 +280,10 @@ class Client(object):
         return self
 
     def init_http_client(self):
-        if not self.exception_handler or not isinstance(self.exception_handler, exception_handler.ExceptionHandler):
-            self.exception_handler = exception_handler.DefaultExceptionHandler()
+        if not self._exception_handler or not isinstance(self._exception_handler, ExceptionHandler):
+            self._exception_handler = DefaultExceptionHandler()
         if not self._http_client:
-            self._http_client = HttpClient(self._config, self._http_handler, self.exception_handler, self._logger)
+            self._http_client = HttpClient(self._config, self._http_handler, self._exception_handler, self._logger)
 
     def add_stream_logger(self, stream, log_level, format_string):
         self._logger.setLevel(log_level)
@@ -303,6 +321,8 @@ class Client(object):
             header_params = dict(http_utils.parameters_to_tuples(header_params, collection_formats))
             header_params = {k: str(v) for k, v in header_params.items()}
         header_params.update(self._agent)
+        if self.preset_headers:
+            header_params.update(self.preset_headers)
         return header_params
 
     def _parse_path_params(self, collection_formats, path_params, resource_path, update_path_params):

@@ -16,13 +16,16 @@ class VpcAsyncClient(Client):
 
     @classmethod
     def new_builder(cls, clazz=None):
-        if clazz is None:
-            return ClientBuilder(cls)
+        if not clazz:
+            client_builder = ClientBuilder(cls)
+        else:
+            if clazz.__name__ != "VpcAsyncClient":
+                raise TypeError("client type error, support client type is VpcAsyncClient")
+            client_builder = ClientBuilder(clazz)
 
-        if clazz.__name__ != "VpcClient":
-            raise TypeError("client type error, support client type is VpcClient")
+        
 
-        return ClientBuilder(clazz)
+        return client_builder
 
     def batch_create_sub_network_interface_async(self, request):
         """

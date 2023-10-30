@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://www.g42cloud.com/"><img src="https://upload.wikimedia.org/wikipedia/en/4/43/Group_42_Logo.jpg"></a>
+<a href="https://www.g42cloud.com/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Group_42_logo.png/330px-Group_42_logo.png"></a>
 </p>
 
 <h1 align="center">G42 Cloud Python Software Development Kit (Python SDK)</h1>

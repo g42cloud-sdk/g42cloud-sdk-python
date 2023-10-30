@@ -17,8 +17,38 @@
  specific language governing permissions and limitations
  under the LICENSE.
 """
-
 from sys import version_info
+
+import ecdsa
+from ecdsa.curves import Curve
+from ecdsa.ellipticcurve import CurveFp, PointJacobi, Point
+from ecdsa.util import sigencode_der, sigdecode_der
+
+from g42cloudsdkcore.exceptions.exceptions import SdkException
+
+_CURVE_FP_SM2 = CurveFp(p=0xfffffffeffffffffffffffffffffffffffffffff00000000ffffffffffffffff,
+                        a=0xfffffffeffffffffffffffffffffffffffffffff00000000fffffffffffffffc,
+                        b=0x28e9fa9e9d9f5e344d5a9e4bcf6509a7f39789f515ab8f92ddbcbd414d940e93,
+                        h=0x01)
+
+_GENERATOR_SM2 = PointJacobi(curve=_CURVE_FP_SM2,
+                             x=0x32c4ae2c1f1981195f9904466a39c9948fe30bbff2660be1715a4589334c74c7,
+                             y=0xbc3736a2f4f6779c59bdcee36b692153d0a9877cc62a474002df32e52139f0a0,
+                             z=1,
+                             order=0xfffffffeffffffffffffffffffffffff7203df6b21c6052b53bbf40939d54123,
+                             generator=True)
+
+_BASE_POINT_SM2 = Point(curve=_CURVE_FP_SM2,
+                        x=_GENERATOR_SM2.x(),
+                        y=_GENERATOR_SM2.y(),
+                        order=_GENERATOR_SM2.order())
+
+CURVE_SM2 = Curve(
+    name="SM2",
+    curve=_CURVE_FP_SM2,
+    generator=_GENERATOR_SM2,
+    oid=(1, 2, 156, 10197, 1, 301),
+    openssl_name="prime256v1")
 
 if version_info.major == 3:
     if version_info.minor < 7:
@@ -155,3 +185,140 @@ if version_info.major == 3:
         new_sm3_hash = lambda data=b'': hashlib.new('sm3', data)
 else:
     new_sm3_hash = None
+
+
+def _int_to_bytes(i):
+    # type: (int) -> bytes
+    return i.to_bytes(length=(i.bit_length() + 7) // 8, byteorder='big', signed=i < 0)
+
+
+try:
+    from secrets import randbelow
+
+
+    def _secure_randint(a, b):
+        # type: (int, int) -> int
+        random_int = randbelow(b - a + 1) + a
+        return random_int
+except ImportError:
+    from os import urandom
+
+
+    def _secure_randint(a, b):
+        # type: (int, int) -> int
+        range_size = b - a + 1
+        num_bytes = (range_size.bit_length() + 7) // 8
+        rand_bytes = urandom(num_bytes)
+        rand_int = int.from_bytes(rand_bytes, byteorder='big')
+        return a + rand_int % range_size
+
+
+def _za(public_key_bytes, uid=b'1234567812345678'):
+    # type: (bytes, bytes) -> bytes
+    """
+    Cryptographic hash algorithm
+
+    ZA = H256(ENTLA | | IDA | | a | | b | | xG | | yG | | xA | | yA)
+    """
+    array = bytearray()
+    uid_len = len(uid)
+    if uid_len >= 8192:
+        raise ValueError("SM2: uid too large")
+
+    entla = uid_len * 8
+    array.append((entla >> 8) & 0xff)
+    array.append(entla & 0xff)
+
+    if uid_len > 0:
+        array.extend(uid)
+
+    array.extend(_int_to_bytes(_CURVE_FP_SM2.a()))
+    array.extend(_int_to_bytes(_CURVE_FP_SM2.b()))
+    array.extend(_int_to_bytes(_BASE_POINT_SM2.x()))
+    array.extend(_int_to_bytes(_BASE_POINT_SM2.y()))
+    array.extend(public_key_bytes)
+    return new_sm3_hash(array).digest()
+
+
+class SM2SigningKey(object):
+    def __init__(self, private_key_bytes):
+        # type: (bytes) -> None
+        private_key = ecdsa.SigningKey.from_string(private_key_bytes, curve=CURVE_SM2, hashfunc=new_sm3_hash)
+        public_key = private_key.get_verifying_key()
+        self._d = private_key.privkey.secret_multiplier
+        self._public_point = public_key.pubkey.point
+        self._za = _za(public_key.to_string())
+
+    def sign(self, data):
+        # type: (bytes) -> bytes
+        """
+        SM2 sign, based on GB/T 32918.2-2016
+
+        Step 1: M' = Za || M
+        Step 2: e = Hash(M')
+        Step 3: Random k in [1, n-1]
+        Step 4: P(x,y) = [k]G(x,y)
+        Step 5: r = (e + x1) mod n, back to step 3 if r = 0 or r + k = n
+        Step 6: s = ((1 + D)^-1 · (k - r · D)) mod n, back to step 3 if s = 0
+        Step 7: Encode r and s to ASN.1-DER
+        """
+        n = CURVE_SM2.order
+
+        m = self._za + data
+
+        hm = new_sm3_hash(m).digest()
+        e = int.from_bytes(hm, byteorder='big')
+
+        for _ in range(100):
+            k = _secure_randint(1, n - 1)
+
+            kp = k * _BASE_POINT_SM2
+
+            r = (e + kp.x()) % n
+            if r == 0 or r + k == n:
+                continue
+
+            d_1 = pow(self._d + 1, n - 2, n)
+            s = (d_1 * (k + r) - r) % n
+            if s == 0:
+                continue
+
+            return sigencode_der(r, s, n)
+
+        raise SdkException("sm2 sign failed")
+
+    def verify(self, signature, data):
+        # type: (bytes, bytes) -> bool
+        """
+        SM2 verify, based on GB/T 32918.2-2016
+
+        Step 1: assert r in [1, n-1]
+        Step 2: assert s in [1, n-1]
+        Step 3: M' = Za || M
+        Step 4: e = Hash(M')
+        Step 5: t = (r + s) mod n, failed if t = 0
+        Step 6: P(x,y) = [s]G(x,y) + [t]Pub(x,y)
+        Step 7: R = (e + x1) mod n, assert R = r
+        """
+        n = CURVE_SM2.order
+        r, s = sigdecode_der(signature, n)
+
+        if r < 1 or r > n - 1:
+            return False
+
+        if s < 1 or s > n - 1:
+            return False
+
+        m = self._za + data
+
+        hm = new_sm3_hash(m).digest()
+        e = int.from_bytes(hm, byteorder='big')
+
+        t = (r + s) % n
+        if t == 0:
+            return False
+
+        p = _BASE_POINT_SM2 * s + self._public_point * t
+
+        r_ = (e + p.x()) % n
+        return r_ == r
